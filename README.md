@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Library Records
 
-## Getting Started
+Books Records tool for libraries or personal use. Add, edit and delete authors and books.
 
-First, run the development server:
+# Project Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What the app does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Interactive Search Bar** – performs the search as you type and the search results are updated on every keystroke.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Books Filter Bar** - filters the book in a useful way by:
+   • books read;
+   • books not read;
+   • books on reading in progress;
+   • books read in the current year;
+   • books read in the previous year.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **Interactive Edit-Save fields for authors and books** – the App makes full use of the React State, which helps in creating interactive and compact UI by avoiding the need of navigating the user to another page when editing an author or a book is necessary. Instead, the Edit and Save features are rendered by toggling the editing state from false to true. When the state changes, the UI changes accordingly. This React feature enables the user to edit, save and view authors and books.
 
-## Learn More
+4. **Start or Stop reading a book** - by pressing the Start button, the user lets the App know that this is the book they started reading. That book will display as being in progress and the system adds the current date and time to the database. After the book in read, if the Stop button is pressed, the book will be displayed as read and the current date and time added to the database. The dates are used when filtering the books by "read in the current year" and "read in the previous year".
 
-To learn more about Next.js, take a look at the following resources:
+_Styling Note_ - this project's style sheets are minimal but pleasant because the styles are not the main focus of this project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Fronted
 
-## Deploy on Vercel
+- Next.js – helps me create an interactive and modern application;
+- Eslint – helps maintain code structure across all files.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Express.js – an enjoyable Node.js framework;
+- MongoDB – NoSQL database.
+
+## How to Install and Run the App
+
+- Create a new folder where the project will be located;
+- Open terminal at that folder's location;
+- Clone the repository on your local machine by executing the following command: `git clone https://github.com/Cat4848/personal-library`
+- Start the frontend server: change to `client` directory then execute the `npm start` command.
+- Start the backend server: change to `server` directory then execute the `npm run start` command;
+- Enjoy! 😀

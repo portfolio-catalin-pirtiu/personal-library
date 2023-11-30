@@ -1,0 +1,21 @@
+# Ignore artifacts:
+build
+coverage
+
+.vscode-test/
+test-fixtures/
+node_modules/
+
+
+# next.js
+/.next/
+/out/
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
