@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import NavBar from './NavBar';
 
 const Wrapper = styled.div`
   height: 100vh,
@@ -12,6 +13,7 @@ export default function Layout({
 }): JSX.Element {
   return (
     <Wrapper>
+      <NavBar />
       <h1>Layout</h1>
       {children}
     </Wrapper>
