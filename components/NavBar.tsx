@@ -21,13 +21,12 @@ export default function NavBar() {
 
   return (
     <Wrapper>
-      <h6>Logo</h6>
+      <Link href={'/'}>Logo</Link>
       <Links>
-        {['authors', 'books', 'add author', 'add book'].map((page) => (
-          <Link href={`/${page}`} key={page}>
-            {splitJoin(page)}
-          </Link>
-        ))}
+        <Link href={'/authors'}>Authors</Link>
+        <Link href={'/books'}>Books</Link>
+        <Link href={'/authors/new'}>Add Author</Link>
+        <Link href={'/books/new'}>Add Book</Link>
       </Links>
     </Wrapper>
   );
