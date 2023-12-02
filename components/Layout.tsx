@@ -25,17 +25,14 @@ const navbarItems = [
   },
 ];
 
-
 export default function Layout({
   children,
 }: {
-  children: JSX.Element;
-}): JSX.Element {
+  children: React.ReactNode;
+}): React.ReactNode {
   return (
     <Wrapper>
-      <NavBar
-        navbarItems={navbarItems}
-      />
+      <NavBar navbarItems={navbarItems} />
       <h1>Layout</h1>
       {children}
     </Wrapper>
