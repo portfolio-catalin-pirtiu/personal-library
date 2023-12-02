@@ -6,6 +6,26 @@ const Wrapper = styled.div`
   weight: 100vw
 `;
 
+const navbarItems = [
+  {
+    href: 'authors/new',
+    linkName: 'Add New Author',
+  },
+  {
+    href: 'books/new',
+    linkName: 'Add New Book',
+  },
+  {
+    href: 'authors',
+    linkName: 'Authors',
+  },
+  {
+    href: 'books',
+    linkName: 'Books',
+  },
+];
+
+
 export default function Layout({
   children,
 }: {
@@ -13,7 +33,9 @@ export default function Layout({
 }): JSX.Element {
   return (
     <Wrapper>
-      <NavBar />
+      <NavBar
+        navbarItems={navbarItems}
+      />
       <h1>Layout</h1>
       {children}
     </Wrapper>
