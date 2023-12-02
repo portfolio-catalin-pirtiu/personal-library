@@ -26,7 +26,7 @@ interface INavBarItem {
 
 interface INavBar {
   navbarItems: INavBarItem[];
-  logo?: JSX.Element | string;
+  logo?: React.ReactNode | string;
 }
 
 export default function NavBar({

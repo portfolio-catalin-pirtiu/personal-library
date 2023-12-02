@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
 
 interface ILinkWrapper {
   href: string;
-  children: JSX.Element | string;
+  children: React.ReactNode | string;
 }
 
 export default function LinkWrapper({ href, children }: ILinkWrapper) {
