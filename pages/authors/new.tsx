@@ -3,8 +3,8 @@ import {
   Form,
   Field,
   ErrorMessage,
-  FormikHelpers,
   FormikValues,
+  FormikErrors,
 } from 'formik';
 import styled from 'styled-components';
 
@@ -37,14 +37,13 @@ export default function NewAuthor() {
     <Formik
       initialValues={initialValues}
       validate={(values) => {
-        console.log('validate -> values', values);
-        const errors = { name: '', surname: '' };
+        const errors: FormikErrors<FormikValues> = {};
+
         if (!values.name) errors.name = 'Required';
         if (!values.surname) errors.surname = 'Required';
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        console.log('new author values', values);
         setSubmitting(false);
       }}
     >
