@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   id: string;
   first_name: string;
   last_name: string;
@@ -6,13 +6,13 @@ export interface User {
   password: string;
 }
 
-export interface Author {
+export interface IAuthor {
   id: string;
   first_name: string;
   last_name: string;
 }
 
-export interface Book {
+export interface IBook {
   id: string;
   author_id: string;
   title: string;
