@@ -51,7 +51,7 @@ export default function NewAuthor() {
         <StyledForm>
           <InputGroup>
             <Label htmlFor="name">
-              Author&apos;s Name
+              First Name
               <Input type="text" name="name" autoComplete="given-name" />
             </Label>
 
@@ -60,7 +60,7 @@ export default function NewAuthor() {
 
           <InputGroup>
             <Label htmlFor="surname">
-              Author&apos;s Surname
+              Last Name
               <Input type="text" name="surname" autoComplete="family-name" />
             </Label>
 
