@@ -12,11 +12,8 @@ async function seedUsers(client) {
       );
     `;
 
-    console.log(`Created "users" table`);
-
     return createTable;
   } catch (error) {
-    console.error('Error creating users table -> error', error);
     throw error;
   }
 }
@@ -31,11 +28,8 @@ async function seedAuthors(client) {
       );
     `;
 
-    console.log(`Created "authors" table`);
-
     return createTable;
   } catch (error) {
-    console.error('Create authors table error: ', error);
     throw error;
   }
 }
@@ -54,11 +48,9 @@ async function seedBooks(client) {
       rating SMALLINT NOT NULL CHECK (rating BETWEEN 0 AND 5)
       );
     `;
-    console.log(`Created "books" table`);
 
     return createTable;
   } catch (error) {
-    console.error('Create books table error: ', error);
     throw error;
   }
 }
@@ -71,6 +63,6 @@ async function main() {
   await seedBooks(client);
 }
 
-main().catch((err) => {
-  console.error('Database seeding error: ', err);
+main().catch((error) => {
+  throw error;
 });
