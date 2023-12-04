@@ -31,18 +31,18 @@ export class Book implements IBook {
   author_id: string;
   title: string;
   read: boolean;
-  startReading: string;
-  stopReading: string;
-  inProgress: boolean;
+  start_reading: string;
+  stop_reading: string;
+  in_progress: boolean;
   rating: number;
   constructor(props: IBook) {
     this.id = props.id;
     this.author_id = props.author_id;
     this.title = props.title;
     this.read = props.read;
-    this.startReading = props.startReading;
-    this.stopReading = props.stopReading;
-    this.inProgress = props.inProgress;
+    this.start_reading = props.start_reading;
+    this.stop_reading = props.stop_reading;
+    this.in_progress = props.in_progress;
     this.rating = props.rating;
   }
 }

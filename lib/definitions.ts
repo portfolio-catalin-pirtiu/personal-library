@@ -17,8 +17,8 @@ export interface IBook {
   author_id: string;
   title: string;
   read: boolean;
-  startReading: string;
-  stopReading: string;
-  inProgress: boolean;
+  start_reading: string;
+  stop_reading: string;
+  in_progress: boolean;
   rating: number;
 }
