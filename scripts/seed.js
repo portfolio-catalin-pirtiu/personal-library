@@ -1,7 +1,6 @@
-import { db } from '@vercel/postgres';
-import type { VercelPoolClient } from '@vercel/postgres';
+const { db } = require('@vercel/postgres');
 
-async function seedUsers(client: VercelPoolClient) {
+async function seedUsers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     const createTable = await client.sql`CREATE TABLE IF NOT EXISTS users (
@@ -22,7 +21,7 @@ async function seedUsers(client: VercelPoolClient) {
   }
 }
 
-async function seedAuthors(client: VercelPoolClient) {
+async function seedAuthors(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     const createTable = await client.sql`CREATE TABLE IF NOT EXISTS authors (
@@ -31,6 +30,9 @@ async function seedAuthors(client: VercelPoolClient) {
       last_name VARCHAR(255) NOT NULL
       );
     `;
+
+    console.log(`Created "authors" table`);
+
     return createTable;
   } catch (error) {
     console.error('Create authors table error: ', error);
@@ -38,7 +40,7 @@ async function seedAuthors(client: VercelPoolClient) {
   }
 }
 
-async function seedBooks(client: VercelPoolClient) {
+async function seedBooks(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     const createTable = await client.sql`CREATE TABLE IF NOT EXISTS books (
@@ -48,10 +50,13 @@ async function seedBooks(client: VercelPoolClient) {
       read BOOLEAN NOT NULL,
       start_reading DATE NOT NULL,
       stop_reading DATE NOT NULL,
-      in_progress BOOLEAN NOT NULL
+      in_progress BOOLEAN NOT NULL,
       rating SMALLINT NOT NULL CHECK (rating BETWEEN 0 AND 5)
       );
     `;
+    console.log(`Created "books" table`);
+
+    return createTable;
   } catch (error) {
     console.error('Create books table error: ', error);
     throw error;
