@@ -16,11 +16,11 @@ export class User implements IUser {
 }
 
 export class Author implements IAuthor {
-  id: string;
+  // id: string;
   first_name: string;
   last_name: string;
   constructor(props: IAuthor) {
-    this.id = props.id;
+    // this.id = props.id;
     this.first_name = props.first_name;
     this.last_name = props.last_name;
   }

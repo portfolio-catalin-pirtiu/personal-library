@@ -7,7 +7,7 @@ export interface IUser {
 }
 
 export interface IAuthor {
-  id: string;
+  // id: string;
   first_name: string;
   last_name: string;
 }

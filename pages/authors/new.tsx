@@ -7,6 +7,8 @@ import {
   FormikErrors,
 } from 'formik';
 import styled from 'styled-components';
+import { IAuthor } from '../../lib/definitions';
+import { Author } from '../../lib/classes';
 
 const StyledForm = styled(Form)``;
 
@@ -25,53 +27,74 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
-interface IAuthor {
-  name: string;
-  surname: string;
-}
-
-const initialValues: IAuthor = { name: '', surname: '' };
+const initialValues: IAuthor = { first_name: '', last_name: '' };
 
 export default function NewAuthor() {
   return (
-    <Formik
-      initialValues={initialValues}
-      validate={(values) => {
-        const errors: FormikErrors<FormikValues> = {};
+    <>
+      <Formik
+        initialValues={initialValues}
+        validate={(values) => {
+          const errors: FormikErrors<FormikValues> = {};
 
-        if (!values.name) errors.name = 'Required';
-        if (!values.surname) errors.surname = 'Required';
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(false);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <StyledForm>
-          <InputGroup>
-            <Label htmlFor="name">
-              First Name
-              <Input type="text" name="name" autoComplete="given-name" />
-            </Label>
+          if (!values.first_name) errors.first_name = 'Required';
+          if (!values.last_name) errors.last_name = 'Required';
+          return errors;
+        }}
+        onSubmit={async (values, { setSubmitting }) => {
+          setSubmitting(false);
 
-            <ErrorMsg name="name" component="div" />
-          </InputGroup>
+          const newAuthor = new Author(values);
 
-          <InputGroup>
-            <Label htmlFor="surname">
-              Last Name
-              <Input type="text" name="surname" autoComplete="family-name" />
-            </Label>
+          try {
+            const req = await fetch('/api/authors/new', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(newAuthor),
+            });
 
-            <ErrorMsg name="surname" component="div" />
-          </InputGroup>
+            if (req.ok) {
+            } else {
+            }
+          } catch (error) {}
+        }}
+      >
+        {({ isSubmitting }) => (
+          <StyledForm>
+            <InputGroup>
+              <Label htmlFor="first_name">
+                First Name
+                <Input
+                  type="input"
+                  name="first_name"
+                  autoComplete="given-name"
+                />
+              </Label>
 
-          <SubmitButton type="submit" disabled={isSubmitting}>
-            Add New Author
-          </SubmitButton>
-        </StyledForm>
-      )}
-    </Formik>
+              <ErrorMsg name="name" component="div" />
+            </InputGroup>
+
+            <InputGroup>
+              <Label htmlFor="last_name">
+                Last Name
+                <Input
+                  type="input"
+                  name="last_name"
+                  autoComplete="family-name"
+                />
+              </Label>
+
+              <ErrorMsg name="surname" component="div" />
+            </InputGroup>
+
+            <SubmitButton type="submit" disabled={isSubmitting}>
+              Add New Author
+            </SubmitButton>
+          </StyledForm>
+        )}
+      </Formik>
+    </>
   );
 }
