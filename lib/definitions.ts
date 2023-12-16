@@ -11,6 +11,10 @@ export interface IAuthor {
   last_name: string;
 }
 
+export interface IDbAuthor extends IAuthor {
+  id: string;
+}
+
 export interface IBook {
   id: string;
   author_id: string;
