@@ -9,6 +9,7 @@ import {
 import styled from 'styled-components';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
+import toast from 'react-hot-toast';
 
 const StyledForm = styled(Form)``;
 
@@ -56,9 +57,15 @@ export default function NewAuthor() {
             });
 
             if (req.ok) {
+              toast.success(`${newAuthor.first_name} added successfully.`);
             } else {
+              throw new Error();
             }
-          } catch (error) {}
+          } catch (error) {
+            if (error instanceof Error) {
+              toast.error('Something went wrong.');
+            }
+          }
         }}
       >
         {({ isSubmitting }) => (

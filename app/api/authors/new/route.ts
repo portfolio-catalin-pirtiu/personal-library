@@ -10,7 +10,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ status: 200 });
   } catch (error) {
     if (error instanceof Error) {
-      return NextResponse.json(error);
+      return NextResponse.json(
+        { name: error.name, message: error.message },
+        { status: 500 }
+      );
     }
   }
 }
