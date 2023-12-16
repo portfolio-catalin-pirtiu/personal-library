@@ -26,7 +26,7 @@ interface INavBarItem {
 
 interface INavBar {
   navbarItems: INavBarItem[];
-  logo?: JSX.Element | string;
+  logo?: React.ReactNode | string;
 }
 
 export default function NavBar({
@@ -40,7 +40,9 @@ export default function NavBar({
       <Links>
         <LinkWrapper href="/">{logo}</LinkWrapper>
         {navbarItems.map((item) => (
-          <LinkWrapper href={`/${item.href}`}>{item.linkName}</LinkWrapper>
+          <LinkWrapper href={`/${item.href}`} key={item.href}>
+            {item.linkName}
+          </LinkWrapper>
         ))}
       </Links>
     </Wrapper>

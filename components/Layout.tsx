@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import NavBar from './NavBar';
+import { Analytics } from '@vercel/analytics/react';
 
 const Wrapper = styled.div`
   height: 100vh,
@@ -25,18 +26,16 @@ const navbarItems = [
   },
 ];
 
-
 export default function Layout({
   children,
 }: {
-  children: JSX.Element;
-}): JSX.Element {
+  children: React.ReactNode;
+}): React.ReactNode {
   return (
     <Wrapper>
-      <NavBar
-        navbarItems={navbarItems}
-      />
+      <NavBar navbarItems={navbarItems} />
       <h1>Layout</h1>
+      <Analytics />
       {children}
     </Wrapper>
   );
