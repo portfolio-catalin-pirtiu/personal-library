@@ -59,16 +59,11 @@ export default function NewAuthor() {
             if (req.ok) {
               toast.success(`${newAuthor.first_name} added successfully.`);
             } else {
-              const error: Error = await req.json();
-              toast.error(
-                `Something went wrong. Error message: ${error.message}`
-              );
+              throw new Error();
             }
           } catch (error) {
             if (error instanceof Error) {
-              toast.error(
-                `Something went wrong. Error message: ${error.message}`
-              );
+              toast.error('Something went wrong.');
             }
           }
         }}
