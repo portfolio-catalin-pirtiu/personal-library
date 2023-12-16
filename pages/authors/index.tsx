@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-let apiUrl = '/api/authors';
+let apiUrl = '/api/authors/';
 
 export default function Authors() {
   const [searchAuthor, setSearchAuthor] = useState('');
