@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 
-let apiUrl = '/api/authors/';
+let apiUrl = '/api/authors/?author=cat';
 
 const Wrapper = styled.div``;
 

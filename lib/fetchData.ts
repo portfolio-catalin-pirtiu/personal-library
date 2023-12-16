@@ -1,9 +1,8 @@
-import { sql } from "@vercel/postgres";
+import { sql } from '@vercel/postgres';
 
-export async function getAuthors(search: string){
+export async function getAuthors(search: string | null) {
   try {
-    const authors = await sql`SELECT * FROM authors`;
-  } catch (error) {
-
-  }
+    const { rows } = await sql`SELECT * FROM authors;`;
+    return rows;
+  } catch (error) {}
 }
