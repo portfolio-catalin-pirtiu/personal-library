@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+import RenderAuthors from '../../components/authors/RenderAuthors';
 
 let apiUrl = '/api/authors/';
+
+const Wrapper = styled.div``;
 
 export default function Authors() {
   const [searchAuthor, setSearchAuthor] = useState('');
@@ -9,5 +13,10 @@ export default function Authors() {
     apiUrl = apiUrl + `?author=${searchAuthor}`;
   }
 
-  return <h1>Authors Page</h1>;
+  return (
+    <Wrapper>
+      <h1>Authors Page</h1>;
+      <RenderAuthors url={apiUrl} />
+    </Wrapper>
+  );
 }
