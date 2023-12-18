@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 
-let apiUrl = '/api/authors/?author=cat';
+let apiUrl = '/api/authors/';
 
 const Wrapper = styled.div``;
 
@@ -15,7 +15,7 @@ export default function Authors() {
 
   return (
     <Wrapper>
-      <h1>Authors Page</h1>;
+      <h1>Authors Page</h1>
       <RenderAuthors url={apiUrl} />
     </Wrapper>
   );
