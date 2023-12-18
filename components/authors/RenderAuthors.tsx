@@ -1,16 +1,14 @@
 import styled from 'styled-components';
-import useFetchAuthors from '../../lib/useFetchAuthors';
 import Author from './Author';
+import { IDbAuthor } from '../../lib/definitions';
 
 const Wrapper = styled.ul``;
 
 interface IRenderAuthors {
-  url: string;
+  authors: IDbAuthor[];
 }
 
-export default function RenderAuthors({ url }: IRenderAuthors) {
-  const { authors } = useFetchAuthors(url);
-
+export default function RenderAuthors({ authors }: IRenderAuthors) {
   return (
     <Wrapper>
       {authors.map((author) => (
