@@ -9,7 +9,6 @@ export async function getAuthors(search: string | null) {
       first_name ILIKE ('%' || ${search} || '%') OR
       last_name ILIKE ('%' || ${search} || '%')
       `;
-
     return rows;
   } catch (error) {
     throw error;
