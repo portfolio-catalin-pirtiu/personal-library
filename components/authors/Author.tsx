@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { IAuthor } from '../../lib/definitions';
 import { Heading1 } from '../../lib/text';
 
-const FirstAndLastName = styled.div``;
+const FirstAndLastName = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vmin;
+`;
 
 const FirstName = styled(Heading1)``;
 
