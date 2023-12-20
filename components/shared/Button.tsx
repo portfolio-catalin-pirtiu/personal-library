@@ -28,6 +28,12 @@ const StyledButton = styled.button<{
       background: white;
       border: 2px solid ${props.$secondaryColor};
     `}
+
+    ${(props) =>
+    props.$warning &&
+    css`
+      background: ${props.$warningColor};
+    `}
 `;
 
 interface IButton {
@@ -54,6 +60,7 @@ export default function Button({
   danger = false,
   primaryColor = '#4db8ff',
   secondaryColor = '#4db8ff',
+  warningColor = '#ffa500',
 }: IButton) {
   if (secondary || warning || danger) primary = false;
 
@@ -82,6 +89,7 @@ export default function Button({
       $danger={danger}
       $primaryColor={primaryColor}
       $secondaryColor={secondaryColor}
+      $warningColor={warningColor}
     >
       {text}
     </StyledButton>
