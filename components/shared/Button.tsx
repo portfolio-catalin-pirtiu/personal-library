@@ -5,15 +5,20 @@ const StyledButton = styled.button<{
   $secondary?: boolean;
   $warning?: boolean;
   $danger?: boolean;
+  $primaryColor?: string;
+  $secondaryColor?: string;
+  $warningColor?: string;
+  $dangerColor?: string;
 }>`
   border-radius: 3px;
   margin: 0.5em 1em;
   padding: 0.25em 1em;
+  border: none;
 
   ${(props) =>
     props.$primary &&
     css`
-      background: #4db8ff;
+      background: ${props.$primaryColor};
       color: black;
     `}
 `;
@@ -26,6 +31,10 @@ interface IButton {
   secondary?: boolean;
   warning?: boolean;
   danger?: boolean;
+  primaryColor?: string;
+  secondaryColor?: string;
+  warningColor?: string;
+  dangerColor?: string;
 }
 
 export default function Button({
@@ -36,6 +45,7 @@ export default function Button({
   secondary = false,
   warning = false,
   danger = false,
+  primaryColor = '#4db8ff',
 }: IButton) {
   if (secondary || warning || danger) primary = false;
 
@@ -62,6 +72,7 @@ export default function Button({
       $secondary={secondary}
       $warning={warning}
       $danger={danger}
+      $primaryColor={primaryColor}
     >
       {text}
     </StyledButton>
