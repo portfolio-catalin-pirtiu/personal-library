@@ -10,31 +10,50 @@ const StyledButton = styled.button<{
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
-  ${(props) => props.$primary && css`
-    background: #007acc;
-    color: black;
-  `}
+  ${(props) =>
+    props.$primary &&
+    css`
+      background: #4db8ff;
+      color: black;
+    `}
 `;
 
 interface IButton {
   type: 'button' | 'submit';
-  primary: boolean;
-  secondary: boolean;
-  warning: boolean;
-  danger: boolean;
   text: string;
   onClick: () => void;
+  primary?: boolean;
+  secondary?: boolean;
+  warning?: boolean;
+  danger?: boolean;
 }
 
 export default function Button({
   type = 'button',
   text = 'Button',
+  onClick = () => {},
   primary = true,
   secondary = false,
   warning = false,
   danger = false,
-  onClick = () => {},
 }: IButton) {
+  if (secondary || warning || danger) primary = false;
+
+  if (secondary) {
+    warning = false;
+    danger = false;
+  }
+
+  if (warning) {
+    secondary = false;
+    danger = false;
+  }
+
+  if (danger) {
+    secondary = false;
+    warning = false;
+  }
+
   return (
     <StyledButton
       type={type}
