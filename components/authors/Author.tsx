@@ -22,10 +22,13 @@ const EditFirstName = styled.input``;
 
 const EditLastName = styled.input``;
 
+let counter = 0;
+
 interface IAuthorProps {
   author: IDbAuthor;
   handleEditAuthor: (editedAuthor: IDbAuthor) => void;
   handleDeleteAuthor: (id: string) => void;
+  handleEditAuthorDatabaseUpdate: (editedAuthor: IDbAuthor) => void;
 }
 
 export default function Author({
@@ -35,13 +38,25 @@ export default function Author({
 }: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
 
+  function databaseUpdateLogic() {
+    if (!counter && !isEditing) {
+      counter++;
+      return;
+    } else if (isEditing) {
+      handleEditAuthorDatabaseUpdate(author);
+    }
+  }
+
   const editAndDeleteContent = (
     <EditAndDelete>
       <Button
         type="button"
         secondary={isEditing ? false : true}
         text={isEditing ? 'Save' : 'Edit'}
-        onClick={() => setIsEditing(!isEditing)}
+        onClick={() => {
+          databaseUpdateLogic();
+          setIsEditing(!isEditing);
+        }}
       />
 
       <Button
