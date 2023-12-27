@@ -29,8 +29,6 @@ interface IAuthorProps {
 
 export default function Author({ author, handleEditAuthor }: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [firstName, setFirstName] = useState(author.first_name);
-  const [lastName, setLastName] = useState(author.last_name);
 
   const editAndDeleteContent = (
     <EditAndDelete>
@@ -48,13 +46,17 @@ export default function Author({ author, handleEditAuthor }: IAuthorProps) {
       <FirstAndLastName>
         <EditFirstName
           name="first_name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          value={author.first_name}
+          onChange={(e) =>
+            handleEditAuthor({ ...author, first_name: e.target.value })
+          }
         />
         <EditLastName
           name="last_name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          value={author.last_name}
+          onChange={(e) =>
+            handleEditAuthor({ ...author, last_name: e.target.value })
+          }
         />
       </FirstAndLastName>
 
@@ -63,8 +65,8 @@ export default function Author({ author, handleEditAuthor }: IAuthorProps) {
   ) : (
     <Wrapper>
       <FirstAndLastName>
-        <FirstName>{firstName}</FirstName>
-        <LastName>{lastName}</LastName>
+        <FirstName>{author.first_name}</FirstName>
+        <LastName>{author.last_name}</LastName>
       </FirstAndLastName>
 
       {editAndDeleteContent}
