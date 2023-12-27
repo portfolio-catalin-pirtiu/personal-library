@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Heading1 } from '../../lib/text';
 import Button from '../shared/Button';
 import { IDbAuthor } from '../../lib/definitions';
+import { useState } from 'react';
 
 const Wrapper = styled.div``;
 
@@ -23,6 +24,7 @@ interface IAuthorProps {
 }
 
 export default function Author({ author, handleEditAuthor }: IAuthorProps) {
+  const [isEditing, setIsEditing] = useState(false);
   return (
     <Wrapper>
       <FirstAndLastName>
@@ -33,9 +35,9 @@ export default function Author({ author, handleEditAuthor }: IAuthorProps) {
       <EditAndDelete>
         <Button
           type="button"
-          secondary
-          text="Edit"
-          onClick={() => handleEditAuthor(author)}
+          secondary={isEditing ? false : true}
+          text={isEditing ? 'Save' : 'Edit'}
+          onClick={() => setIsEditing(!isEditing)}
         />
       </EditAndDelete>
     </Wrapper>
