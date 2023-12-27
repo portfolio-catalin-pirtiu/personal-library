@@ -18,6 +18,10 @@ const FirstName = styled(Heading1)``;
 
 const LastName = styled(Heading1)``;
 
+const EditFirstName = styled.input``;
+
+const EditLastName = styled.input``;
+
 interface IAuthorProps {
   author: IDbAuthor;
   handleEditAuthor: (editedAuthor: IDbAuthor) => void;
@@ -25,21 +29,45 @@ interface IAuthorProps {
 
 export default function Author({ author, handleEditAuthor }: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
-  return (
+  const [firstName, setFirstName] = useState(author.first_name);
+  const [lastName, setLastName] = useState(author.last_name);
+
+  const editAndDeleteContent = (
+    <EditAndDelete>
+      <Button
+        type="button"
+        secondary={isEditing ? false : true}
+        text={isEditing ? 'Save' : 'Edit'}
+        onClick={() => setIsEditing(!isEditing)}
+      />
+    </EditAndDelete>
+  );
+
+  return isEditing ? (
     <Wrapper>
       <FirstAndLastName>
-        <FirstName>{author.first_name}</FirstName>
-        <LastName>{author.last_name}</LastName>
+        <EditFirstName
+          name="first_name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <EditLastName
+          name="last_name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
       </FirstAndLastName>
 
-      <EditAndDelete>
-        <Button
-          type="button"
-          secondary={isEditing ? false : true}
-          text={isEditing ? 'Save' : 'Edit'}
-          onClick={() => setIsEditing(!isEditing)}
-        />
-      </EditAndDelete>
+      {editAndDeleteContent}
+    </Wrapper>
+  ) : (
+    <Wrapper>
+      <FirstAndLastName>
+        <FirstName>{firstName}</FirstName>
+        <LastName>{lastName}</LastName>
+      </FirstAndLastName>
+
+      {editAndDeleteContent}
     </Wrapper>
   );
 }
