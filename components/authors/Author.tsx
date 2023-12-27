@@ -35,6 +35,7 @@ export default function Author({
   author,
   handleEditAuthor,
   handleDeleteAuthor,
+  handleEditAuthorDatabaseUpdate,
 }: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
 

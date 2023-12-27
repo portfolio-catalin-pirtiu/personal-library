@@ -33,6 +33,8 @@ export default function Authors() {
     setAuthors(remainingAuthors);
   }
 
+  function handleEditAuthorDatabaseUpdate(editedAuthor: IDbAuthor) {}
+
   return (
     <Wrapper>
       <h1>Authors Page</h1>
@@ -46,6 +48,7 @@ export default function Authors() {
         authors={authors}
         onEditAuthor={handleEditAuthor}
         onDeleteAuthor={handleDeleteAuthor}
+        onEditAuthorDatabaseUpdate={handleEditAuthorDatabaseUpdate}
       />
     </Wrapper>
   );

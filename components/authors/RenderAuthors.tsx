@@ -8,12 +8,14 @@ interface IRenderAuthors {
   authors: IDbAuthor[];
   onEditAuthor: (editedAuthor: IDbAuthor) => void;
   onDeleteAuthor: (id: string) => void;
+  onEditAuthorDatabaseUpdate: (editedAuthor: IDbAuthor) => void;
 }
 
 export default function RenderAuthors({
   authors,
   onEditAuthor,
   onDeleteAuthor,
+  onEditAuthorDatabaseUpdate,
 }: IRenderAuthors) {
   return (
     <Wrapper>
@@ -23,6 +25,7 @@ export default function RenderAuthors({
           author={author}
           handleEditAuthor={onEditAuthor}
           handleDeleteAuthor={onDeleteAuthor}
+          handleEditAuthorDatabaseUpdate={onEditAuthorDatabaseUpdate}
         />
       ))}
     </Wrapper>
