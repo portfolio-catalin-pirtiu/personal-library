@@ -4,6 +4,7 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { IDbAuthor } from '../../lib/definitions';
+import { Author } from '../../lib/classes';
 
 const Wrapper = styled.div``;
 
@@ -33,7 +34,19 @@ export default function Authors() {
     setAuthors(remainingAuthors);
   }
 
-  function handleEditAuthorDatabaseUpdate(editedAuthor: IDbAuthor) {}
+  async function handleEditAuthorDatabaseUpdate(editedAuthor: IDbAuthor) {
+    const author = new Author(editedAuthor);
+
+    try {
+      const res = await fetch(`/api/authors/edit/${editedAuthor.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(author),
+      });
+    } catch (error) {}
+  }
 
   return (
     <Wrapper>
