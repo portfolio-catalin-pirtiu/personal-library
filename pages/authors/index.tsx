@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import RenderAuthors from '../../components/authors/RenderAuthors';
+import { IDbAuthor } from '../../lib/definitions';
 
 const Wrapper = styled.div``;
 
@@ -14,7 +15,19 @@ export default function Authors() {
     apiUrl = apiUrl + `?author=${searchAuthor}`;
   }
 
-  const { authors } = useFetchAuthors(apiUrl);
+  const { authors, setAuthors } = useFetchAuthors(apiUrl);
+
+  function handleEditAuthor(editedAuthor: IDbAuthor) {
+    const editedAuthors = authors.map((author) => {
+      if (editedAuthor.id === author.id) {
+        return editedAuthor;
+      } else {
+        return author;
+      }
+    });
+    setAuthors(editedAuthors);
+  }
+
   return (
     <Wrapper>
       <h1>Authors Page</h1>
@@ -24,7 +37,7 @@ export default function Authors() {
         label="Author"
         placeholder="Search"
       />
-      <RenderAuthors authors={authors} />
+      <RenderAuthors authors={authors} onEditAuthor={handleEditAuthor} />
     </Wrapper>
   );
 }

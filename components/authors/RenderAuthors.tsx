@@ -6,16 +6,20 @@ const Wrapper = styled.ul``;
 
 interface IRenderAuthors {
   authors: IDbAuthor[];
+  onEditAuthor: (editedAuthor: IDbAuthor) => void;
 }
 
-export default function RenderAuthors({ authors }: IRenderAuthors) {
+export default function RenderAuthors({
+  authors,
+  onEditAuthor,
+}: IRenderAuthors) {
   return (
     <Wrapper>
       {authors.map((author) => (
         <Author
           key={author.id}
-          first_name={author.first_name}
-          last_name={author.last_name}
+          author={author}
+          handleEditAuthor={onEditAuthor}
         />
       ))}
     </Wrapper>
