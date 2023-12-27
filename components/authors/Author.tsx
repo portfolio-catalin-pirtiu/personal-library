@@ -25,9 +25,14 @@ const EditLastName = styled.input``;
 interface IAuthorProps {
   author: IDbAuthor;
   handleEditAuthor: (editedAuthor: IDbAuthor) => void;
+  handleDeleteAuthor: (id: string) => void;
 }
 
-export default function Author({ author, handleEditAuthor }: IAuthorProps) {
+export default function Author({
+  author,
+  handleEditAuthor,
+  handleDeleteAuthor,
+}: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   const editAndDeleteContent = (
@@ -37,6 +42,13 @@ export default function Author({ author, handleEditAuthor }: IAuthorProps) {
         secondary={isEditing ? false : true}
         text={isEditing ? 'Save' : 'Edit'}
         onClick={() => setIsEditing(!isEditing)}
+      />
+
+      <Button
+        type="button"
+        danger
+        text="Delete"
+        onClick={() => handleDeleteAuthor(author.id)}
       />
     </EditAndDelete>
   );

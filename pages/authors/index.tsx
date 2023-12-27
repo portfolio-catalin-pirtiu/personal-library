@@ -28,6 +28,11 @@ export default function Authors() {
     setAuthors(editedAuthors);
   }
 
+  function handleDeleteAuthor(id: string) {
+    const remainingAuthors = authors.filter((author) => author.id !== id);
+    setAuthors(remainingAuthors);
+  }
+
   return (
     <Wrapper>
       <h1>Authors Page</h1>
@@ -37,7 +42,11 @@ export default function Authors() {
         label="Author"
         placeholder="Search"
       />
-      <RenderAuthors authors={authors} onEditAuthor={handleEditAuthor} />
+      <RenderAuthors
+        authors={authors}
+        onEditAuthor={handleEditAuthor}
+        onDeleteAuthor={handleDeleteAuthor}
+      />
     </Wrapper>
   );
 }

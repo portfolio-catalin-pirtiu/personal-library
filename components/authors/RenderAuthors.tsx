@@ -7,11 +7,13 @@ const Wrapper = styled.ul``;
 interface IRenderAuthors {
   authors: IDbAuthor[];
   onEditAuthor: (editedAuthor: IDbAuthor) => void;
+  onDeleteAuthor: (id: string) => void;
 }
 
 export default function RenderAuthors({
   authors,
   onEditAuthor,
+  onDeleteAuthor,
 }: IRenderAuthors) {
   return (
     <Wrapper>
@@ -20,6 +22,7 @@ export default function RenderAuthors({
           key={author.id}
           author={author}
           handleEditAuthor={onEditAuthor}
+          handleDeleteAuthor={onDeleteAuthor}
         />
       ))}
     </Wrapper>
