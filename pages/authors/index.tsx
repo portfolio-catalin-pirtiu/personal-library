@@ -5,6 +5,7 @@ import Search from '../../components/shared/Search';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
+import toast from 'react-hot-toast';
 
 const Wrapper = styled.div``;
 
@@ -45,7 +46,15 @@ export default function Authors() {
         },
         body: JSON.stringify(author),
       });
-    } catch (error) {}
+
+      if (res.ok) {
+        toast.success('Update Successful.');
+      } else {
+        throw new Error('An error occurred while updating author.');
+      }
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
 
   return (
