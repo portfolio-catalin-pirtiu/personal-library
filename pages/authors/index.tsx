@@ -38,7 +38,7 @@ export default function Authors() {
     const author = new Author(editedAuthor);
 
     try {
-      const res = await fetch(`/api/authors/edit/${editedAuthor.id}`, {
+      const res = await fetch(`${apiUrl}edit/${editedAuthor.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
