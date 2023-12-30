@@ -57,6 +57,28 @@ export default function Authors() {
     }
   }
 
+  async function handleDeleteAuthorDatabase(deleteAuthor: IDbAuthor) {
+    const author = new Author(deleteAuthor);
+
+    try {
+      const res = await fetch(`${apiUrl}delete/${deleteAuthor.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(author),
+      });
+
+      if (res.ok) {
+        toast.success('Delete Successful.');
+      } else {
+        throw new Error('An error occurred while deleting author.');
+      }
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
+  }
+
   return (
     <Wrapper>
       <h1>Authors Page</h1>
