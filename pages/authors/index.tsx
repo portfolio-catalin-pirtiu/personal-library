@@ -57,16 +57,13 @@ export default function Authors() {
     }
   }
 
-  async function handleDeleteAuthorDatabase(deleteAuthor: IDbAuthor) {
-    const author = new Author(deleteAuthor);
-
+  async function handleDeleteAuthorDatabase(id: string) {
     try {
-      const res = await fetch(`${apiUrl}delete/${deleteAuthor.id}`, {
+      const res = await fetch(`${apiUrl}delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(author),
       });
 
       if (res.ok) {
@@ -93,6 +90,7 @@ export default function Authors() {
         onEditAuthor={handleEditAuthor}
         onDeleteAuthor={handleDeleteAuthor}
         onEditAuthorDatabaseUpdate={handleEditAuthorDatabaseUpdate}
+        onDeleteAuthorDatabaseUpdate={handleDeleteAuthorDatabase}
       />
     </Wrapper>
   );

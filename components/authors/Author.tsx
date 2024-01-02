@@ -29,6 +29,7 @@ interface IAuthorProps {
   handleEditAuthor: (editedAuthor: IDbAuthor) => void;
   handleDeleteAuthor: (id: string) => void;
   handleEditAuthorDatabaseUpdate: (editedAuthor: IDbAuthor) => void;
+  handleDeleteAuthorDatabaseUpdate: (id: string) => void;
 }
 
 export default function Author({
@@ -36,6 +37,7 @@ export default function Author({
   handleEditAuthor,
   handleDeleteAuthor,
   handleEditAuthorDatabaseUpdate,
+  handleDeleteAuthorDatabaseUpdate,
 }: IAuthorProps) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -64,7 +66,10 @@ export default function Author({
         type="button"
         danger
         text="Delete"
-        onClick={() => handleDeleteAuthor(author.id)}
+        onClick={() => {
+          handleDeleteAuthor(author.id);
+          handleDeleteAuthorDatabaseUpdate(author.id);
+        }}
       />
     </EditAndDelete>
   );
