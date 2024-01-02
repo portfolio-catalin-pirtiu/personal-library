@@ -7,9 +7,12 @@ export interface IUser {
 }
 
 export interface IAuthor {
-  // id: string;
   first_name: string;
   last_name: string;
+}
+
+export interface IDbAuthor extends IAuthor {
+  id: string;
 }
 
 export interface IBook {
