@@ -95,16 +95,15 @@ export default function NewBook() {
             </InputGroup>
 
             <InputGroup>
-              <Label htmlFor="last_name">
-                Last Name
+              <Label htmlFor="title">
+                Title
                 <Input
                   type="input"
-                  name="last_name"
-                  autoComplete="family-name"
+                  name="title"
                 />
               </Label>
 
-              <ErrorMsg name="surname" component="div" />
+              <ErrorMsg name="title" component="div" />
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
