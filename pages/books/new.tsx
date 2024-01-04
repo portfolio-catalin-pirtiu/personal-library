@@ -12,6 +12,8 @@ import { IBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
+import { TbStar } from 'react-icons/tb';
+import RatingStars from '../../components/RatingStars';
 
 const StyledForm = styled(Form)``;
 
@@ -113,6 +115,17 @@ export default function NewBook() {
             <InputGroup>
               <Input type="hidden" name="in_progress" />
             </InputGroup>
+
+            <InputGroup>
+              <Label htmlFor="rating">
+                Rating
+                    {/* <RatingStars stars={5} rating={1}/> */}
+                {/* <Input name="rating" component={<RatingStars stars={5} rating={2}/>} /> */}
+              </Label>
+
+              <ErrorMsg name="title" component="div" />
+            </InputGroup>
+            <RatingStars stars={5} rating={3}/>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Add New Book
