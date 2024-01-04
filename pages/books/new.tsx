@@ -106,6 +106,10 @@ export default function NewBook() {
               <ErrorMsg name="title" component="div" />
             </InputGroup>
 
+            <InputGroup>
+              <Input type="hidden" name="read" />
+            </InputGroup>
+
             <SubmitButton type="submit" disabled={isSubmitting}>
               Add New Book
             </SubmitButton>
