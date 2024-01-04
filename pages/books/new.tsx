@@ -46,6 +46,7 @@ export default function NewBook() {
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
+          console.log('validate values', values);
 
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
@@ -53,6 +54,7 @@ export default function NewBook() {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
+          console.log('new book values', values);
 
           const newBook = new Book(values);
 
@@ -77,15 +79,16 @@ export default function NewBook() {
           }
         }}
       >
-        {({ isSubmitting, values }) => (
+        {({ isSubmitting }) => (
           <StyledForm>
             <InputGroup>
               <Label htmlFor="author_id">
                 Author
-                <Input as="select" name="author_id">
+                <Input name="author_id" component="select">
                   {authors.map((author) => (
                     <option
                       value={author.id}
+                      key={author.id}
                     >{`${author.first_name} ${author.last_name}`}</option>
                   ))}
                 </Input>
@@ -97,17 +100,14 @@ export default function NewBook() {
             <InputGroup>
               <Label htmlFor="title">
                 Title
-                <Input
-                  type="input"
-                  name="title"
-                />
+                <Input type="input" name="title" />
               </Label>
 
               <ErrorMsg name="title" component="div" />
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
-              Add New Author
+              Add New Book
             </SubmitButton>
           </StyledForm>
         )}
