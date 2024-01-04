@@ -110,6 +110,10 @@ export default function NewBook() {
               <Input type="hidden" name="read" />
             </InputGroup>
 
+            <InputGroup>
+              <Input type="hidden" name="in_progress" />
+            </InputGroup>
+
             <SubmitButton type="submit" disabled={isSubmitting}>
               Add New Book
             </SubmitButton>
