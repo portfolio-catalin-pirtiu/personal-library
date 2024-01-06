@@ -1,16 +1,50 @@
 import { FaStar } from 'react-icons/fa';
 
 interface IRatingStars {
-  stars: number;
+  totalStars: number;
   rating: number;
+  onChangeRatingValue: (field: string, rating: number) => void;
+  onChangeRatingStars: (rating: number) => void;
 }
 
-function Star({ selected }: { selected: boolean }) {
-  return <FaStar cursor="pointer" color={selected ? 'green' : 'grey'} />;
+interface IStar {
+  selected: boolean;
+  index: number;
+  handleChangeRatingValue: (field: string, rating: number) => void;
+  handleChangeRatingStars: (rating: number) => void;
 }
 
-export default function RatingStars({ stars = 5, rating = 0 }: IRatingStars) {
-  return Array.from({ length: stars }).map((n, i) => (
-    <Star key={i} selected={rating > i} />
+function Star({
+  selected = false,
+  index = 0,
+  handleChangeRatingValue,
+  handleChangeRatingStars,
+}: IStar) {
+  return (
+    <FaStar
+      cursor="pointer"
+      color={selected ? 'green' : 'grey'}
+      onClick={() => {
+        handleChangeRatingValue('rating', index);
+        handleChangeRatingStars(index);
+      }}
+    />
+  );
+}
+
+export default function RatingStars({
+  totalStars = 5,
+  rating = 0,
+  onChangeRatingValue,
+  onChangeRatingStars,
+}: IRatingStars) {
+  return Array.from({ length: totalStars }).map((n, i) => (
+    <Star
+      key={i}
+      index={i + 1}
+      selected={rating > i}
+      handleChangeRatingValue={onChangeRatingValue}
+      handleChangeRatingStars={onChangeRatingStars}
+    />
   ));
 }

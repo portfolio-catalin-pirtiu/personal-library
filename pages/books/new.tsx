@@ -14,6 +14,7 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import { TbStar } from 'react-icons/tb';
 import RatingStars from '../../components/RatingStars';
+import { useState } from 'react';
 
 const StyledForm = styled(Form)``;
 
@@ -42,13 +43,14 @@ const initialValues: IBook = {
 
 export default function NewBook() {
   const { authors } = useFetchAuthors(authorsApiUrl);
+  const [stars, setStars] = useState(0);
+  const totalStars = 5;
   return (
     <>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
-          console.log('validate values', values);
 
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
@@ -56,8 +58,6 @@ export default function NewBook() {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
-          console.log('new book values', values);
-
           const newBook = new Book(values);
 
           try {
@@ -81,7 +81,7 @@ export default function NewBook() {
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
             <InputGroup>
               <Label htmlFor="author_id">
@@ -119,13 +119,15 @@ export default function NewBook() {
             <InputGroup>
               <Label htmlFor="rating">
                 Rating
-                    {/* <RatingStars stars={5} rating={1}/> */}
-                {/* <Input name="rating" component={<RatingStars stars={5} rating={2}/>} /> */}
+                <Input type="hidden" name="rating" value={stars} />
+                <RatingStars
+                  totalStars={totalStars}
+                  rating={stars}
+                  onChangeRatingValue={setFieldValue}
+                  onChangeRatingStars={setStars}
+                />
               </Label>
-
-              <ErrorMsg name="title" component="div" />
             </InputGroup>
-            <RatingStars stars={5} rating={3}/>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Add New Book
