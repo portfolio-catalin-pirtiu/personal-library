@@ -51,7 +51,6 @@ export default function NewBook() {
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
-          console.log('values', values);
 
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
@@ -135,6 +134,13 @@ export default function NewBook() {
               <Label htmlFor="publisher">
                 Publisher
                 <Input type="input" name="publisher" />
+              </Label>
+            </InputGroup>
+
+            <InputGroup>
+              <Label htmlFor="edition">
+                Edition
+                <Input type="input" name="edition" />
               </Label>
             </InputGroup>
 
