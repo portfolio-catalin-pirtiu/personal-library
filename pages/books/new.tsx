@@ -87,6 +87,7 @@ export default function NewBook() {
               <Label htmlFor="author_id">
                 Author
                 <Input name="author_id" component="select">
+                  <option value="">--Select Author--</option>
                   {authors.map((author) => (
                     <option
                       value={author.id}
