@@ -20,7 +20,7 @@ export interface IBook {
   title: string;
   read: boolean;
   in_progress: boolean;
-  rating: number;
+  rating?: number;
   stop_reading?: string;
   start_reading?: string;
   publisher?: string;

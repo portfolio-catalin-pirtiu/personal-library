@@ -58,13 +58,15 @@ async function seedBooks(client) {
 async function changeBooks(client) {
   try {
     const changeTable = await client.sql`ALTER TABLE books
-      ALTER COLUMN title SET NOT NULL,
-      ALTER COLUMN start_reading DROP NOT NULL,
-      ALTER COLUMN stop_reading DROP NOT NULL,
-      ADD COLUMN publisher TEXT,
-      ADD COLUMN edition TEXT,
-      ADD COLUMN notes TEXT
-      ;`;
+    ALTER COLUMN title SET NOT NULL,
+    ALTER COLUMN start_reading DROP NOT NULL,
+    ALTER COLUMN stop_reading DROP NOT NULL,
+    ALTER COLUMN in_progress DROP NOT NULL,
+    ALTER COLUMN rating DROP NOT NULL,
+    ADD COLUMN publisher TEXT,
+    ADD COLUMN edition TEXT,
+    ADD COLUMN notes TEXT;
+    `;
   } catch (error) {
     throw error;
   }

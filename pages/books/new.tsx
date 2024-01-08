@@ -53,8 +53,7 @@ export default function NewBook() {
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
-          console.log('values', values);
-
+          
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
           return errors;
