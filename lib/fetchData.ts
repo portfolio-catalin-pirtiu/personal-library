@@ -14,3 +14,16 @@ export async function getAuthors(search: string | null) {
     throw error;
   }
 }
+
+export async function getBooks(search: string | null) {
+  if (!search) search = '';
+  try {
+    const {rows} = await sql`
+      SELECT * FROM books
+      WHERE
+      
+    `
+  }catch(error){
+
+  }
+}
