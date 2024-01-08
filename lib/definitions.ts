@@ -16,12 +16,18 @@ export interface IDbAuthor extends IAuthor {
 }
 
 export interface IBook {
-  id: string;
   author_id: string;
   title: string;
   read: boolean;
-  start_reading: string;
-  stop_reading: string;
   in_progress: boolean;
-  rating: number;
+  rating?: number;
+  stop_reading?: string;
+  start_reading?: string;
+  publisher?: string;
+  edition?: string;
+  notes?: string;
+}
+
+export interface IDbBook extends IBook {
+  id: string;
 }

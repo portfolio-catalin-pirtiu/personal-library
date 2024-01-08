@@ -25,16 +25,17 @@ export class Author implements IAuthor {
 }
 
 export class Book implements IBook {
-  id: string;
   author_id: string;
   title: string;
   read: boolean;
-  start_reading: string;
-  stop_reading: string;
   in_progress: boolean;
   rating: number;
+  stop_reading?: string;
+  start_reading?: string;
+  publisher?: string | undefined;
+  edition?: string | undefined;
+  notes?: string | undefined;
   constructor(props: IBook) {
-    this.id = props.id;
     this.author_id = props.author_id;
     this.title = props.title;
     this.read = props.read;
@@ -42,5 +43,8 @@ export class Book implements IBook {
     this.stop_reading = props.stop_reading;
     this.in_progress = props.in_progress;
     this.rating = props.rating;
+    this.publisher = props.publisher;
+    this.edition = props.edition;
+    this.notes = props.edition;
   }
 }
