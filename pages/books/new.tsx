@@ -53,12 +53,12 @@ export default function NewBook() {
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
-          
+
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
           return errors;
         }}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
           const newBook = new Book(values);
 
@@ -73,6 +73,7 @@ export default function NewBook() {
 
             if (req.ok) {
               toast.success('Added successfully.');
+              resetForm();
             } else {
               throw new Error('Something went wrong.');
             }
@@ -149,7 +150,7 @@ export default function NewBook() {
             <InputGroup>
               <Label htmlFor="notes">
                 Notes
-                <Input type="input" name="notes" component='textarea'/>
+                <Input type="input" name="notes" component="textarea" />
               </Label>
             </InputGroup>
 
