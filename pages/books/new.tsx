@@ -12,7 +12,6 @@ import { IBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
-import { TbStar } from 'react-icons/tb';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
 
@@ -39,6 +38,9 @@ const initialValues: IBook = {
   read: false,
   in_progress: false,
   rating: 0,
+  publisher: '',
+  edition: '',
+  notes: '',
 };
 
 export default function NewBook() {
@@ -51,6 +53,7 @@ export default function NewBook() {
         initialValues={initialValues}
         validate={(values) => {
           const errors: FormikErrors<FormikValues> = {};
+          console.log('values', values);
 
           if (!values.author_id) errors.author_id = 'Required';
           if (!values.title) errors.title = 'Required';
@@ -141,6 +144,13 @@ export default function NewBook() {
               <Label htmlFor="edition">
                 Edition
                 <Input type="input" name="edition" />
+              </Label>
+            </InputGroup>
+
+            <InputGroup>
+              <Label htmlFor="notes">
+                Notes
+                <Input type="input" name="notes" component='textarea'/>
               </Label>
             </InputGroup>
 
