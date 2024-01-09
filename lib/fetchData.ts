@@ -19,9 +19,10 @@ export async function getBooks(search: string | null) {
   if (!search) search = '';
   try {
     const { rows } = await sql`
-      SELECT * FROM books;`;
+      SELECT * FROM books
+      ;`; 
     return rows;
   } catch (error) {
     throw error;
   }
-}
+}    
