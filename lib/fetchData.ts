@@ -18,12 +18,8 @@ export async function getAuthors(search: string | null) {
 export async function getBooks(search: string | null) {
   if (!search) search = '';
   try {
-    const {rows} = await sql`
-      SELECT * FROM books
-      WHERE
-      
-    `
-  }catch(error){
-
-  }
+    const { rows } = await sql`
+      SELECT * FROM books;`;
+    return rows;
+  } catch (error) {}
 }
