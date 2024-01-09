@@ -21,5 +21,7 @@ export async function getBooks(search: string | null) {
     const { rows } = await sql`
       SELECT * FROM books;`;
     return rows;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 }
