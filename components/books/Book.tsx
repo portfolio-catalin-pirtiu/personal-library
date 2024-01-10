@@ -29,16 +29,16 @@ export default function Book({
   return (
     <Wrapper>
       <RestOfInfo>
-        <Edition></Edition>
-        <Publisher></Publisher>
-        <Notes></Notes>
+        <Edition>{edition}</Edition>
+        <Publisher>{publisher}</Publisher>
+        <Notes>{notes}</Notes>
       </RestOfInfo>
 
       <StartStopButtons></StartStopButtons>
-      
+
       <AuthorTitleAndStatus>
-        <Author></Author>
-        <Title></Title>
+        <Author>{`${first_name} ${last_name}`}</Author>
+        <Title>{title}</Title>
       </AuthorTitleAndStatus>
     </Wrapper>
   );
