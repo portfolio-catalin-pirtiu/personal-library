@@ -20,9 +20,10 @@ export async function getBooks(search: string | null) {
   try {
     const { rows } = await sql`
       SELECT * FROM books
-      ;`; 
+      INNER JOIN authors ON books.author_id = authors.id
+      ;`;
     return rows;
   } catch (error) {
     throw error;
   }
-}    
+}

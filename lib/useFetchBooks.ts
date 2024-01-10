@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { IDbBook } from './definitions';
+import { IDbBook, IAuthor } from './definitions';
 
-interface DbResponse {
-  books: IDbBook[];
+interface IBookWithAuthor extends IDbBook, IAuthor {}
+
+interface DBResponse {
+  books: IBookWithAuthor[];
 }
 
 async function fetchBooks(url: string) {
@@ -11,7 +13,7 @@ async function fetchBooks(url: string) {
   if (!res.ok) {
     throw new Error('An error occurred while fetching the books.');
   }
-  const { books }: DbResponse = await res.json();
+  const { books }: DBResponse = await res.json();
   return books;
 }
 

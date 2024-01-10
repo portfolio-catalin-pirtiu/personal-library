@@ -1,3 +1,5 @@
+import { QueryResult, QueryResultRow } from '@vercel/postgres';
+
 export interface IUser {
   id: string;
   first_name: string;
