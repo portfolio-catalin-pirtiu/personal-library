@@ -16,7 +16,7 @@ async function fetchBooks(url: string) {
 }
 
 export default function useFetchBooks(url: string) {
-  const [books, setBooks] = useState<IDbBook[]>([]);
+  const [books, setBooks] = useState<IBookWithAuthor[]>([]);
 
   useEffect(() => {
     (async () => {
