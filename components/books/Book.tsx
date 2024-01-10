@@ -1,5 +1,7 @@
 import { IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
+import Button from '../shared/Button';
+import { colors } from '../../lib/colors';
 
 const Wrapper = styled.div``;
 const RestOfInfo = styled.div``;
@@ -26,6 +28,7 @@ export default function Book({
   start_reading,
   stop_reading,
 }: IBookWithAuthor) {
+  function handleStartReading() {}
   return (
     <Wrapper>
       <RestOfInfo>
@@ -34,7 +37,14 @@ export default function Book({
         <Notes>{notes}</Notes>
       </RestOfInfo>
 
-      <StartStopButtons></StartStopButtons>
+      <StartStopButtons>
+        <Button
+          type="button"
+          text="Start Reading"
+          primaryColor={colors.green}
+          onClick={handleStartReading}
+        />
+      </StartStopButtons>
 
       <AuthorTitleAndStatus>
         <Author>{`${first_name} ${last_name}`}</Author>
