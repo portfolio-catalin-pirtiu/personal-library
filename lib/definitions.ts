@@ -1,5 +1,3 @@
-import { QueryResult, QueryResultRow } from '@vercel/postgres';
-
 export interface IUser {
   id: string;
   first_name: string;
@@ -33,3 +31,5 @@ export interface IBook {
 export interface IDbBook extends IBook {
   id: string;
 }
+
+export interface IBookWithAuthor extends IDbBook, IAuthor {}

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IDbBook, IAuthor } from './definitions';
-
-interface IBookWithAuthor extends IDbBook, IAuthor {}
+import { IDbBook, IBookWithAuthor } from './definitions';
 
 interface DBResponse {
   books: IBookWithAuthor[];
