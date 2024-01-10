@@ -29,6 +29,7 @@ export default function Book({
   stop_reading,
 }: IBookWithAuthor) {
   function handleStartReading() {}
+  function handleStopReading() {}
   return (
     <Wrapper>
       <RestOfInfo>
@@ -41,8 +42,15 @@ export default function Book({
         <Button
           type="button"
           text="Start Reading"
-          primaryColor={colors.green}
+          primaryColor={colors.blue}
           onClick={handleStartReading}
+        />
+
+        <Button
+          type="button"
+          text="Stop Reading"
+          primaryColor={colors.green}
+          onClick={handleStopReading}
         />
       </StartStopButtons>
 
