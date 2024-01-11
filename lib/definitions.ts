@@ -31,3 +31,5 @@ export interface IBook {
 export interface IDbBook extends IBook {
   id: string;
 }
+
+export interface IBookWithAuthor extends IDbBook, IAuthor {}
