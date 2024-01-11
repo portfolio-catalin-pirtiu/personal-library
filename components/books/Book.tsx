@@ -2,7 +2,6 @@ import { IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
-import { useState } from 'react';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -25,10 +24,6 @@ const StartStopButtons = styled.div``;
 const Title = styled.div``;
 const Author = styled.div``;
 
-interface IBookProps extends IBookWithAuthor {
-  onEdit: (editedBook: IBookWithAuthor) => void;
-}
-
 export default function Book({
   id,
   author_id,
@@ -43,13 +38,11 @@ export default function Book({
   rating,
   start_reading,
   stop_reading,
-}: IBookProps) {
-  const [isEditing, setIsEditing] = useState(false);
-
+}: IBookWithAuthor) {
   function handleStartReading() {}
   function handleStopReading() {}
   return (
-    <Wrapper onClick={() => setIsEditing(!isEditing)}>
+    <Wrapper>
       <RestOfInfo>
         <Edition>{edition}</Edition>
         <Publisher>{publisher}</Publisher>

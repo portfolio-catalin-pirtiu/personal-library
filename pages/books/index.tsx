@@ -2,7 +2,6 @@ import useFetchBooks from '../../lib/useFetchBooks';
 import { booksApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IBookWithAuthor } from '../../lib/definitions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,14 +12,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Books() {
-  const { books, setBooks } = useFetchBooks(booksApiUrl);
-
-  function handleEdit(editedBook: IBookWithAuthor) {
-    const editedBooks = books.map((book) => {
-      if (editedBook.id === book.id) return editedBook;
-      else return book;
-    });
-  }
+  const { books } = useFetchBooks(booksApiUrl);
   return (
     <Wrapper>
       {books.map((book) => (
@@ -39,7 +31,6 @@ export default function Books() {
           rating={book.rating}
           start_reading={book.start_reading}
           stop_reading={book.stop_reading}
-          onEdit={handleEdit}
         />
       ))}
     </Wrapper>
