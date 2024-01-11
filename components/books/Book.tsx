@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
+  &:hover {
+    background: ${colors.gray};
+  }
 `;
 const RestOfInfo = styled.div``;
 const AuthorTitleAndStatus = styled.div``;
