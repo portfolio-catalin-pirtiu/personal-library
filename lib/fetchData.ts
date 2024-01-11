@@ -1,4 +1,6 @@
 import { sql } from '@vercel/postgres';
+import { QueryResult } from '@vercel/postgres';
+import { IBookWithAuthor } from './definitions';
 
 export async function getAuthors(search: string | null) {
   if (!search) search = '';
@@ -18,7 +20,7 @@ export async function getAuthors(search: string | null) {
 export async function getBooks(search: string | null) {
   if (!search) search = '';
   try {
-    const { rows } = await sql`
+    const { rows } = await sql<QueryResult<IBookWithAuthor>>`
       SELECT * FROM books
       INNER JOIN authors ON books.author_id = authors.id
       ;`;
