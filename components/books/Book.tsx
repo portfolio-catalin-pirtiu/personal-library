@@ -8,6 +8,8 @@ const Wrapper = styled.div`
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
   padding: 0.5rem;
+  width: 20rem;
+  height: 10rem;
   &:hover {
     background: ${colors.gray};
   }
