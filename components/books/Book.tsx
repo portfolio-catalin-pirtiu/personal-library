@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   &:hover {
     background: ${colors.gray};
   }
+  box-shadow: 0.1rem 0.1rem 0.3rem 0.2rem ${colors.gray};
 `;
 const RestOfInfo = styled.div``;
 const AuthorTitleAndStatus = styled.div``;
