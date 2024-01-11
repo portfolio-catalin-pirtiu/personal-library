@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border: 0.1rem solid ${colors.gray};
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
 const RestOfInfo = styled.div``;
 const AuthorTitleAndStatus = styled.div``;
 const Edition = styled.div``;
