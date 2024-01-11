@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Books() {
-  const { books } = useFetchBooks(booksApiUrl);
+  const { books, setBooks } = useFetchBooks(booksApiUrl);
   return (
     <Wrapper>
       {books.map((book) => (
