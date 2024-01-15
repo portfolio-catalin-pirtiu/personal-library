@@ -52,6 +52,7 @@ export default function BookForm({ initialValues, action }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
+  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   return (
     <>
       <Formik
@@ -160,7 +161,7 @@ export default function BookForm({ initialValues, action }: IBookForm) {
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
-              Add New Book
+              {buttonText}
             </SubmitButton>
           </StyledForm>
         )}
