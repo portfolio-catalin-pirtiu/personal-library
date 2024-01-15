@@ -32,17 +32,6 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
-const initialValues: IBook = {
-  author_id: '',
-  title: '',
-  read: false,
-  in_progress: false,
-  rating: 0,
-  publisher: '',
-  edition: '',
-  notes: '',
-};
-
 interface IBookForm {
   initialValues: IBook;
   action: 'newBook' | 'editBook';
