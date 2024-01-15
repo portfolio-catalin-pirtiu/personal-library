@@ -60,7 +60,12 @@ export default function Book({
   function handleStartReading() {}
   function handleStopReading() {}
   return isEditing ? (
-    <BookForm initialValues={editBookInitialValues} action="editBook" />
+    <BookForm
+      initialValues={editBookInitialValues}
+      action="editBook"
+      isEditing={isEditing}
+      setIsEditing={setIsEditing}
+    />
   ) : (
     <Wrapper>
       <EditIcon>
