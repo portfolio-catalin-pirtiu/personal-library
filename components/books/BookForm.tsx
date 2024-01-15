@@ -35,9 +35,16 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
 interface IBookForm {
   initialValues: IBook;
   action: 'newBook' | 'editBook';
+  isEditing?: boolean;
+  setIsEditing?: (isEditing: boolean) => void;
 }
 
-export default function BookForm({ initialValues, action }: IBookForm) {
+export default function BookForm({
+  initialValues,
+  action,
+  isEditing,
+  setIsEditing
+}: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
@@ -56,6 +63,7 @@ export default function BookForm({ initialValues, action }: IBookForm) {
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
+          setIsEditing(!isEditing);
           const newBook = new Book(values);
 
           try {
