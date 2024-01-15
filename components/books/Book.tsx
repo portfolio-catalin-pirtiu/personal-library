@@ -2,6 +2,7 @@ import { IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
+import { FaRegEdit } from 'react-icons/fa';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -23,6 +24,7 @@ const Notes = styled.div``;
 const StartStopButtons = styled.div``;
 const Title = styled.div``;
 const Author = styled.div``;
+const EditIcon = styled.div``;
 
 export default function Book({
   id,
@@ -43,6 +45,9 @@ export default function Book({
   function handleStopReading() {}
   return (
     <Wrapper>
+      <EditIcon>
+        <FaRegEdit />
+      </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
         <Publisher>{publisher}</Publisher>
