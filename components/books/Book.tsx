@@ -4,6 +4,7 @@ import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
+import BookForm from './BookForm';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -58,7 +59,9 @@ export default function Book({
   };
   function handleStartReading() {}
   function handleStopReading() {}
-  return (
+  return isEditing ? (
+    <BookForm initialValues={editBookInitialValues} action="editBook" />
+  ) : (
     <Wrapper>
       <EditIcon>
         <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
