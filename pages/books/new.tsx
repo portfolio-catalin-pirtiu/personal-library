@@ -1,7 +1,8 @@
-import { IBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import BookForm from '../../components/books/BookForm';
 
-const initialValues: IBook = {
+const initialValues: IDbBook = {
+  id: '',
   author_id: '',
   title: '',
   read: false,

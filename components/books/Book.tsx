@@ -1,4 +1,4 @@
-import { IBook, IBookWithAuthor } from '../../lib/definitions';
+import { IDbBook, IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
@@ -47,7 +47,8 @@ export default function Book({
   stop_reading,
 }: IBookWithAuthor) {
   const [isEditing, setIsEditing] = useState(false);
-  const editBookInitialValues: IBook = {
+  const editBookInitialValues: IDbBook = {
+    id: id,
     author_id: author_id,
     title: title,
     read: read,
