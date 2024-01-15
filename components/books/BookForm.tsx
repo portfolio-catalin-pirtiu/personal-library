@@ -44,6 +44,7 @@ export default function BookForm({ initialValues, action }: IBookForm) {
   const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   return (
     <>
+      <h1>{buttonText}</h1>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
