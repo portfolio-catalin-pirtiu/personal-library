@@ -1,9 +1,10 @@
-import { IBookWithAuthor } from '../../lib/definitions';
+import { IBook, IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
+import BookForm from './BookForm';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -46,9 +47,21 @@ export default function Book({
   stop_reading,
 }: IBookWithAuthor) {
   const [isEditing, setIsEditing] = useState(false);
+  const editBookInitialValues: IBook = {
+    author_id: author_id,
+    title: title,
+    read: read,
+    in_progress: in_progress,
+    rating: rating,
+    publisher: publisher,
+    edition: edition,
+    notes: notes,
+  };
   function handleStartReading() {}
   function handleStopReading() {}
-  return (
+  return isEditing ? (
+    <BookForm initialValues={editBookInitialValues} action="editBook" />
+  ) : (
     <Wrapper>
       <EditIcon>
         <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
