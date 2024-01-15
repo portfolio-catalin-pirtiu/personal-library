@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -44,12 +45,13 @@ export default function Book({
   start_reading,
   stop_reading,
 }: IBookWithAuthor) {
+  const [isEditing, setIsEditing] = useState(false);
   function handleStartReading() {}
   function handleStopReading() {}
   return (
     <Wrapper>
       <EditIcon>
-        <FaRegEdit />
+        <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
       </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
