@@ -24,7 +24,10 @@ const Notes = styled.div``;
 const StartStopButtons = styled.div``;
 const Title = styled.div``;
 const Author = styled.div``;
-const EditIcon = styled.div``;
+const EditIcon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
 export default function Book({
   id,
