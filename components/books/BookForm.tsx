@@ -32,6 +32,17 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
+const defaultInitialValues: IBook = {
+  author_id: '',
+  title: '',
+  read: false,
+  in_progress: false,
+  rating: 0,
+  publisher: '',
+  edition: '',
+  notes: '',
+};
+
 interface IBookForm {
   initialValues: IBook;
   action: 'newBook' | 'editBook';
@@ -40,10 +51,10 @@ interface IBookForm {
 }
 
 export default function BookForm({
-  initialValues,
-  action,
-  isEditing,
-  setIsEditing
+  initialValues = defaultInitialValues,
+  action = 'newBook',
+  isEditing = false,
+  setIsEditing = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
