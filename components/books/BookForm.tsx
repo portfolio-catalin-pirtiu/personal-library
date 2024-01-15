@@ -8,7 +8,7 @@ import {
 } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import { IBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
@@ -32,7 +32,8 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
-const defaultInitialValues: IBook = {
+const defaultInitialValues: IDbBook = {
+  id: '',
   author_id: '',
   title: '',
   read: false,
@@ -44,7 +45,7 @@ const defaultInitialValues: IBook = {
 };
 
 interface IBookForm {
-  initialValues: IBook;
+  initialValues: IDbBook;
   action: 'newBook' | 'editBook';
   isEditing?: boolean;
   setIsEditing?: (isEditing: boolean) => void;
