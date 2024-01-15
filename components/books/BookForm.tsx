@@ -60,6 +60,7 @@ export default function BookForm({
   const [stars, setStars] = useState(0);
   const totalStars = 5;
   const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
+  const newBookUrl = booksApiUrl + '/new';
   return (
     <>
       <h1>{buttonText}</h1>
