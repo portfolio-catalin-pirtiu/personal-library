@@ -12,7 +12,7 @@ export interface IAuthor {
 }
 
 export interface IDbAuthor extends IAuthor {
-  id: string;
+  author_id: string;
 }
 
 export interface IBook {
@@ -29,7 +29,7 @@ export interface IBook {
 }
 
 export interface IDbBook extends IBook {
-  id: string;
+  book_id: string;
 }
 
 export interface IBookWithAuthor extends IDbBook, IAuthor {}
