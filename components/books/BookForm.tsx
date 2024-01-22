@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
-import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
+import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
 
@@ -46,28 +46,22 @@ const defaultInitialValues: IDbBook = {
 
 interface IBookForm {
   initialValues: IDbBook;
-  action: 'newBook' | 'editBook';
-  isEditing?: boolean;
-  setIsEditing?: (isEditing: boolean) => void;
+  url: string;
+  method: 'POST' | 'PUT';
+  handleIsEditing?: () => void;
 }
 
 export default function BookForm({
   initialValues = defaultInitialValues,
-  action = 'newBook',
-  isEditing = false,
-  setIsEditing = () => {},
+  url = '',
+  method = 'PUT',
+  handleIsEditing = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
-  const newBookUrl = booksApiUrl + '/new';
-  const editBookUrl = `${booksApiUrl}/edit/${initialValues.id}`;
-  const url = action === 'newBook' ? newBookUrl : editBookUrl;
-  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
-  const method = action === 'newBook' ? 'POST' : 'PUT';
   return (
     <>
-      <h1>{buttonText}</h1>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -79,7 +73,7 @@ export default function BookForm({
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
-          setIsEditing(!isEditing);
+          handleIsEditing();
           const newBook = new Book(values);
 
           try {
@@ -175,7 +169,7 @@ export default function BookForm({
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
-              {buttonText}
+              {method === 'PUT' ? 'Save' : 'Add New Author'}
             </SubmitButton>
           </StyledForm>
         )}

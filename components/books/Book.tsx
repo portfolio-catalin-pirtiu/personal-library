@@ -5,6 +5,7 @@ import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import BookForm from './BookForm';
+import { authorsApiUrl, booksApiUrl } from '../../lib/constants';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -60,17 +61,22 @@ export default function Book({
   };
   function handleStartReading() {}
   function handleStopReading() {}
+  function handleIsEditing() {
+    setIsEditing(!isEditing);
+  }
+  const editBookUrl = `${booksApiUrl}/edit/${id}`;
+
   return isEditing ? (
     <BookForm
       initialValues={editBookInitialValues}
-      action="editBook"
-      isEditing={isEditing}
-      setIsEditing={setIsEditing}
+      url={editBookUrl}
+      method="PUT"
+      handleIsEditing={handleIsEditing}
     />
   ) : (
     <Wrapper>
       <EditIcon>
-        <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
+        <FaRegEdit onClick={handleIsEditing} />
       </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
