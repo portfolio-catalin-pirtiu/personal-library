@@ -5,7 +5,7 @@ import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import BookForm from './BookForm';
-import { booksApiUrl } from '../../lib/constants';
+import { authorsApiUrl, booksApiUrl } from '../../lib/constants';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
