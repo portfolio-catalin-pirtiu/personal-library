@@ -48,7 +48,6 @@ interface IBookForm {
   initialValues: IDbBook;
   url: string;
   method: 'POST' | 'PUT';
-  action: 'newBook' | 'editBook';
   isEditing?: boolean;
   setIsEditing?: (isEditing: boolean) => void;
 }
@@ -57,17 +56,14 @@ export default function BookForm({
   initialValues = defaultInitialValues,
   url = '',
   method = 'PUT',
-  action = 'newBook',
   isEditing = false,
   setIsEditing = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
-  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   return (
     <>
-      <h1>{buttonText}</h1>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -175,7 +171,7 @@ export default function BookForm({
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
-              {buttonText}
+              {method === 'PUT' ? 'Save' : 'Add New Author'}
             </SubmitButton>
           </StyledForm>
         )}

@@ -68,7 +68,6 @@ export default function Book({
       initialValues={editBookInitialValues}
       url={editBookUrl}
       method="PUT"
-      action="editBook"
       isEditing={isEditing}
       setIsEditing={setIsEditing}
     />
