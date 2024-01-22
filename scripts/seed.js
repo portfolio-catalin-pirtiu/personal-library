@@ -58,19 +58,29 @@ async function seedBooks(client) {
 async function changeBooks(client) {
   try {
     const changeTable = await client.sql`ALTER TABLE books
-    ALTER COLUMN title SET NOT NULL,
-    ALTER COLUMN start_reading DROP NOT NULL,
-    ALTER COLUMN stop_reading DROP NOT NULL,
-    ALTER COLUMN in_progress DROP NOT NULL,
-    ALTER COLUMN rating DROP NOT NULL,
-    ADD COLUMN publisher TEXT,
-    ADD COLUMN edition TEXT,
-    ADD COLUMN notes TEXT;
-    `;
+      RENAME COLUMN id TO book_id
+      ALTER COLUMN title SET NOT NULL,
+      ALTER COLUMN start_reading DROP NOT NULL,
+      ALTER COLUMN stop_reading DROP NOT NULL,
+      ALTER COLUMN in_progress DROP NOT NULL,
+      ALTER COLUMN rating DROP NOT NULL,
+      ADD COLUMN publisher TEXT,
+      ADD COLUMN edition TEXT,
+      ADD COLUMN notes TEXT;`;
   } catch (error) {
     throw error;
   }
 }
+
+async function changeAuthors(client) {
+  try {
+    await client.sql`ALTER TABLE authors
+      RENAME COLUMN id TO author_id;`;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
@@ -78,6 +88,7 @@ async function main() {
   await seedAuthors(client);
   await seedBooks(client);
   await changeBooks(client);
+  await changeAuthors(client);
 }
 
 main().catch((error) => {
