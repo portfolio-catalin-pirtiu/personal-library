@@ -61,6 +61,9 @@ export default function Book({
   };
   function handleStartReading() {}
   function handleStopReading() {}
+  function handleIsEditing() {
+    setIsEditing(!isEditing);
+  }
   const editBookUrl = `${booksApiUrl}/edit/${id}`;
 
   return isEditing ? (
@@ -68,13 +71,12 @@ export default function Book({
       initialValues={editBookInitialValues}
       url={editBookUrl}
       method="PUT"
-      isEditing={isEditing}
-      setIsEditing={setIsEditing}
+      handleIsEditing={handleIsEditing}
     />
   ) : (
     <Wrapper>
       <EditIcon>
-        <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
+        <FaRegEdit onClick={handleIsEditing} />
       </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
