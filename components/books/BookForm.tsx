@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
-import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
+import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
 
