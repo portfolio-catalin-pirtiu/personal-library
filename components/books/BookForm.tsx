@@ -47,6 +47,7 @@ const defaultInitialValues: IDbBook = {
 interface IBookForm {
   initialValues: IDbBook;
   url: string;
+  method: 'POST' | 'PUT';
   action: 'newBook' | 'editBook';
   isEditing?: boolean;
   setIsEditing?: (isEditing: boolean) => void;
@@ -55,6 +56,7 @@ interface IBookForm {
 export default function BookForm({
   initialValues = defaultInitialValues,
   url = '',
+  method = 'PUT',
   action = 'newBook',
   isEditing = false,
   setIsEditing = () => {},
@@ -63,7 +65,6 @@ export default function BookForm({
   const [stars, setStars] = useState(0);
   const totalStars = 5;
   const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
-  const method = action === 'newBook' ? 'POST' : 'PUT';
   return (
     <>
       <h1>{buttonText}</h1>

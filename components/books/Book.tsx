@@ -67,6 +67,7 @@ export default function Book({
     <BookForm
       initialValues={editBookInitialValues}
       url={editBookUrl}
+      method="PUT"
       action="editBook"
       isEditing={isEditing}
       setIsEditing={setIsEditing}
