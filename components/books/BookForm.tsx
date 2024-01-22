@@ -46,6 +46,7 @@ const defaultInitialValues: IDbBook = {
 
 interface IBookForm {
   initialValues: IDbBook;
+  url: string;
   action: 'newBook' | 'editBook';
   isEditing?: boolean;
   setIsEditing?: (isEditing: boolean) => void;
@@ -53,6 +54,7 @@ interface IBookForm {
 
 export default function BookForm({
   initialValues = defaultInitialValues,
+  url = '',
   action = 'newBook',
   isEditing = false,
   setIsEditing = () => {},
@@ -60,9 +62,6 @@ export default function BookForm({
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
-  const newBookUrl = booksApiUrl + '/new';
-  const editBookUrl = `${booksApiUrl}/edit/${initialValues.id}`;
-  const url = action === 'newBook' ? newBookUrl : editBookUrl;
   const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   const method = action === 'newBook' ? 'POST' : 'PUT';
   return (
