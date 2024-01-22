@@ -60,9 +60,10 @@ export default function BookForm({
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
-  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   const newBookUrl = booksApiUrl + '/new';
   const editBookUrl = `${booksApiUrl}/edit/${initialValues.id}`;
+  const url = action === 'newBook' ? newBookUrl : editBookUrl;
+  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   return (
     <>
       <h1>{buttonText}</h1>
@@ -81,7 +82,7 @@ export default function BookForm({
           const newBook = new Book(values);
 
           try {
-            const req = await fetch(`${booksApiUrl}/new`, {
+            const req = await fetch(url, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

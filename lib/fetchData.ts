@@ -22,8 +22,7 @@ export async function getBooks(search: string | null) {
   try {
     const { rows } = await sql<QueryResult<IBookWithAuthor>>`
       SELECT * FROM Books
-      INNER JOIN Authors ON Books.author_id = Authors.id
-      ;`;
+      INNER JOIN Authors ON Books.author_id = Authors.id;`;
     return rows;
   } catch (error) {
     throw error;
