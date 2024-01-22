@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { putBook } from '../../../../../lib/putData';
 import { IBook } from '../../../../../lib/definitions';
 
-export default async function PUT(
+export async function PUT(
   req: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -13,7 +13,6 @@ export default async function PUT(
     await putBook(book, id);
     return NextResponse.json({ status: 200 });
   } catch (error) {
-    console.log('edit book DB Error', error);
     if (error instanceof Error) {
       return NextResponse.json(
         { name: error.name, message: error.message },
