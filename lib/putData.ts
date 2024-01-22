@@ -21,14 +21,14 @@ export async function putBook(book: IBook, id: string) {
   try {
     await sql`UPDATE books
       SET
-      author_id = ${author_id}
-      title = ${title}
-      rating = ${rating}
-      publisher = ${publisher}
-      edition = ${edition}
-      notes = ${notes}
+      author_id = ${author_id},
+      title = ${title},
+      rating = ${rating},
+      publisher = ${publisher},
+      edition = ${edition},
+      notes = ${notes},
       WHERE
-      id = ${id}`;
+      id = ${id};`;
   } catch (error) {
     const dbError = await error;
     if (dbError instanceof Error) throw dbError;
