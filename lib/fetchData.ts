@@ -21,8 +21,9 @@ export async function getBooks(search: string | null) {
   if (!search) search = '';
   try {
     const { rows } = await sql<QueryResult<IBookWithAuthor>>`
-      SELECT * FROM Books
-      INNER JOIN Authors ON Books.author_id = Authors.id;`;
+      SELECT * FROM books
+      INNER JOIN authors ON books.author_id = authors.author_id
+      ;`;
     return rows;
   } catch (error) {
     throw error;
