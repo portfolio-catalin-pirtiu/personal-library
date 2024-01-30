@@ -1,4 +1,4 @@
-import { IDbBook, IBookWithAuthor } from '../../lib/definitions';
+import { IBookWithAuthor, IDbBook } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
