@@ -6,6 +6,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import BookForm from './BookForm';
 import { booksApiUrl } from '../../lib/constants';
+import RatingStars from '../RatingStars';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -31,6 +32,7 @@ const EditIcon = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+const AuthorAndRating = styled.div``;
 
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
@@ -106,10 +108,15 @@ export default function Book({
         />
       </StartStopButtons>
 
-      <AuthorTitleAndStatus>
-        <Author>{`${first_name} ${last_name}`}</Author>
-        <Title>{title}</Title>
-      </AuthorTitleAndStatus>
+      <AuthorAndRating>
+        <AuthorTitleAndStatus>
+          <Author>{`${first_name} ${last_name}`}</Author>
+          <Title>{title}</Title>
+        </AuthorTitleAndStatus>
+
+        <RatingStars />
+      </AuthorAndRating>
+      
     </Wrapper>
   );
 }
