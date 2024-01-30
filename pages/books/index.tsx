@@ -42,17 +42,16 @@ export default function Books() {
     setBooks(updatedBooks);
   }
 
-  function handleDeleteBook(id: string){
-
+  function handleDeleteBook(id: string) {
+    handleDeleteBookState(id);
   }
 
-  function handleDeleteBookState(id: string){
-
+  function handleDeleteBookState(id: string) {
+    const remainingBooks = books.filter((book) => book.book_id !== id);
+    setBooks(remainingBooks);
   }
 
-  function deleteBookDatabase(id: string){
-
-  }
+  function deleteBookDatabase(id: string) {}
   return (
     <Wrapper>
       {books.map((book) => (
