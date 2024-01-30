@@ -32,7 +32,12 @@ const EditIcon = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const AuthorAndRating = styled.div``;
+const AuthorAndRating = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+const Rating = styled.div``;
 
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
@@ -114,8 +119,11 @@ export default function Book({
           <Title>{title}</Title>
         </AuthorTitleAndStatus>
 
-        <RatingStars />
+        <Rating>
+          <RatingStars rating={rating} />
+        </Rating>
       </AuthorAndRating>
+      
     </Wrapper>
   );
 }
