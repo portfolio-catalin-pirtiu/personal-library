@@ -1,4 +1,4 @@
-import { IBookWithAuthor } from '../../lib/definitions';
+import { IBookWithAuthor, IDbBook } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
@@ -48,7 +48,7 @@ export default function Book({
   stop_reading,
 }: IBookWithAuthor) {
   const [isEditing, setIsEditing] = useState(false);
-  const editBookInitialValues: IBookWithAuthor = {
+  const editBookInitialValues: IDbBook = {
     book_id: book_id,
     author_id: author_id,
     title: title,
@@ -58,8 +58,6 @@ export default function Book({
     publisher: publisher,
     edition: edition,
     notes: notes,
-    first_name: first_name,
-    last_name: last_name,
   };
   function handleStartReading() {}
   function handleStopReading() {}
