@@ -2,7 +2,7 @@ import useFetchBooks from '../../lib/useFetchBooks';
 import { booksApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IBookWithAuthor } from '../../lib/definitions';
+import { IBookWithAuthor, IDbBook } from '../../lib/definitions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,9 +26,10 @@ export default function Books() {
     return [first_name, last_name];
   }
 
-  function updateBooks(updatedBook: IBookWithAuthor) {
+  function updateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
-      if (book.book_id === updatedBook.book_id) return updatedBook;
+      if (book.book_id === updatedBook.book_id)
+        return { ...updatedBook, first_name: 'generic', last_name: 'generic' };
       else return book;
     });
     setBooks(updatedBooks);
