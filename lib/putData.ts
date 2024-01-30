@@ -26,9 +26,9 @@ export async function putBook(book: IBook, id: string) {
       rating = ${rating},
       publisher = ${publisher},
       edition = ${edition},
-      notes = ${notes},
+      notes = ${notes}
       WHERE
-      id = ${id};`;
+      book_id = ${id};`;
   } catch (error) {
     const dbError = await error;
     if (dbError instanceof Error) throw dbError;

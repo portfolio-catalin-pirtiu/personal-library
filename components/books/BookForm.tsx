@@ -33,7 +33,7 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
 `;
 
 const defaultInitialValues: IDbBook = {
-  id: '',
+  book_id: '',
   author_id: '',
   title: '',
   read: false,
@@ -107,8 +107,8 @@ export default function BookForm({
                   <option value="">--Select Author--</option>
                   {authors.map((author) => (
                     <option
-                      value={author.id}
-                      key={author.id}
+                      value={author.author_id}
+                      key={author.author_id}
                     >{`${author.first_name} ${author.last_name}`}</option>
                   ))}
                 </Input>

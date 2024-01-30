@@ -3,6 +3,9 @@
     "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -10,7 +13,8 @@
   "root": true,
   "rules": {
     "no-unused-vars": "off",
+    "no-console": "off",
     "@typescript-eslint/no-unused-vars": "error",
-    "no-console": "error"
+    "@typescript-eslint/no-console": "error"
   }
 }

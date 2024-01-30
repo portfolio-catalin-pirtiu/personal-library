@@ -17,8 +17,8 @@ export default function Books() {
     <Wrapper>
       {books.map((book) => (
         <Book
-          key={book.id}
-          id={book.id}
+          key={book.book_id}
+          book_id={book.book_id}
           author_id={book.author_id}
           title={book.title}
           first_name={book.first_name}
