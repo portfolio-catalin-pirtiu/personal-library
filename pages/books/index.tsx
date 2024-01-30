@@ -26,7 +26,7 @@ export default function Books() {
     return [first_name, last_name];
   }
 
-  function updateBooks(updatedBook: IDbBook) {
+  function onUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === updatedBook.book_id)
         return { ...updatedBook, first_name: 'generic', last_name: 'generic' };
@@ -52,6 +52,7 @@ export default function Books() {
           rating={book.rating}
           start_reading={book.start_reading}
           stop_reading={book.stop_reading}
+          handleUpdateBooks={onUpdateBooks}
         />
       ))}
     </Wrapper>

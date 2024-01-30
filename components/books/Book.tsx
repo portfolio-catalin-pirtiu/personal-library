@@ -32,6 +32,10 @@ const EditIcon = styled.div`
   justify-content: flex-end;
 `;
 
+interface IBookProps extends IBookWithAuthor {
+  handleUpdateBooks: (updatedBook: IDbBook) => void;
+}
+
 export default function Book({
   book_id,
   author_id,
@@ -46,7 +50,8 @@ export default function Book({
   rating,
   start_reading,
   stop_reading,
-}: IBookWithAuthor) {
+  handleUpdateBooks,
+}: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
     book_id: book_id,
