@@ -1,7 +1,11 @@
-import { IBookWithAuthor } from '../../lib/definitions';
+import { IBookWithAuthor, IDbBook } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
+import { FaRegEdit } from 'react-icons/fa';
+import { useState } from 'react';
+import BookForm from './BookForm';
+import { booksApiUrl } from '../../lib/constants';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -23,9 +27,17 @@ const Notes = styled.div``;
 const StartStopButtons = styled.div``;
 const Title = styled.div``;
 const Author = styled.div``;
+const EditIcon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+interface IBookProps extends IBookWithAuthor {
+  handleUpdateBooks: (updatedBook: IDbBook) => void;
+}
 
 export default function Book({
-  id,
+  book_id,
   author_id,
   title,
   first_name,
@@ -38,11 +50,40 @@ export default function Book({
   rating,
   start_reading,
   stop_reading,
-}: IBookWithAuthor) {
+  handleUpdateBooks,
+}: IBookProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const editBookInitialValues: IDbBook = {
+    book_id: book_id,
+    author_id: author_id,
+    title: title,
+    read: read,
+    in_progress: in_progress,
+    rating: rating,
+    publisher: publisher,
+    edition: edition,
+    notes: notes,
+  };
   function handleStartReading() {}
   function handleStopReading() {}
-  return (
+  function handleIsEditing() {
+    setIsEditing(!isEditing);
+  }
+  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
+
+  return isEditing ? (
+    <BookForm
+      initialValues={editBookInitialValues}
+      url={editBookUrl}
+      method="PUT"
+      handleIsEditing={handleIsEditing}
+      handleUpdateBooks={handleUpdateBooks}
+    />
+  ) : (
     <Wrapper>
+      <EditIcon>
+        <FaRegEdit onClick={handleIsEditing} />
+      </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
         <Publisher>{publisher}</Publisher>
