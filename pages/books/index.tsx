@@ -41,6 +41,18 @@ export default function Books() {
     });
     setBooks(updatedBooks);
   }
+
+  function handleDeleteBook(id: string){
+
+  }
+
+  function handleDeleteBookState(id: string){
+
+  }
+
+  function deleteBookDatabase(id: string){
+
+  }
   return (
     <Wrapper>
       {books.map((book) => (
@@ -60,6 +72,7 @@ export default function Books() {
           start_reading={book.start_reading}
           stop_reading={book.stop_reading}
           handleUpdateBooks={handleUpdateBooks}
+          handleDeleteBook={handleDeleteBook}
         />
       ))}
     </Wrapper>

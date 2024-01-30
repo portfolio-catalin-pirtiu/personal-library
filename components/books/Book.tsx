@@ -41,6 +41,7 @@ const Rating = styled.div``;
 
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
+  handleDeleteBook: (id: string) => void;
 }
 
 export default function Book({
@@ -58,6 +59,7 @@ export default function Book({
   start_reading,
   stop_reading,
   handleUpdateBooks,
+  handleDeleteBook,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
@@ -97,6 +99,13 @@ export default function Book({
         <Notes>{notes}</Notes>
       </RestOfInfo>
 
+      <Button
+        type="button"
+        text="Delete"
+        primaryColor={colors.red}
+        onClick={() => handleDeleteBook(book_id)}
+      />
+
       <StartStopButtons>
         <Button
           type="button"
@@ -123,7 +132,6 @@ export default function Book({
           <RatingStars rating={rating} />
         </Rating>
       </AuthorAndRating>
-      
     </Wrapper>
   );
 }
