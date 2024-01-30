@@ -4,6 +4,7 @@ import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
 import { IDbAuthor, IDbBook } from '../../lib/definitions';
+import toast from 'react-hot-toast';
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ export default function Books() {
     return [first_name, last_name];
   }
 
-  function onUpdateBooks(updatedBook: IDbBook) {
+  function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === updatedBook.book_id) {
         const [authorFirstName, authorLastName] = findAuthorDetails(
@@ -40,6 +41,34 @@ export default function Books() {
       } else return book;
     });
     setBooks(updatedBooks);
+  }
+
+  function handleDeleteBook(id: string) {
+    deleteBookState(id);
+    deleteBookDatabase(id);
+  }
+
+  function deleteBookState(id: string) {
+    const remainingBooks = books.filter((book) => book.book_id !== id);
+    setBooks(remainingBooks);
+  }
+
+  async function deleteBookDatabase(id: string) {
+    const deleteBookUrl = `${booksApiUrl}/delete/${id}`;
+
+    try {
+      const res = await fetch(deleteBookUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application-json',
+        },
+      });
+
+      if (res.ok) toast.success('Delete Successful.');
+      else throw new Error('An error occurred while deleting a book.');
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
   return (
     <Wrapper>
@@ -59,7 +88,8 @@ export default function Books() {
           rating={book.rating}
           start_reading={book.start_reading}
           stop_reading={book.stop_reading}
-          handleUpdateBooks={onUpdateBooks}
+          handleUpdateBooks={handleUpdateBooks}
+          handleDeleteBook={handleDeleteBook}
         />
       ))}
     </Wrapper>

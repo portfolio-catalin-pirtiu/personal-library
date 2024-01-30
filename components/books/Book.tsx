@@ -39,8 +39,20 @@ const AuthorAndRating = styled.div`
 `;
 const Rating = styled.div``;
 
+const InfoAndEditDeleteButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const EditAndDeleteButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+`;
+
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
+  handleDeleteBook: (id: string) => void;
 }
 
 export default function Book({
@@ -58,6 +70,7 @@ export default function Book({
   start_reading,
   stop_reading,
   handleUpdateBooks,
+  handleDeleteBook,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
@@ -88,14 +101,26 @@ export default function Book({
     />
   ) : (
     <Wrapper>
-      <EditIcon>
-        <FaRegEdit onClick={handleIsEditing} />
-      </EditIcon>
-      <RestOfInfo>
-        <Edition>{edition}</Edition>
-        <Publisher>{publisher}</Publisher>
-        <Notes>{notes}</Notes>
-      </RestOfInfo>
+      <InfoAndEditDeleteButtons>
+        <RestOfInfo>
+          <Edition>{edition}</Edition>
+          <Publisher>{publisher}</Publisher>
+          <Notes>{notes}</Notes>
+        </RestOfInfo>
+
+        <EditAndDeleteButtons>
+          <EditIcon>
+            <FaRegEdit onClick={handleIsEditing} />
+          </EditIcon>
+
+          <Button
+            type="button"
+            text="Delete"
+            primaryColor={colors.red}
+            onClick={() => handleDeleteBook(book_id)}
+          />
+        </EditAndDeleteButtons>
+      </InfoAndEditDeleteButtons>
 
       <StartStopButtons>
         <Button
@@ -123,7 +148,6 @@ export default function Book({
           <RatingStars rating={rating} />
         </Rating>
       </AuthorAndRating>
-      
     </Wrapper>
   );
 }
