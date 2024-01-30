@@ -49,6 +49,7 @@ interface IBookForm {
   url: string;
   method: 'POST' | 'PUT';
   handleIsEditing?: () => void;
+  handleUpdateBooks: (updatedBook: IDbBook) => void;
 }
 
 export default function BookForm({
@@ -56,6 +57,7 @@ export default function BookForm({
   url = '',
   method = 'PUT',
   handleIsEditing = () => {},
+  handleUpdateBooks = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
@@ -74,6 +76,7 @@ export default function BookForm({
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
           handleIsEditing();
+          handleUpdateBooks(values);
           const newBook = new Book(values);
 
           try {

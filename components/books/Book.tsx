@@ -77,6 +77,7 @@ export default function Book({
       url={editBookUrl}
       method="PUT"
       handleIsEditing={handleIsEditing}
+      handleUpdateBooks={handleUpdateBooks}
     />
   ) : (
     <Wrapper>
