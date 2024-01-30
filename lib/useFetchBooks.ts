@@ -6,7 +6,9 @@ interface DBResponse {
 }
 
 async function fetchBooks(url: string) {
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    cache: 'reload',
+  });
 
   if (!res.ok) {
     throw new Error('An error occurred while fetching the books.');

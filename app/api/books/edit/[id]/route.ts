@@ -8,7 +8,6 @@ export async function PUT(
 ) {
   const id = params.id;
   const book: IBook = await req.json();
-
   try {
     await putBook(book, id);
     return NextResponse.json({ status: 200 });
