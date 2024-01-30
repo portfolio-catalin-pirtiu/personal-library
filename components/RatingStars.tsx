@@ -1,24 +1,24 @@
 import { FaStar } from 'react-icons/fa';
 
 interface IRatingStars {
-  totalStars: number;
+  totalStars?: number;
   rating: number;
-  onChangeRatingValue: (field: string, rating: number) => void;
-  onChangeRatingStars: (rating: number) => void;
+  onChangeRatingValue?: (field: string, rating: number) => void;
+  onChangeRatingStars?: (rating: number) => void;
 }
 
 interface IStar {
   selected: boolean;
   index: number;
-  handleChangeRatingValue: (field: string, rating: number) => void;
-  handleChangeRatingStars: (rating: number) => void;
+  handleChangeRatingValue?: (field: string, rating: number) => void;
+  handleChangeRatingStars?: (rating: number) => void;
 }
 
 function Star({
   selected = false,
   index = 0,
-  handleChangeRatingValue,
-  handleChangeRatingStars,
+  handleChangeRatingValue = () => {},
+  handleChangeRatingStars = () => {},
 }: IStar) {
   return (
     <FaStar
@@ -35,8 +35,8 @@ function Star({
 export default function RatingStars({
   totalStars = 5,
   rating = 0,
-  onChangeRatingValue,
-  onChangeRatingStars,
+  onChangeRatingValue = () => {},
+  onChangeRatingStars = () => {},
 }: IRatingStars) {
   return Array.from({ length: totalStars }).map((n, i) => (
     <Star

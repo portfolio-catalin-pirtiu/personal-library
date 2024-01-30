@@ -49,7 +49,7 @@ export default function Book({
   notes,
   in_progress,
   read,
-  rating,
+  rating = 0,
   start_reading,
   stop_reading,
   handleUpdateBooks,
@@ -116,7 +116,6 @@ export default function Book({
 
         <RatingStars />
       </AuthorAndRating>
-      
     </Wrapper>
   );
 }
