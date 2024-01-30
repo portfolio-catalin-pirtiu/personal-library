@@ -1,7 +1,9 @@
-import { IBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import BookForm from '../../components/books/BookForm';
+import { booksApiUrl } from '../../lib/constants';
 
-const initialValues: IBook = {
+const initialValues: IDbBook = {
+  id: '',
   author_id: '',
   title: '',
   read: false,
@@ -12,8 +14,9 @@ const initialValues: IBook = {
   notes: '',
 };
 
-const formPurpose = 'newBook';
-
+const newBookUrl = booksApiUrl + '/new';
 export default function NewBook() {
-  return <BookForm initialValues={initialValues} action={formPurpose} />;
+  return (
+    <BookForm initialValues={initialValues} url={newBookUrl} method="POST" />
+  );
 }

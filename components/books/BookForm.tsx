@@ -8,10 +8,10 @@ import {
 } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import { IBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
-import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
+import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
 
@@ -32,7 +32,8 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
-const defaultInitialValues: IBook = {
+const defaultInitialValues: IDbBook = {
+  book_id: '',
   author_id: '',
   title: '',
   read: false,
@@ -44,25 +45,23 @@ const defaultInitialValues: IBook = {
 };
 
 interface IBookForm {
-  initialValues: IBook;
-  action: 'newBook' | 'editBook';
-  isEditing?: boolean;
-  setIsEditing?: (isEditing: boolean) => void;
+  initialValues: IDbBook;
+  url: string;
+  method: 'POST' | 'PUT';
+  handleIsEditing?: () => void;
 }
 
 export default function BookForm({
   initialValues = defaultInitialValues,
-  action = 'newBook',
-  isEditing = false,
-  setIsEditing = () => {},
+  url = '',
+  method = 'PUT',
+  handleIsEditing = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [stars, setStars] = useState(0);
   const totalStars = 5;
-  const buttonText = action === 'newBook' ? 'Add New Book' : 'Edit Book';
   return (
     <>
-      <h1>{buttonText}</h1>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -74,12 +73,12 @@ export default function BookForm({
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
-          setIsEditing(!isEditing);
+          handleIsEditing();
           const newBook = new Book(values);
 
           try {
-            const req = await fetch(`${booksApiUrl}/new`, {
-              method: 'POST',
+            const req = await fetch(url, {
+              method: method,
               headers: {
                 'Content-Type': 'application/json',
               },
@@ -108,8 +107,8 @@ export default function BookForm({
                   <option value="">--Select Author--</option>
                   {authors.map((author) => (
                     <option
-                      value={author.id}
-                      key={author.id}
+                      value={author.author_id}
+                      key={author.author_id}
                     >{`${author.first_name} ${author.last_name}`}</option>
                   ))}
                 </Input>
@@ -170,7 +169,7 @@ export default function BookForm({
             </InputGroup>
 
             <SubmitButton type="submit" disabled={isSubmitting}>
-              {buttonText}
+              {method === 'PUT' ? 'Save' : 'Add New Author'}
             </SubmitButton>
           </StyledForm>
         )}

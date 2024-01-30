@@ -1,10 +1,11 @@
-import { IBook, IBookWithAuthor } from '../../lib/definitions';
+import { IDbBook, IBookWithAuthor } from '../../lib/definitions';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 import { colors } from '../../lib/colors';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import BookForm from './BookForm';
+import { booksApiUrl } from '../../lib/constants';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -32,7 +33,7 @@ const EditIcon = styled.div`
 `;
 
 export default function Book({
-  id,
+  book_id,
   author_id,
   title,
   first_name,
@@ -47,7 +48,8 @@ export default function Book({
   stop_reading,
 }: IBookWithAuthor) {
   const [isEditing, setIsEditing] = useState(false);
-  const editBookInitialValues: IBook = {
+  const editBookInitialValues: IDbBook = {
+    book_id: book_id,
     author_id: author_id,
     title: title,
     read: read,
@@ -59,17 +61,22 @@ export default function Book({
   };
   function handleStartReading() {}
   function handleStopReading() {}
+  function handleIsEditing() {
+    setIsEditing(!isEditing);
+  }
+  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
+
   return isEditing ? (
     <BookForm
       initialValues={editBookInitialValues}
-      action="editBook"
-      isEditing={isEditing}
-      setIsEditing={setIsEditing}
+      url={editBookUrl}
+      method="PUT"
+      handleIsEditing={handleIsEditing}
     />
   ) : (
     <Wrapper>
       <EditIcon>
-        <FaRegEdit onClick={() => setIsEditing(!isEditing)} />
+        <FaRegEdit onClick={handleIsEditing} />
       </EditIcon>
       <RestOfInfo>
         <Edition>{edition}</Edition>
