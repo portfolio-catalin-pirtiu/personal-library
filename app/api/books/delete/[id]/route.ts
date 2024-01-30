@@ -1,7 +1,10 @@
 import { sql } from '@vercel/postgres';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await sql`DELETE FROM books WHERE book_id = ${params.id}`;
     return NextResponse.json({ status: 200 });
