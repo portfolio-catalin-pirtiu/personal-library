@@ -2,6 +2,7 @@ import useFetchBooks from '../../lib/useFetchBooks';
 import { booksApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
+import { IBookWithAuthor } from '../../lib/definitions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,14 @@ const Wrapper = styled.div`
 
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
+
+  function updateBooks(updatedBook: IBookWithAuthor) {
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === updatedBook.book_id) return updatedBook;
+      else return book;
+    });
+    setBooks(updatedBooks);
+  }
   return (
     <Wrapper>
       {books.map((book) => (
