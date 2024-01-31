@@ -7,6 +7,7 @@ import { useState } from 'react';
 import BookForm from './BookForm';
 import { booksApiUrl } from '../../lib/constants';
 import RatingStars from '../RatingStars';
+import Bubble from '../shared/Bubble';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -47,6 +48,11 @@ const EditAndDeleteButtons = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 0.5rem;
+`;
+
+const Bubbles = styled.div`
+  display: flex;
   gap: 0.5rem;
 `;
 
@@ -148,6 +154,11 @@ export default function Book({
           <RatingStars rating={rating} />
         </Rating>
       </AuthorAndRating>
+
+      <Bubbles>
+        <Bubble text="read" color="green" />
+        <Bubble text="not read" color="blue" />
+      </Bubbles>
     </Wrapper>
   );
 }
