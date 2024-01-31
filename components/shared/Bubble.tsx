@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors } from '../../lib/colors';
+import { FaCircle } from 'react-icons/fa6';
 
 const Wrapper = styled.div<{ $backgroundColor: string }>`
   display: flex;
@@ -17,7 +18,7 @@ const Wrapper = styled.div<{ $backgroundColor: string }>`
 const Text = styled.p``;
 const Circle = styled.div`
   color: yellow;
-  scale: 1.5;
+  scale: 0.65;
 `;
 
 interface IBubble {
@@ -28,7 +29,9 @@ interface IBubble {
 export default function Bubble({ text = '', backgroundColor = '' }: IBubble) {
   return (
     <Wrapper $backgroundColor={backgroundColor}>
-      <Circle>{'•'}</Circle>
+      <Circle>
+        <FaCircle />
+      </Circle>
       <Text>{text}</Text>
     </Wrapper>
   );
