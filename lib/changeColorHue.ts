@@ -25,4 +25,5 @@ export function changeColorHue({
     if (i === index - 1) return darkerHue[1];
     return el;
   });
+  return newHueArray.join('');
 }
