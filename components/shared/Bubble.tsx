@@ -17,9 +17,13 @@ const Wrapper = styled.div<{ $backgroundColor: string }>`
     `}
 `;
 const Text = styled.p``;
-const Circle = styled.div`
-  color: yellow;
+const Circle = styled.div<{ $dotColor: string }>`
   scale: 0.65;
+  ${(props) =>
+    props.$dotColor &&
+    css`
+      color: ${props.$dotColor};
+    `}
 `;
 
 interface IBubble {
@@ -28,10 +32,18 @@ interface IBubble {
 }
 
 export default function Bubble({ text = '', backgroundColor = '' }: IBubble) {
-  
+  const variationColorHue = 50;
+  const props = {
+    original: backgroundColor,
+    points: variationColorHue,
+    lighter: true,
+    darker: true,
+  };
+
+  const dotColorHue = changeColorHue(props);
   return (
     <Wrapper $backgroundColor={backgroundColor}>
-      <Circle>
+      <Circle $dotColor={dotColorHue}>
         <FaCircle />
       </Circle>
       <Text>{text}</Text>
