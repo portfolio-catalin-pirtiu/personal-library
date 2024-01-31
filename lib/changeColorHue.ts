@@ -16,7 +16,9 @@ export function changeColorHue({
   const currentHue = Number(
     `${original[index - 2]}` + `${original[index - 1]}`
   );
-  const darkerHue = String(currentHue - points);
+  let darkerHue: string = '';
+  if (lighter) darkerHue = String(currentHue + points);
+  if (darker) darkerHue = String(currentHue - points);
 
   const newHueArray = Array.from(original, (el, i) => {
     if (i === index - 2) return darkerHue[0];
