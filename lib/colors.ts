@@ -1,6 +1,6 @@
 export const colors = {
-  green: '#DBEDDB',
-  blue: '#D3E5EF',
-  red: '#FFE2DD',
-  gray: '#f2f2f2',
+  green: 'hsl(120, 33%, 89%)',
+  blue: 'hsl(201, 47%, 88%)',
+  red: 'hsl(9, 100%, 93%)',
+  gray: 'hsl(0, 0%, 95%)',
 };
