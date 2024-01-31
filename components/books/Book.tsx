@@ -156,8 +156,8 @@ export default function Book({
       </AuthorAndRating>
 
       <Bubbles>
-        <Bubble text="read" backgroundColor="green" />
-        <Bubble text="not read" backgroundColor="blue" />#
+        <Bubble text="read" backgroundColor={colors.green} />
+        <Bubble text="not read" backgroundColor={colors.red} />
       </Bubbles>
     </Wrapper>
   );
