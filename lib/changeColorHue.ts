@@ -1,29 +1,21 @@
-import { colors } from './colors';
-
-interface ChangeColorHue {
+interface IChangeColorHue {
   original: string;
-  lighter?: boolean;
-  darker?: boolean;
-  points: number;
+  points?: number;
 }
+
 export function changeColorHue({
-  original = colors.gray,
-  lighter = false,
-  darker = true,
-  points = 30,
-}: ChangeColorHue) {
-  if (!original) return colors.gray;
+  original = '',
+  points = 50,
+}: IChangeColorHue) {
+  const index = original.lastIndexOf('%');
+  const currentPartHue = Number(original[index - 2] + original[index - 1]);
+  const newPartHue = String(currentPartHue - points);
 
-  const hexToNo = parseInt(original, 16);
-  let newHue: string = '';
-  if (lighter) {
-    const newHueSum = hexToNo + points;
-    newHue = newHueSum.toString(16);
-  } else {
-    const newHueSubtract = hexToNo - points;
-    newHue = newHueSubtract.toString(16);
-  }
-  if ((lighter && darker) || (!lighter && !darker)) newHue = colors.gray;
+  const newHue = Array.from(original, (el, i) => {
+    if (i === index - 2) return newPartHue[0];
+    if (i === index - 1) return newPartHue[1];
+    return el;
+  });
 
-  return newHue;
+  return newHue.join('');
 }
