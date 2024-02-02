@@ -13,15 +13,15 @@ export function changeColorHue({
   points = 30,
 }: ChangeColorHue) {
   if (!original) return colors.gray;
-  
   const index = original.lastIndexOf('%');
   const currentHue = Number(
     `${original[index - 2]}` + `${original[index - 1]}`
   );
 
-  let newHue = String(currentHue - points);
+  let newHue: string = '';
   if (lighter) newHue = String(currentHue + points);
-  if ((lighter && darker) || (!lighter && !darker)) newHue;
+  else newHue = String(currentHue - points);
+  if ((lighter && darker) || (!lighter && !darker)) newHue = colors.gray;
 
   const newHueArray = Array.from(original, (el, i) => {
     if (i === index - 2) return newHue[0];
