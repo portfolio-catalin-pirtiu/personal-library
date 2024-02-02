@@ -13,20 +13,17 @@ export function changeColorHue({
   points = 30,
 }: ChangeColorHue) {
   if (!original) return colors.gray;
-  const index = original.lastIndexOf('%');
-  const currentHue = Number(
-    `${original[index - 2]}` + `${original[index - 1]}`
-  );
 
+  const hexToNo = parseInt(original, 16);
   let newHue: string = '';
-  if (lighter) newHue = String(currentHue + points);
-  else newHue = String(currentHue - points);
+  if (lighter) {
+    const newHueSum = hexToNo + points;
+    newHue = newHueSum.toString(16);
+  } else {
+    const newHueSubtract = hexToNo - points;
+    newHue = newHueSubtract.toString(16);
+  }
   if ((lighter && darker) || (!lighter && !darker)) newHue = colors.gray;
 
-  const newHueArray = Array.from(original, (el, i) => {
-    if (i === index - 2) return newHue[0];
-    if (i === index - 1) return newHue[1];
-    return el;
-  });
-  return newHueArray.join('');
+  return newHue;
 }
