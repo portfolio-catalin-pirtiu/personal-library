@@ -23,7 +23,7 @@ export default function RenderAuthors({
     <Wrapper>
       {authors.map((author) => (
         <Author
-          key={author.id}
+          key={author.author_id}
           author={author}
           handleEditAuthor={onEditAuthor}
           handleDeleteAuthor={onDeleteAuthor}

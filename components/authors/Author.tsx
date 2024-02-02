@@ -67,8 +67,8 @@ export default function Author({
         danger
         text="Delete"
         onClick={() => {
-          handleDeleteAuthor(author.id);
-          handleDeleteAuthorDatabaseUpdate(author.id);
+          handleDeleteAuthor(author.author_id);
+          handleDeleteAuthorDatabaseUpdate(author.author_id);
         }}
       />
     </EditAndDelete>
