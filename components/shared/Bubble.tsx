@@ -32,12 +32,10 @@ interface IBubble {
 }
 
 export default function Bubble({ text = '', backgroundColor = '' }: IBubble) {
-  const variationColorHue = 50;
+  const variationColorHue = 55;
   const props = {
     original: backgroundColor,
     points: variationColorHue,
-    lighter: true,
-    darker: true,
   };
 
   const dotColorHue = changeColorHue(props);

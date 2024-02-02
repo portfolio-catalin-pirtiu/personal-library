@@ -11,7 +11,6 @@ const StyledButton = styled.button<{
   $dangerColor?: string;
 }>`
   border-radius: 3px;
-  // margin: 0.5em 1em;
   padding: 0.25em 1em;
   border: none;
 
