@@ -18,7 +18,7 @@ const Wrapper = styled.div<{ $backgroundColor: string }>`
 `;
 const Text = styled.p``;
 const Circle = styled.div<{ $dotColor: string }>`
-  scale: 0.65;
+  scale: 0.6;
   ${(props) =>
     props.$dotColor &&
     css`
