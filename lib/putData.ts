@@ -47,7 +47,10 @@ export async function postStartStopReading({
   if (slug === 'start') {
     try {
       await sql`UPDATE books
-      SET start_reading = ${timestamp}
+      SET 
+      start_reading = ${timestamp},
+      stop_reading = ${null},
+      in_progress = ${true}
       WHERE
       book_id = ${id};`;
     } catch (error) {
@@ -56,7 +59,10 @@ export async function postStartStopReading({
   } else {
     try {
       await sql`UPDATE books
-        SET stop_reading = ${timestamp}
+        SET 
+        stop_reading = ${timestamp},
+        start_reading = ${null},
+        in_progress = ${false}
         WHERE
         book_id = ${id};
       `;
