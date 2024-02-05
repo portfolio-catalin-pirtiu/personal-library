@@ -13,7 +13,7 @@ export default async function updateBookReadingStatusDatabase({
   };
   try {
     const res = await fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

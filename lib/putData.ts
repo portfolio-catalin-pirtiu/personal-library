@@ -34,3 +34,15 @@ export async function putBook(book: IBook, id: string) {
     if (dbError instanceof Error) throw dbError;
   }
 }
+
+export async function postStartStopReading({
+  id = '',
+  slug = '',
+  timestamp = '',
+}: {
+  id: string;
+  slug: string;
+  timestamp: string;
+}) {
+  
+}
