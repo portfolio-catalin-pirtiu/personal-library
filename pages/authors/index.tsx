@@ -21,7 +21,7 @@ export default function Authors() {
 
   function handleEditAuthor(editedAuthor: IDbAuthor) {
     const editedAuthors = authors.map((author) => {
-      if (editedAuthor.id === author.id) {
+      if (editedAuthor.author_id === author.author_id) {
         return editedAuthor;
       } else {
         return author;
@@ -31,7 +31,9 @@ export default function Authors() {
   }
 
   function handleDeleteAuthor(id: string) {
-    const remainingAuthors = authors.filter((author) => author.id !== id);
+    const remainingAuthors = authors.filter(
+      (author) => author.author_id !== id
+    );
     setAuthors(remainingAuthors);
   }
 
@@ -39,7 +41,7 @@ export default function Authors() {
     const author = new Author(editedAuthor);
 
     try {
-      const res = await fetch(`${apiUrl}edit/${editedAuthor.id}`, {
+      const res = await fetch(`${apiUrl}edit/${editedAuthor.author_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

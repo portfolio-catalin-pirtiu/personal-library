@@ -21,8 +21,8 @@ export interface IBook {
   read: boolean;
   in_progress: boolean;
   rating?: number;
-  stop_reading?: string;
-  start_reading?: string;
+  stop_reading?: Date;
+  start_reading?: Date;
   publisher?: string;
   edition?: string;
   notes?: string;
