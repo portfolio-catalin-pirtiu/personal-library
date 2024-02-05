@@ -3,8 +3,9 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IDbAuthor, IDbBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
+import findAuthorDetails from '../../lib/findAuthorDetails';
 
 const Wrapper = styled.div`
   display: flex;
