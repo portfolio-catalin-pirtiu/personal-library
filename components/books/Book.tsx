@@ -136,6 +136,7 @@ export default function Book({
         <Button
           type="button"
           text="Start Reading"
+          disabled={!!start_reading}
           primaryColor={colors.blue}
           onClick={() => handleStartReading(book_id)}
         />
@@ -161,8 +162,12 @@ export default function Book({
 
       <Bubbles>
         {stop_reading && <Bubble text="read" backgroundColor={colors.green} />}
-        {!start_reading && <Bubble text="not read" backgroundColor={colors.red} />}
-        {start_reading && <Bubble text="in progress" backgroundColor={colors.blue} />}
+        {!start_reading && (
+          <Bubble text="not read" backgroundColor={colors.red} />
+        )}
+        {start_reading && (
+          <Bubble text="in progress" backgroundColor={colors.blue} />
+        )}
       </Bubbles>
     </Wrapper>
   );

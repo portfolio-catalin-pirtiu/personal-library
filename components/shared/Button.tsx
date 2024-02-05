@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button<{
+  $disabled: boolean;
   $primary: boolean;
   $secondary?: boolean;
   $warning?: boolean;
@@ -13,7 +14,6 @@ const StyledButton = styled.button<{
   border-radius: 3px;
   padding: 0.25em 1em;
   border: none;
-
   ${(props) =>
     props.$primary &&
     css`
@@ -39,12 +39,19 @@ const StyledButton = styled.button<{
     css`
       background: ${props.$dangerColor};
     `}
+    ${(props) =>
+    props.$disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.5;
+    `}
 `;
 
 interface IButton {
   type: 'button' | 'submit';
   text: string;
   onClick: () => void;
+  disabled?: boolean;
   primary?: boolean;
   secondary?: boolean;
   warning?: boolean;
@@ -59,6 +66,7 @@ export default function Button({
   type = 'button',
   text = 'Button',
   onClick = () => {},
+  disabled = false,
   primary = true,
   secondary = false,
   warning = false,
@@ -87,8 +95,10 @@ export default function Button({
 
   return (
     <StyledButton
+      aria-disabled={disabled}
       type={type}
-      onClick={onClick}
+      onClick={disabled ? () => {} : onClick}
+      $disabled={disabled}
       $primary={primary}
       $secondary={secondary}
       $warning={warning}
