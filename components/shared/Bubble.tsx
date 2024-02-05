@@ -39,6 +39,7 @@ export default function Bubble({ text = '', backgroundColor = '' }: IBubble) {
   };
 
   const dotColorHue = changeColorHue(props);
+  console.log('dot color hue', dotColorHue);
   return (
     <Wrapper $backgroundColor={backgroundColor}>
       <Circle $dotColor={dotColorHue}>
