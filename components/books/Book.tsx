@@ -144,6 +144,7 @@ export default function Book({
         <Button
           type="button"
           text="Stop Reading"
+          disabled={start_reading ? false : true}
           primaryColor={colors.green}
           onClick={() => handleStopReading(book_id)}
         />
