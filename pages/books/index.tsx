@@ -70,8 +70,9 @@ export default function Books() {
     const startReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'start',
-      timestamp: new Date().toUTCString(),
+      timestamp: new Date().toISOString(),
     };
+    console.log('handleStart -> book', startReadingBook);
     updateBookReadingStatusDatabase(startReadingBook);
   }
 
@@ -79,7 +80,7 @@ export default function Books() {
     const stopReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'stop',
-      timestamp: new Date().toUTCString(),
+      timestamp: new Date().toISOString(),
     };
     updateBookReadingStatusDatabase(stopReadingBook);
   }
