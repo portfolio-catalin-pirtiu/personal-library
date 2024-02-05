@@ -90,8 +90,6 @@ export default function Book({
     edition: edition,
     notes: notes,
   };
-  function handleStartReading() {}
-  function handleStopReading() {}
   function handleIsEditing() {
     setIsEditing(!isEditing);
   }

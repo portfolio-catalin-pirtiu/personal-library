@@ -72,6 +72,10 @@ export default function Books() {
       if (error instanceof Error) toast.error(error.message);
     }
   }
+
+  function handleStartReading() {}
+  function handleStopReading() {}
+
   return (
     <Wrapper>
       {books.map((book) => (
