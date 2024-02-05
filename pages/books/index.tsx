@@ -16,17 +16,7 @@ const Wrapper = styled.div`
 
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
-  console.log('books index', books);
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const date = new Date();
-
-  function findAuthorDetails(authors: IDbAuthor[], updatedBook: IDbBook) {
-    const [matchedAuthor] = authors.filter(
-      (author) => author.author_id === updatedBook.author_id
-    );
-    const { first_name, last_name } = matchedAuthor;
-    return [first_name, last_name];
-  }
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
