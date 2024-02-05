@@ -10,5 +10,11 @@ export async function PUT(
   { params }: { params: { id: string; slug: 'start' | 'stop' } }
 ) {
   const book: BookReadingStatus = await req.json();
-  await postStartStopReading({ ...params, timestamp: book.timestamp });
+
+  try {
+    await postStartStopReading({ ...params, timestamp: book.timestamp });
+    return NextResponse.json({ status: 200 });
+  } catch (error) {
+    return NextResponse.json({ status: 401 });
+  }
 }

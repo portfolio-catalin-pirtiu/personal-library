@@ -37,12 +37,31 @@ export async function putBook(book: IBook, id: string) {
 
 export async function postStartStopReading({
   id = '',
-  slug = '',
+  slug = 'start',
   timestamp = '',
 }: {
   id: string;
-  slug: string;
+  slug: 'start' | 'stop';
   timestamp: string;
 }) {
-  
+  if (slug === 'start') {
+    try {
+      await sql`UPDATE books
+      SET start_reading = ${timestamp}
+      WHERE
+      book_id = ${id};`;
+    } catch (error) {
+      throw error;
+    }
+  } else {
+    try {
+      await sql`UPDATE books
+        SET stop_reading = ${timestamp}
+        WHERE
+        book_id = ${id};
+      `;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
