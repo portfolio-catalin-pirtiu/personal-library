@@ -3,8 +3,9 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IDbAuthor, IDbBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
+import findAuthorDetails from '../../lib/findAuthorDetails';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,17 +17,7 @@ const Wrapper = styled.div`
 
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
-  console.log('books index', books);
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const date = new Date();
-
-  function findAuthorDetails(authors: IDbAuthor[], updatedBook: IDbBook) {
-    const [matchedAuthor] = authors.filter(
-      (author) => author.author_id === updatedBook.author_id
-    );
-    const { first_name, last_name } = matchedAuthor;
-    return [first_name, last_name];
-  }
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
