@@ -160,6 +160,7 @@ export default function Book({
       <Bubbles>
         <Bubble text="read" backgroundColor={colors.green} />
         <Bubble text="not read" backgroundColor={colors.red} />
+        <Bubble text="in progress" backgroundColor={colors.yellow} />
       </Bubbles>
     </Wrapper>
   );
