@@ -96,6 +96,8 @@ export default function Books() {
           stop_reading={book.stop_reading}
           handleUpdateBooks={handleUpdateBooks}
           handleDeleteBook={handleDeleteBook}
+          handleStartReading={handleStartReading}
+          handleStopReading={handleStopReading}
         />
       ))}
     </Wrapper>

@@ -59,6 +59,8 @@ const Bubbles = styled.div`
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
   handleDeleteBook: (id: string) => void;
+  handleStartReading: (id: string) => void;
+  handleStopReading: (id: string) => void;
 }
 
 export default function Book({
@@ -77,6 +79,8 @@ export default function Book({
   stop_reading,
   handleUpdateBooks,
   handleDeleteBook,
+  handleStartReading,
+  handleStopReading,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
@@ -131,14 +135,14 @@ export default function Book({
           type="button"
           text="Start Reading"
           primaryColor={colors.blue}
-          onClick={handleStartReading}
+          onClick={() => handleStartReading(book_id)}
         />
 
         <Button
           type="button"
           text="Stop Reading"
           primaryColor={colors.green}
-          onClick={handleStopReading}
+          onClick={() => handleStopReading(book_id)}
         />
       </StartStopButtons>
 
