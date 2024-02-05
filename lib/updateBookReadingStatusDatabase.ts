@@ -1,11 +1,12 @@
 import { booksApiUrl } from './constants';
 import toast from 'react-hot-toast';
+import { IUpdateBookReadingStatusDatabase } from './definitions';
 
-export default async function updateBookReadingStatusDatabase(
-  id: string = '',
-  status: 'start' | 'stop' = 'start',
-  timestamp: Date = new Date()
-) {
+export default async function updateBookReadingStatusDatabase({
+  id = '',
+  status = 'start',
+  timestamp = new Date().toUTCString(),
+}: IUpdateBookReadingStatusDatabase) {
   const url = `${booksApiUrl}/edit/reading/${status}/${id}`;
   const readingStatus = {
     [status]: timestamp,

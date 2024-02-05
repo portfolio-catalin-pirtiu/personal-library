@@ -33,3 +33,9 @@ export interface IDbBook extends IBook {
 }
 
 export interface IBookWithAuthor extends IDbBook, IAuthor {}
+
+export interface IUpdateBookReadingStatusDatabase {
+  id: string;
+  status: 'start' | 'stop';
+  timestamp: string;
+}

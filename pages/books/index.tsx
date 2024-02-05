@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
+import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
+import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,8 +66,23 @@ export default function Books() {
     }
   }
 
-  function handleStartReading() {}
-  function handleStopReading() {}
+  function handleStartReading(bookId: string) {
+    const startReadingBook: IUpdateBookReadingStatusDatabase = {
+      id: bookId,
+      status: 'start',
+      timestamp: new Date().toUTCString(),
+    };
+    updateBookReadingStatusDatabase(startReadingBook);
+  }
+
+  function handleStopReading(bookId: string) {
+    const stopReadingBook: IUpdateBookReadingStatusDatabase = {
+      id: bookId,
+      status: 'stop',
+      timestamp: new Date().toUTCString(),
+    };
+    updateBookReadingStatusDatabase(stopReadingBook);
+  }
 
   return (
     <Wrapper>
