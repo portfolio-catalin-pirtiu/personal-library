@@ -82,6 +82,8 @@ export default function Book({
   handleStartReading,
   handleStopReading,
 }: IBookProps) {
+  console.log('start reading', start_reading);
+  console.log('stop reading', stop_reading);
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
     book_id: book_id,
@@ -158,9 +160,9 @@ export default function Book({
       </AuthorAndRating>
 
       <Bubbles>
-        <Bubble text="read" backgroundColor={colors.green} />
-        <Bubble text="not read" backgroundColor={colors.red} />
-        <Bubble text="in progress" backgroundColor={colors.blue} />
+        {stop_reading && <Bubble text="read" backgroundColor={colors.green} />}
+        {!start_reading && <Bubble text="not read" backgroundColor={colors.red} />}
+        {start_reading && <Bubble text="in progress" backgroundColor={colors.blue} />}
       </Bubbles>
     </Wrapper>
   );
