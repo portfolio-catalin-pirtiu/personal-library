@@ -9,7 +9,7 @@ export default async function updateBookReadingStatusDatabase({
 }: IUpdateBookReadingStatusDatabase) {
   const url = `${booksApiUrl}/edit/reading/${status}/${id}`;
   const readingStatus = {
-    [status]: timestamp,
+    timestamp: timestamp,
   };
   try {
     const res = await fetch(url, {

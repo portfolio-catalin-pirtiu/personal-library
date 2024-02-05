@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { IUpdateBookReadingStatusDatabase } from '../../../../../../../lib/definitions';
+
+interface BookReadingStatus {
+  timestamp: string;
+}
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string; slug: 'start' | 'stop' } }
 ) {
-  const bookId = params.id;
-  const book: IUpdateBookReadingStatusDatabase = await req.json();
-  console.log('start stop book reading -> body', book);
+  console.log('POST start reading');
+  const book: BookReadingStatus = await req.json();
+  console.log('params', params);
+  console.log('start stop book reading -> body', book.timestamp);
 }

@@ -66,17 +66,16 @@ export default function Books() {
     }
   }
 
-  function handleStartReading(bookId: string) {
+  function handleStartReading(bookId: string = '') {
     const startReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'start',
       timestamp: new Date().toISOString(),
     };
-    console.log('handleStart -> book', startReadingBook);
     updateBookReadingStatusDatabase(startReadingBook);
   }
 
-  function handleStopReading(bookId: string) {
+  function handleStopReading(bookId: string = '') {
     const stopReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'stop',
