@@ -59,7 +59,7 @@ export async function postStartStopReading({
   } else {
     try {
       await sql`UPDATE books
-        SET 
+        SET
         stop_reading = ${timestamp},
         start_reading = ${null},
         in_progress = ${false}
