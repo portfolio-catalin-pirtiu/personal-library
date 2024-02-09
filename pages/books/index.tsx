@@ -72,7 +72,26 @@ export default function Books() {
       status: 'start',
       timestamp: new Date().toISOString(),
     };
+    startReadingUpdateState(bookId, startReadingBook.timestamp);
     updateBookReadingStatusDatabase(startReadingBook);
+  }
+
+  function startReadingUpdateState(
+    bookId: string = '',
+    timestamp: string = ''
+  ) {
+    if (!bookId && !timestamp) return;
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          start_reading: timestamp,
+          stop_reading: undefined,
+          in_progress: true,
+        };
+      } else return book;
+    });
+    setBooks(updatedBooks);
   }
 
   function handleStopReading(bookId: string = '') {
