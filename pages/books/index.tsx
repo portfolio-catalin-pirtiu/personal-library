@@ -67,7 +67,6 @@ export default function Books() {
   }
 
   function handleStartReading(bookId: string = '') {
-    console.log('start reading');
     const startReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'start',
