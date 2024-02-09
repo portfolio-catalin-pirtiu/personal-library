@@ -67,21 +67,58 @@ export default function Books() {
   }
 
   function handleStartReading(bookId: string = '') {
+    if (!bookId) return;
     const startReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'start',
       timestamp: new Date().toISOString(),
     };
+    startReadingUpdateState(bookId, startReadingBook.timestamp);
     updateBookReadingStatusDatabase(startReadingBook);
   }
 
+  function startReadingUpdateState(
+    bookId: string = '',
+    timestamp: string = ''
+  ) {
+    if (!bookId && !timestamp) return;
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          start_reading: timestamp,
+          stop_reading: undefined,
+          in_progress: true,
+        };
+      } else return book;
+    });
+    setBooks(updatedBooks);
+  }
+
   function handleStopReading(bookId: string = '') {
+    if (!bookId) return;
     const stopReadingBook: IUpdateBookReadingStatusDatabase = {
       id: bookId,
       status: 'stop',
       timestamp: new Date().toISOString(),
     };
+    stopReadingUpdateState(bookId, stopReadingBook.timestamp);
     updateBookReadingStatusDatabase(stopReadingBook);
+  }
+
+  function stopReadingUpdateState(bookId: string = '', timestamp: string = '') {
+    if (!bookId && !timestamp) return;
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          stop_reading: timestamp,
+          start_reading: undefined,
+          in_progress: false,
+        };
+      } else return book;
+    });
+    setBooks(updatedBooks);
   }
 
   return (
