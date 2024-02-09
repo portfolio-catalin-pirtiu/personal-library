@@ -82,8 +82,6 @@ export default function Book({
   handleStartReading,
   handleStopReading,
 }: IBookProps) {
-  console.log('start reading', start_reading);
-  console.log('stop reading', stop_reading);
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
     book_id: book_id,
@@ -111,6 +109,7 @@ export default function Book({
     />
   ) : (
     <Wrapper>
+      <div>{book_id}</div>
       <InfoAndEditDeleteButtons>
         <RestOfInfo>
           <Edition>{edition}</Edition>
@@ -136,6 +135,7 @@ export default function Book({
         <Button
           type="button"
           text="Start Reading"
+          disabled={!!start_reading}
           primaryColor={colors.blue}
           onClick={() => handleStartReading(book_id)}
         />
@@ -143,6 +143,7 @@ export default function Book({
         <Button
           type="button"
           text="Stop Reading"
+          disabled={!!start_reading ? false : true}
           primaryColor={colors.green}
           onClick={() => handleStopReading(book_id)}
         />
@@ -161,8 +162,12 @@ export default function Book({
 
       <Bubbles>
         {stop_reading && <Bubble text="read" backgroundColor={colors.green} />}
-        {!start_reading && <Bubble text="not read" backgroundColor={colors.red} />}
-        {start_reading && <Bubble text="in progress" backgroundColor={colors.blue} />}
+        {!stop_reading && !in_progress && (
+          <Bubble text="not read" backgroundColor={colors.red} />
+        )}
+        {start_reading && (
+          <Bubble text="in progress" backgroundColor={colors.blue} />
+        )}
       </Bubbles>
     </Wrapper>
   );
