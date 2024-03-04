@@ -39,6 +39,8 @@ const defaultInitialValues: IDbBook = {
   read: false,
   in_progress: false,
   rating: 0,
+  stop_reading: '',
+  start_reading: '',
   publisher: '',
   edition: '',
   notes: '',
