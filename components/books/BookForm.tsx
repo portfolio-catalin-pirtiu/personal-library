@@ -60,7 +60,9 @@ export default function BookForm({
   handleUpdateBooks = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(
+    initialValues.rating ? initialValues.rating : 0
+  );
   const totalStars = 5;
   return (
     <>
