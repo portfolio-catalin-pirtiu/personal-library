@@ -101,8 +101,8 @@ export default function Book({
     setIsEditing(!isEditing);
   }
 
-  function updateRatingMergeBookIdAndRatingValue(){
-
+  function updateRatingMergeBookIdAndRatingValue(rating: number = 0){
+    handleUpdateRating(book_id, rating);
   }
 
   return isEditing ? (
@@ -162,7 +162,7 @@ export default function Book({
         </AuthorTitleAndStatus>
 
         <Rating>
-          <RatingStars rating={rating} />
+          <RatingStars rating={rating} onChangeRatingStars={updateRatingMergeBookIdAndRatingValue} />
         </Rating>
       </AuthorAndRating>
 
