@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
 import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
 import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
-import { filters } from '../../lib/filters';
+import { filter } from '../../lib/filter';
 
 const Wrapper = styled.div`
   display: flex;

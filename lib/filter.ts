@@ -1,6 +1,6 @@
 import { IDbBook } from './definitions';
 
-export const filters = {
+export const filter = {
   all: () => true,
   read: (book: IDbBook) => book.read,
   notRead: (book: IDbBook) => !book.read,
