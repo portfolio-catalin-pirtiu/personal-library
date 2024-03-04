@@ -96,10 +96,10 @@ export default function Book({
     edition: edition,
     notes: notes,
   };
+  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
   function handleIsEditing() {
     setIsEditing(!isEditing);
   }
-  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
 
   return isEditing ? (
     <BookForm
