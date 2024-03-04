@@ -1,17 +1,9 @@
 import styled from 'styled-components';
+import { ISelect } from '../../lib/definitions';
 
 const Wrapper = styled.div``;
 const Selection = styled.select``;
 const Option = styled.option``;
-
-interface IOption {
-  name: string;
-  value: string;
-}
-
-interface ISelect {
-  options: IOption[];
-}
 
 export default function Select({ options = [] }: ISelect) {
   return (

@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
 import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
 import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
+import Select from '../../components/books/Select';
 import { filter } from '../../lib/filter';
 
 const Wrapper = styled.div`
@@ -160,6 +161,7 @@ export default function Books() {
 
   return (
     <Wrapper>
+      <Select/>
       {books.map((book) => (
         <Book
           key={book.book_id}

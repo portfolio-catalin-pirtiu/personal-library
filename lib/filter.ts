@@ -1,4 +1,4 @@
-import { IDbBook } from './definitions';
+import { IDbBook, IOption } from './definitions';
 
 export const filter = {
   all: () => true,
@@ -23,3 +23,12 @@ export const filter = {
     }
   },
 };
+
+export const options: IOption[] = [
+  { name: 'All Books', value: 'all' },
+  { name: 'Read Books', value: 'read' },
+  { name: 'Not Read Books', value: 'notRead' },
+  { name: 'In Progress Books', value: 'inProgress' },
+  { name: 'Read This Year', value: 'thisYear' },
+  { name: 'Read Last Year', value: 'lastYear' },
+];

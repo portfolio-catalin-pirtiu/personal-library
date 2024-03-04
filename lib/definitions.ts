@@ -39,3 +39,12 @@ export interface IUpdateBookReadingStatusDatabase {
   status: 'start' | 'stop';
   timestamp: string;
 }
+
+export interface IOption {
+  name: string;
+  value: string;
+}
+
+export interface ISelect {
+  options: IOption[];
+}
