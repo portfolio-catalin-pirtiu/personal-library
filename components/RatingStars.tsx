@@ -19,8 +19,6 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const StarAndInput = styled.div``;
-
 function Star({
   selected = false,
   index = 0,
@@ -48,15 +46,15 @@ export default function RatingStars({
   return (
     <Wrapper>
       {Array.from({ length: totalStars }).map((n, i) => (
-        <StarAndInput key={i}>
-          <Star
-            index={i + 1}
-            selected={rating > i}
-            handleChangeRatingValue={onChangeRatingValue}
-            handleChangeRatingStars={onChangeRatingStars}
-          />
-        </StarAndInput>
+        <Star
+          key={i}
+          index={i + 1}
+          selected={rating > i}
+          handleChangeRatingValue={onChangeRatingValue}
+          handleChangeRatingStars={onChangeRatingStars}
+        />
       ))}
+      <input type="hidden" name="stars-value" value={rating} />
     </Wrapper>
   );
 }
