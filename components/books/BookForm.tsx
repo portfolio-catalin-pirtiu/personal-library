@@ -133,15 +133,6 @@ export default function BookForm({
               <ErrorMsg name="title" component="div" />
             </InputGroup>
 
-            {/* <InputGroup>
-              <Input type="hidden" name="read" value="alpha" />
-            </InputGroup> */}
-            {/* <input type="input" name="read" value="true" readOnly />
-
-            <InputGroup>
-              <Input type="hidden" name="in_progress" />
-            </InputGroup> */}
-
             <InputGroup>
               <Label htmlFor="rating">
                 Rating
