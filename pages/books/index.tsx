@@ -121,7 +121,7 @@ export default function Books() {
     setBooks(updatedBooks);
   }
 
-  function handleRatingUpdate(bookId: string = '', rating: number = 0) {
+  function handleUpdateRating(bookId: string = '', rating: number = 0) {
     // 1. update state
     // 1. update DB
     const updatedBooks = books.map((book) => {
@@ -159,7 +159,7 @@ export default function Books() {
           handleDeleteBook={handleDeleteBook}
           handleStartReading={handleStartReading}
           handleStopReading={handleStopReading}
-          handleRatingUpdate={handleRatingUpdate}
+          handleUpdateRating={handleUpdateRating}
         />
       ))}
     </Wrapper>
