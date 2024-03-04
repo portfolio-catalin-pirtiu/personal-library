@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
+  
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === updatedBook.book_id) {
@@ -28,6 +29,7 @@ export default function Books() {
           updatedBook
         );
         return {
+          ...book,
           ...updatedBook,
           first_name: authorFirstName,
           last_name: authorLastName,
