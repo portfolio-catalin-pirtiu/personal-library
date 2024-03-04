@@ -39,6 +39,8 @@ const defaultInitialValues: IDbBook = {
   read: false,
   in_progress: false,
   rating: 0,
+  stop_reading: '',
+  start_reading: '',
   publisher: '',
   edition: '',
   notes: '',
@@ -60,7 +62,9 @@ export default function BookForm({
   handleUpdateBooks = () => {},
 }: IBookForm) {
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(
+    initialValues.rating ? initialValues.rating : 0
+  );
   const totalStars = 5;
   return (
     <>
@@ -127,14 +131,6 @@ export default function BookForm({
               </Label>
 
               <ErrorMsg name="title" component="div" />
-            </InputGroup>
-
-            <InputGroup>
-              <Input type="hidden" name="read" />
-            </InputGroup>
-
-            <InputGroup>
-              <Input type="hidden" name="in_progress" />
             </InputGroup>
 
             <InputGroup>

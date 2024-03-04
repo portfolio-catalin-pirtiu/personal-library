@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
-
+  
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === updatedBook.book_id) {
@@ -29,6 +29,7 @@ export default function Books() {
           updatedBook
         );
         return {
+          ...book,
           ...updatedBook,
           first_name: authorFirstName,
           last_name: authorLastName,
@@ -121,6 +122,41 @@ export default function Books() {
     setBooks(updatedBooks);
   }
 
+  function handleUpdateRating(bookId: string = '', rating: number = 0) {
+    updateRatingState(bookId, rating);
+    updateRatingDatabase(bookId, rating);
+  }
+
+  function updateRatingState(bookId: string = '', rating: number = 0) {
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          rating: rating,
+        };
+      } else {
+        return book;
+      }
+    });
+    setBooks(updatedBooks);
+  }
+
+  async function updateRatingDatabase(bookId: string = '', rating: number = 0) {
+    const url = `${booksApiUrl}/edit/rating/${bookId}`;
+    try {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application-json',
+        },
+        body: JSON.stringify(rating),
+      });
+    } catch (error) {
+      if (error instanceof Error)
+        toast.error('Something went wrong when updating book rating.');
+    }
+  }
+
   return (
     <Wrapper>
       {books.map((book) => (
@@ -143,6 +179,7 @@ export default function Books() {
           handleDeleteBook={handleDeleteBook}
           handleStartReading={handleStartReading}
           handleStopReading={handleStopReading}
+          handleUpdateRating={handleUpdateRating}
         />
       ))}
     </Wrapper>

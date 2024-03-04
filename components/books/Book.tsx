@@ -61,6 +61,7 @@ interface IBookProps extends IBookWithAuthor {
   handleDeleteBook: (id: string) => void;
   handleStartReading: (id: string) => void;
   handleStopReading: (id: string) => void;
+  handleUpdateRating: (bookId: string, rating: number) => void;
 }
 
 export default function Book({
@@ -81,6 +82,7 @@ export default function Book({
   handleDeleteBook,
   handleStartReading,
   handleStopReading,
+  handleUpdateRating,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
@@ -94,10 +96,14 @@ export default function Book({
     edition: edition,
     notes: notes,
   };
+  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
   function handleIsEditing() {
     setIsEditing(!isEditing);
   }
-  const editBookUrl = `${booksApiUrl}/edit/${book_id}`;
+
+  function updateRatingMergeBookIdAndRatingValue(rating: number = 0) {
+    handleUpdateRating(book_id, rating);
+  }
 
   return isEditing ? (
     <BookForm
@@ -156,7 +162,10 @@ export default function Book({
         </AuthorTitleAndStatus>
 
         <Rating>
-          <RatingStars rating={rating} />
+          <RatingStars
+            rating={rating}
+            onChangeRatingStars={updateRatingMergeBookIdAndRatingValue}
+          />
         </Rating>
       </AuthorAndRating>
 

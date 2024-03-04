@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import styled from 'styled-components';
 
 interface IRatingStars {
   totalStars?: number;
@@ -13,6 +14,10 @@ interface IStar {
   handleChangeRatingValue?: (field: string, rating: number) => void;
   handleChangeRatingStars?: (rating: number) => void;
 }
+
+const Wrapper = styled.div`
+  display: flex;
+`;
 
 function Star({
   selected = false,
@@ -38,13 +43,18 @@ export default function RatingStars({
   onChangeRatingValue = () => {},
   onChangeRatingStars = () => {},
 }: IRatingStars) {
-  return Array.from({ length: totalStars }).map((n, i) => (
-    <Star
-      key={i}
-      index={i + 1}
-      selected={rating > i}
-      handleChangeRatingValue={onChangeRatingValue}
-      handleChangeRatingStars={onChangeRatingStars}
-    />
-  ));
+  return (
+    <Wrapper>
+      {Array.from({ length: totalStars }).map((n, i) => (
+        <Star
+          key={i}
+          index={i + 1}
+          selected={rating > i}
+          handleChangeRatingValue={onChangeRatingValue}
+          handleChangeRatingStars={onChangeRatingStars}
+        />
+      ))}
+      <input type="hidden" name="stars-value" value={rating} />
+    </Wrapper>
+  );
 }
