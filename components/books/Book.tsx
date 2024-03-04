@@ -61,6 +61,7 @@ interface IBookProps extends IBookWithAuthor {
   handleDeleteBook: (id: string) => void;
   handleStartReading: (id: string) => void;
   handleStopReading: (id: string) => void;
+  handleRatingUpdate: (bookId: string, rating: number) => void;
 }
 
 export default function Book({
@@ -81,6 +82,7 @@ export default function Book({
   handleDeleteBook,
   handleStartReading,
   handleStopReading,
+  handleRatingUpdate,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {

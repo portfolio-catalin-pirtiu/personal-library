@@ -121,17 +121,9 @@ export default function Books() {
     setBooks(updatedBooks);
   }
 
-  function handleRatingUpdate({
-    bookId = '',
-    rating = 0,
-  }: {
-    bookId: string;
-    rating: number;
-  }) {
+  function handleRatingUpdate(bookId: string = '', rating: number = 0) {
     // 1. update state
     // 1. update DB
-    console.log('rating change -> bookId: ', bookId);
-    console.log('rating change -> rating : ', rating);
     const updatedBooks = books.map((book) => {
       if (book.book_id === bookId) {
         return {
@@ -167,6 +159,7 @@ export default function Books() {
           handleDeleteBook={handleDeleteBook}
           handleStartReading={handleStartReading}
           handleStopReading={handleStopReading}
+          handleRatingUpdate={handleRatingUpdate}
         />
       ))}
     </Wrapper>
