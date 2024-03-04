@@ -6,7 +6,7 @@ interface DbResponse {
 }
 
 async function fetchAuthors(url: string): Promise<IDbAuthor[]> {
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: 'reload' });
   if (!res.ok) {
     throw new Error('An error occurred while fetching the authors.');
   }
