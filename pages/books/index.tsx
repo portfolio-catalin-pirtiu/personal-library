@@ -121,6 +121,30 @@ export default function Books() {
     setBooks(updatedBooks);
   }
 
+  function handleRatingUpdate({
+    bookId = '',
+    rating = 0,
+  }: {
+    bookId: string;
+    rating: number;
+  }) {
+    // 1. update state
+    // 1. update DB
+    console.log('rating change -> bookId: ', bookId);
+    console.log('rating change -> rating : ', rating);
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          rating: rating,
+        };
+      } else {
+        return book;
+      }
+    });
+    setBooks(updatedBooks);
+  }
+
   return (
     <Wrapper>
       {books.map((book) => (
