@@ -10,6 +10,7 @@ import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDa
 import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
 import Select from '../../components/books/Select';
 import { filter } from '../../lib/filter';
+import { options } from '../../lib/filter';
 
 const Wrapper = styled.div`
   display: flex;
@@ -161,7 +162,7 @@ export default function Books() {
 
   return (
     <Wrapper>
-      <Select/>
+      <Select options={options}/>
       {books.map((book) => (
         <Book
           key={book.book_id}
