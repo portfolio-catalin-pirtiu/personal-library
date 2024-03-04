@@ -50,7 +50,8 @@ export async function postStartStopReading({
       SET 
       start_reading = ${timestamp},
       stop_reading = ${null},
-      in_progress = ${true}
+      in_progress = ${true},
+      read = ${false}
       WHERE
       book_id = ${id};`;
     } catch (error) {
@@ -62,7 +63,8 @@ export async function postStartStopReading({
         SET
         stop_reading = ${timestamp},
         start_reading = ${null},
-        in_progress = ${false}
+        in_progress = ${false},
+        read = ${true}
         WHERE
         book_id = ${id};
       `;

@@ -12,7 +12,7 @@ export default async function updateBookReadingStatusDatabase({
     timestamp: timestamp,
   };
   try {
-    const res = await fetch(url, {
+    await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
