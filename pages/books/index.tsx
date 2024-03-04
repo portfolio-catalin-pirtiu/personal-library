@@ -124,6 +124,10 @@ export default function Books() {
   function handleUpdateRating(bookId: string = '', rating: number = 0) {
     // 1. update state
     // 1. update DB
+    updateRatingState(bookId, rating);
+  }
+
+  function updateRatingState(bookId: string = '', rating: number = 0){
     const updatedBooks = books.map((book) => {
       if (book.book_id === bookId) {
         return {
