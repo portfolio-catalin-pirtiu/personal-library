@@ -73,3 +73,16 @@ export async function postStartStopReading({
     }
   }
 }
+
+export async function putRating(bookId: string = '', rating: number = 0) {
+  try {
+    await sql`UPDATE books
+      SET
+      rating = ${rating}
+      WHERE
+      book_id = ${bookId};
+    `;
+  } catch (error) {
+    throw error;
+  }
+}
