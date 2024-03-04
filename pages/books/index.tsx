@@ -125,9 +125,10 @@ export default function Books() {
     // 1. update state
     // 1. update DB
     updateRatingState(bookId, rating);
+    updateRatingDatabase(bookId);
   }
 
-  function updateRatingState(bookId: string = '', rating: number = 0){
+  function updateRatingState(bookId: string = '', rating: number = 0) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === bookId) {
         return {
@@ -139,6 +140,10 @@ export default function Books() {
       }
     });
     setBooks(updatedBooks);
+  }
+
+  function updateRatingDatabase(bookId: string = '') {
+    const url = `${booksApiUrl}/edit/rating/${bookId}`;
   }
 
   return (
