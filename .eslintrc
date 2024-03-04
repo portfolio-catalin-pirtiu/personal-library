@@ -1,20 +1,13 @@
 {
   "extends": [
-    "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript/eslint"],
+  "plugins": ["@typescript-eslint/eslint-plugin"],
   "root": true,
   "rules": {
-    "no-unused-vars": "off",
-    "no-console": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-console": "error"
+    "no-console": "error"
   }
 }

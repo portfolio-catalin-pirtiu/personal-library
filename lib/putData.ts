@@ -34,3 +34,42 @@ export async function putBook(book: IBook, id: string) {
     if (dbError instanceof Error) throw dbError;
   }
 }
+
+export async function postStartStopReading({
+  id = '',
+  slug = 'start',
+  timestamp = '',
+}: {
+  id: string;
+  slug: 'start' | 'stop';
+  timestamp: string;
+}) {
+  if (slug === 'start') {
+    try {
+      await sql`UPDATE books
+      SET 
+      start_reading = ${timestamp},
+      stop_reading = ${null},
+      in_progress = ${true},
+      read = ${false}
+      WHERE
+      book_id = ${id};`;
+    } catch (error) {
+      throw error;
+    }
+  } else {
+    try {
+      await sql`UPDATE books
+        SET
+        stop_reading = ${timestamp},
+        start_reading = ${null},
+        in_progress = ${false},
+        read = ${true}
+        WHERE
+        book_id = ${id};
+      `;
+    } catch (error) {
+      throw error;
+    }
+  }
+}

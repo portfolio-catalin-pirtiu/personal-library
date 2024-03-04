@@ -3,8 +3,11 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IDbAuthor, IDbBook } from '../../lib/definitions';
+import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
+import findAuthorDetails from '../../lib/findAuthorDetails';
+import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
+import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,17 +19,7 @@ const Wrapper = styled.div`
 
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
-  console.log('books index', books);
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const date = new Date();
-
-  function findAuthorDetails(authors: IDbAuthor[], updatedBook: IDbBook) {
-    const [matchedAuthor] = authors.filter(
-      (author) => author.author_id === updatedBook.author_id
-    );
-    const { first_name, last_name } = matchedAuthor;
-    return [first_name, last_name];
-  }
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
@@ -72,6 +65,62 @@ export default function Books() {
       if (error instanceof Error) toast.error(error.message);
     }
   }
+
+  function handleStartReading(bookId: string = '') {
+    if (!bookId) return;
+    const startReadingBook: IUpdateBookReadingStatusDatabase = {
+      id: bookId,
+      status: 'start',
+      timestamp: new Date().toISOString(),
+    };
+    startReadingUpdateState(bookId, startReadingBook.timestamp);
+    updateBookReadingStatusDatabase(startReadingBook);
+  }
+
+  function startReadingUpdateState(
+    bookId: string = '',
+    timestamp: string = ''
+  ) {
+    if (!bookId && !timestamp) return;
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          start_reading: timestamp,
+          stop_reading: undefined,
+          in_progress: true,
+        };
+      } else return book;
+    });
+    setBooks(updatedBooks);
+  }
+
+  function handleStopReading(bookId: string = '') {
+    if (!bookId) return;
+    const stopReadingBook: IUpdateBookReadingStatusDatabase = {
+      id: bookId,
+      status: 'stop',
+      timestamp: new Date().toISOString(),
+    };
+    stopReadingUpdateState(bookId, stopReadingBook.timestamp);
+    updateBookReadingStatusDatabase(stopReadingBook);
+  }
+
+  function stopReadingUpdateState(bookId: string = '', timestamp: string = '') {
+    if (!bookId && !timestamp) return;
+    const updatedBooks = books.map((book) => {
+      if (book.book_id === bookId) {
+        return {
+          ...book,
+          stop_reading: timestamp,
+          start_reading: undefined,
+          in_progress: false,
+        };
+      } else return book;
+    });
+    setBooks(updatedBooks);
+  }
+
   return (
     <Wrapper>
       {books.map((book) => (
@@ -92,6 +141,8 @@ export default function Books() {
           stop_reading={book.stop_reading}
           handleUpdateBooks={handleUpdateBooks}
           handleDeleteBook={handleDeleteBook}
+          handleStartReading={handleStartReading}
+          handleStopReading={handleStopReading}
         />
       ))}
     </Wrapper>

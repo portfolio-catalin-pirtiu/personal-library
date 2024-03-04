@@ -21,8 +21,8 @@ export interface IBook {
   read: boolean;
   in_progress: boolean;
   rating?: number;
-  stop_reading?: Date;
-  start_reading?: Date;
+  stop_reading?: string;
+  start_reading?: string;
   publisher?: string;
   edition?: string;
   notes?: string;
@@ -33,3 +33,9 @@ export interface IDbBook extends IBook {
 }
 
 export interface IBookWithAuthor extends IDbBook, IAuthor {}
+
+export interface IUpdateBookReadingStatusDatabase {
+  id: string;
+  status: 'start' | 'stop';
+  timestamp: string;
+}

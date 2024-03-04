@@ -59,6 +59,8 @@ const Bubbles = styled.div`
 interface IBookProps extends IBookWithAuthor {
   handleUpdateBooks: (updatedBook: IDbBook) => void;
   handleDeleteBook: (id: string) => void;
+  handleStartReading: (id: string) => void;
+  handleStopReading: (id: string) => void;
 }
 
 export default function Book({
@@ -77,6 +79,8 @@ export default function Book({
   stop_reading,
   handleUpdateBooks,
   handleDeleteBook,
+  handleStartReading,
+  handleStopReading,
 }: IBookProps) {
   const [isEditing, setIsEditing] = useState(false);
   const editBookInitialValues: IDbBook = {
@@ -90,8 +94,6 @@ export default function Book({
     edition: edition,
     notes: notes,
   };
-  function handleStartReading() {}
-  function handleStopReading() {}
   function handleIsEditing() {
     setIsEditing(!isEditing);
   }
@@ -107,6 +109,7 @@ export default function Book({
     />
   ) : (
     <Wrapper>
+      <div>{book_id}</div>
       <InfoAndEditDeleteButtons>
         <RestOfInfo>
           <Edition>{edition}</Edition>
@@ -132,15 +135,17 @@ export default function Book({
         <Button
           type="button"
           text="Start Reading"
+          disabled={!!start_reading}
           primaryColor={colors.blue}
-          onClick={handleStartReading}
+          onClick={() => handleStartReading(book_id)}
         />
 
         <Button
           type="button"
           text="Stop Reading"
+          disabled={!!start_reading ? false : true}
           primaryColor={colors.green}
-          onClick={handleStopReading}
+          onClick={() => handleStopReading(book_id)}
         />
       </StartStopButtons>
 
@@ -156,8 +161,13 @@ export default function Book({
       </AuthorAndRating>
 
       <Bubbles>
-        <Bubble text="read" backgroundColor={colors.green} />
-        <Bubble text="not read" backgroundColor={colors.red} />
+        {stop_reading && <Bubble text="read" backgroundColor={colors.green} />}
+        {!stop_reading && !in_progress && (
+          <Bubble text="not read" backgroundColor={colors.red} />
+        )}
+        {start_reading && (
+          <Bubble text="in progress" backgroundColor={colors.blue} />
+        )}
       </Bubbles>
     </Wrapper>
   );
