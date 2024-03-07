@@ -13,8 +13,7 @@ import {
   IDbBook,
 } from '../../lib/definitions';
 import Select from '../../components/books/Select';
-import { filter } from '../../lib/filter';
-import { options } from '../../lib/filter';
+import { filter, options } from '../../lib/filter';
 
 const Wrapper = styled.div`
   display: flex;
