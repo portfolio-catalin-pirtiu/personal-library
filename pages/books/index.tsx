@@ -28,7 +28,6 @@ export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [select, setSelect] = useState<ISelection>('all');
-  console.log('select', select);
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
