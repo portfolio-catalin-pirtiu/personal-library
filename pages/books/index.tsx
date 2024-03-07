@@ -18,10 +18,15 @@ import { options } from '../../lib/filter';
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
+`;
+
+const BooksContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export default function Books() {
@@ -169,29 +174,31 @@ export default function Books() {
   return (
     <Wrapper>
       <Select options={options} handleChange={setSelect} />
-      {filteredBooks.map((book) => (
-        <Book
-          key={book.book_id}
-          book_id={book.book_id}
-          author_id={book.author_id}
-          title={book.title}
-          first_name={book.first_name}
-          last_name={book.last_name}
-          edition={book.edition}
-          publisher={book.publisher}
-          notes={book.notes}
-          in_progress={book.in_progress}
-          read={book.read}
-          rating={book.rating}
-          start_reading={book.start_reading}
-          stop_reading={book.stop_reading}
-          handleUpdateBooks={handleUpdateBooks}
-          handleDeleteBook={handleDeleteBook}
-          handleStartReading={handleStartReading}
-          handleStopReading={handleStopReading}
-          handleUpdateRating={handleUpdateRating}
-        />
-      ))}
+      <BooksContainer>
+        {filteredBooks.map((book) => (
+          <Book
+            key={book.book_id}
+            book_id={book.book_id}
+            author_id={book.author_id}
+            title={book.title}
+            first_name={book.first_name}
+            last_name={book.last_name}
+            edition={book.edition}
+            publisher={book.publisher}
+            notes={book.notes}
+            in_progress={book.in_progress}
+            read={book.read}
+            rating={book.rating}
+            start_reading={book.start_reading}
+            stop_reading={book.stop_reading}
+            handleUpdateBooks={handleUpdateBooks}
+            handleDeleteBook={handleDeleteBook}
+            handleStartReading={handleStartReading}
+            handleStopReading={handleStopReading}
+            handleUpdateRating={handleUpdateRating}
+          />
+        ))}
+      </BooksContainer>
     </Wrapper>
   );
 }
