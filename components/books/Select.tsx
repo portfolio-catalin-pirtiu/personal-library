@@ -6,6 +6,8 @@ import { booksFilterSelection } from '../../lib/constants';
 const Wrapper = styled.div``;
 const Selection = styled.select``;
 const Option = styled.option``;
+const Buttons = styled.div``;
+const Button = styled.button``;
 
 export default function Select({
   type = 'dropdown',
@@ -34,7 +36,13 @@ export default function Select({
     </Wrapper>
   ) : (
     <Wrapper>
-      
+      <Buttons>
+        {options.map((option, i) => (
+          <Button key={i} onClick={() => handleChange(option.value)}>
+            {option.name}
+          </Button>
+        ))}
+      </Buttons>
     </Wrapper>
-  )
+  );
 }
