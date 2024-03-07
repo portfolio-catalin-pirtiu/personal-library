@@ -43,10 +43,10 @@ export interface IUpdateBookReadingStatusDatabase {
 
 export interface IOption {
   name: string;
-  value: string;
+  value: 'all' | 'read' | 'notRead' | 'inProgress' | 'thisYear' | 'lastYear'
 }
 
-export type Selection =
+export type ISelection =
   | 'all'
   | 'read'
   | 'notRead'
@@ -57,5 +57,4 @@ export type Selection =
 export interface ISelect {
   options: IOption[];
   handleChange: Dispatch<SetStateAction<Selection>>;
-  // filter: 'all' | 'read' | 'notRead' | 'inProgress' | 'thisYear' | 'lastYear'
 }

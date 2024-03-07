@@ -7,7 +7,11 @@ import styled from 'styled-components';
 import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
 import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
-import { IUpdateBookReadingStatusDatabase, Selection, IDbBook } from '../../lib/definitions';
+import {
+  IUpdateBookReadingStatusDatabase,
+  ISelection,
+  IDbBook,
+} from '../../lib/definitions';
 import Select from '../../components/books/Select';
 import { filter } from '../../lib/filter';
 import { options } from '../../lib/filter';
@@ -23,7 +27,8 @@ const Wrapper = styled.div`
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const [select, setSelect] = useState<Selection>('all');
+  const [select, setSelect] = useState<ISelection>('all');
+  console.log('select', select);
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
