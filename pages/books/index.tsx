@@ -172,10 +172,11 @@ export default function Books() {
     }
   }
   const filteredBooks = books.filter(filter[select]);
+  const selectType = 'bar';
 
   return (
     <Wrapper>
-      <Select options={options} handleChange={setSelect} />
+      <Select type={selectType} options={options} handleChange={setSelect} />
       <BooksContainer>
         {filteredBooks.map((book) => (
           <Book
