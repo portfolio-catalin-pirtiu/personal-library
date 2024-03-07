@@ -51,6 +51,7 @@ export interface IOption {
 export type ISelection = (typeof booksFilterSelection)[number];
 
 export interface ISelect {
+  type: 'dropdown' | 'bar';
   options: IOption[];
   handleChange: Dispatch<SetStateAction<ISelection>>;
 }

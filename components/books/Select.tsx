@@ -7,12 +7,16 @@ const Wrapper = styled.div``;
 const Selection = styled.select``;
 const Option = styled.option``;
 
-export default function Select({ options = [], handleChange }: ISelect) {
+export default function Select({
+  type = 'dropdown',
+  options = [],
+  handleChange = () => {},
+}: ISelect) {
   function isOption(option: string): option is ISelection {
     return booksFilterSelection.some((el) => el === option);
   }
 
-  return (
+  return type === 'dropdown' ? (
     <Wrapper>
       <Selection
         onChange={({ target: { value } }) => {
@@ -28,5 +32,9 @@ export default function Select({ options = [], handleChange }: ISelect) {
         ))}
       </Selection>
     </Wrapper>
-  );
+  ) : (
+    <Wrapper>
+      
+    </Wrapper>
+  )
 }
