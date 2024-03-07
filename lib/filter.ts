@@ -26,9 +26,9 @@ export const filter = {
 
 export const options: IOption[] = [
   { name: 'All Books', value: 'all' },
-  { name: 'Read Books', value: 'read' },
-  { name: 'Not Read Books', value: 'notRead' },
-  { name: 'In Progress Books', value: 'inProgress' },
-  { name: 'Read This Year', value: 'thisYear' },
-  { name: 'Read Last Year', value: 'lastYear' },
+  { name: 'Read', value: 'read' },
+  { name: 'Not Read', value: 'notRead' },
+  { name: 'In Progress', value: 'inProgress' },
+  { name: 'This Year', value: 'thisYear' },
+  { name: 'Last Year', value: 'lastYear' },
 ];
