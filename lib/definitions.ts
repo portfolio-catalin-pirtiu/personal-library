@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
+import { booksFilterSelection } from './constants';
+
 export interface IUser {
   id: string;
   first_name: string;
@@ -46,13 +48,7 @@ export interface IOption {
   value: ISelection;
 }
 
-export type ISelection =
-  | 'all'
-  | 'read'
-  | 'notRead'
-  | 'inProgress'
-  | 'thisYear'
-  | 'lastYear';
+export type ISelection = (typeof booksFilterSelection)[number];
 
 export interface ISelect {
   options: IOption[];
