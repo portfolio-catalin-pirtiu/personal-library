@@ -1,26 +1,39 @@
+import { useState } from 'react';
 import useFetchBooks from '../../lib/useFetchBooks';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
 import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
-import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
+import {
+  IUpdateBookReadingStatusDatabase,
+  ISelection,
+  IDbBook,
+} from '../../lib/definitions';
+import Select from '../../components/books/Select';
+import { filter } from '../../lib/filter';
+import { options } from '../../lib/filter';
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
 `;
 
+const BooksContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
-  
+  const [select, setSelect] = useState<ISelection>('all');
+
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
       if (book.book_id === updatedBook.book_id) {
@@ -156,32 +169,36 @@ export default function Books() {
         toast.error('Something went wrong when updating book rating.');
     }
   }
+  const filteredBooks = books.filter(filter[select]);
 
   return (
     <Wrapper>
-      {books.map((book) => (
-        <Book
-          key={book.book_id}
-          book_id={book.book_id}
-          author_id={book.author_id}
-          title={book.title}
-          first_name={book.first_name}
-          last_name={book.last_name}
-          edition={book.edition}
-          publisher={book.publisher}
-          notes={book.notes}
-          in_progress={book.in_progress}
-          read={book.read}
-          rating={book.rating}
-          start_reading={book.start_reading}
-          stop_reading={book.stop_reading}
-          handleUpdateBooks={handleUpdateBooks}
-          handleDeleteBook={handleDeleteBook}
-          handleStartReading={handleStartReading}
-          handleStopReading={handleStopReading}
-          handleUpdateRating={handleUpdateRating}
-        />
-      ))}
+      <Select options={options} handleChange={setSelect} />
+      <BooksContainer>
+        {filteredBooks.map((book) => (
+          <Book
+            key={book.book_id}
+            book_id={book.book_id}
+            author_id={book.author_id}
+            title={book.title}
+            first_name={book.first_name}
+            last_name={book.last_name}
+            edition={book.edition}
+            publisher={book.publisher}
+            notes={book.notes}
+            in_progress={book.in_progress}
+            read={book.read}
+            rating={book.rating}
+            start_reading={book.start_reading}
+            stop_reading={book.stop_reading}
+            handleUpdateBooks={handleUpdateBooks}
+            handleDeleteBook={handleDeleteBook}
+            handleStartReading={handleStartReading}
+            handleStopReading={handleStopReading}
+            handleUpdateRating={handleUpdateRating}
+          />
+        ))}
+      </BooksContainer>
     </Wrapper>
   );
 }
