@@ -34,7 +34,6 @@ export default function Layout({
   return (
     <Wrapper>
       <NavBar navbarItems={navbarItems} />
-      <h1>Layout</h1>
       <Analytics />
       {children}
     </Wrapper>
