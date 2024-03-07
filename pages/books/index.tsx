@@ -164,6 +164,8 @@ export default function Books() {
         },
         body: JSON.stringify(rating),
       });
+
+      if (!res.ok) throw Error;
     } catch (error) {
       if (error instanceof Error)
         toast.error('Something went wrong when updating book rating.');
