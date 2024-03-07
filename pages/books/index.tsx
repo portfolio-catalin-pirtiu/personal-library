@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import useFetchBooks from '../../lib/useFetchBooks';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { booksApiUrl, authorsApiUrl } from '../../lib/constants';
 import Book from '../../components/books/Book';
 import styled from 'styled-components';
-import { IDbBook } from '../../lib/definitions';
 import toast from 'react-hot-toast';
 import findAuthorDetails from '../../lib/findAuthorDetails';
 import updateBookReadingStatusDatabase from '../../lib/updateBookReadingStatusDatabase';
-import { IUpdateBookReadingStatusDatabase } from '../../lib/definitions';
+import { IUpdateBookReadingStatusDatabase, Selection, IDbBook } from '../../lib/definitions';
 import Select from '../../components/books/Select';
 import { filter } from '../../lib/filter';
 import { options } from '../../lib/filter';
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
+  const [select, setSelect] = useState<Selection>('all');
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
@@ -159,11 +160,12 @@ export default function Books() {
         toast.error('Something went wrong when updating book rating.');
     }
   }
+  const filteredBooks = books.filter(filter[select]);
 
   return (
     <Wrapper>
-      <Select options={options}/>
-      {books.map((book) => (
+      <Select options={options} handleChange={setSelect} />
+      {filteredBooks.map((book) => (
         <Book
           key={book.book_id}
           book_id={book.book_id}

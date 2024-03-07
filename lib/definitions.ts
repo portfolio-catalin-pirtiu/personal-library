@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 export interface IUser {
   id: string;
   first_name: string;
@@ -45,6 +46,16 @@ export interface IOption {
   value: string;
 }
 
+export type Selection =
+  | 'all'
+  | 'read'
+  | 'notRead'
+  | 'inProgress'
+  | 'thisYear'
+  | 'lastYear';
+
 export interface ISelect {
   options: IOption[];
+  handleChange: Dispatch<SetStateAction<Selection>>;
+  // filter: 'all' | 'read' | 'notRead' | 'inProgress' | 'thisYear' | 'lastYear'
 }
