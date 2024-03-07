@@ -15,9 +15,9 @@ export default function Select({ options = [], handleChange }: ISelect) {
   return (
     <Wrapper>
       <Selection
-        onChange={(event) => {
-          if (isOption(event.target.value)) {
-            handleChange(event.target.value);
+        onChange={({ target: { value } }) => {
+          if (isOption(value)) {
+            handleChange(value);
           }
         }}
       >
