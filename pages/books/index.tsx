@@ -13,6 +13,7 @@ import {
   IDbBook,
 } from '../../lib/definitions';
 import Select from '../../components/books/Select';
+import Search from '../../components/shared/Search';
 import { filter, options } from '../../lib/filter';
 
 const Wrapper = styled.div`
@@ -32,6 +33,7 @@ export default function Books() {
   const { books, setBooks } = useFetchBooks(booksApiUrl);
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [select, setSelect] = useState<ISelection>('all');
+  const [search, setSearch] = useState('');
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
@@ -175,6 +177,12 @@ export default function Books() {
 
   return (
     <Wrapper>
+      <Search
+        input={search}
+        setInput={setSearch}
+        label="Search Books"
+        placeholder="Search"
+      />
       <Select type={selectType} options={options} handleChange={setSelect} />
       <BooksContainer>
         {filteredBooks.map((book) => (
