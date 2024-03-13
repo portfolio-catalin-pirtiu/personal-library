@@ -22,7 +22,11 @@ export async function getBooks(search: string | null) {
   try {
     const { rows } = await sql<QueryResult<IBookWithAuthor>>`
     SELECT * FROM books
-    INNER JOIN authors ON books.author_id = authors.author_id;`;
+    INNER JOIN authors ON books.author_id = authors.author_id
+    WHERE
+    first_name ILIKE ('%' || ${search} || '%') OR
+    last_name ILIKE ('%' || ${search} || '%') OR
+    title ILIKE ('%' || ${search} || '%');`;
     return rows;
   } catch (error) {
     throw error;
