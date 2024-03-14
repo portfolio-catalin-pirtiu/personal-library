@@ -29,7 +29,7 @@ const Link = styled.div<{ $active: boolean }>`
   ${(props) =>
     props.$active &&
     css`
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid ${color.silver};
     `}
 `;
 
