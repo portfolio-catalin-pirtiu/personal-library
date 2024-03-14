@@ -18,9 +18,9 @@ const LinksContainer = styled.div`
   flex-wrap: wrap;
   gap: calc(1vw + 2lh);
   justify-content: flex-end;
+  align-items: flex-end;
   margin: 0;
-  padding: 2vmin;
-  padding-bottom: 0.2lh;
+  padding-bottom: 0.5lh;
   font-size: calc(0.7rem + 1vw);
 `;
 
