@@ -30,10 +30,14 @@ const BooksContainer = styled.div`
 `;
 
 export default function Books() {
-  const { books, setBooks } = useFetchBooks(booksApiUrl);
+  let url = booksApiUrl;
   const { authors } = useFetchAuthors(authorsApiUrl);
   const [select, setSelect] = useState<ISelection>('all');
   const [search, setSearch] = useState('');
+  if (search !== '') {
+    url = url + `?book-or-author=${search}`;
+  }
+  const { books, setBooks } = useFetchBooks(url);
 
   function handleUpdateBooks(updatedBook: IDbBook) {
     const updatedBooks = books.map((book) => {
