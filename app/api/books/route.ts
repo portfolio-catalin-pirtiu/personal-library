@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getBooks } from '../../../lib/fetchData';
 
 export async function GET(req: NextRequest) {
-  const search = '';
+  const search = req.nextUrl.searchParams.get('book-or-author');
 
   try {
     const books = await getBooks(search);
