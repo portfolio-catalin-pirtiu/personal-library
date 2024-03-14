@@ -41,11 +41,13 @@ interface INavBarItem {
 interface INavBar {
   navbarItems: INavBarItem[];
   logo?: StaticImageData | string;
+  logoAlt?: string;
 }
 
 export default function NavBar({
   navbarItems = [],
   logo = 'Your Logo Here',
+  logoAlt = 'untitled logo description'
 }: INavBar) {
   const pathname = usePathname();
 
@@ -55,7 +57,7 @@ export default function NavBar({
         <LinkWrapper href="/">
           <Image
             src={logo}
-            alt="logo"
+            alt={logoAlt}
             sizes="10vw"
             style={{ width: '100%', height: 'auto', transform: 'scale(1.2)' }}
           />

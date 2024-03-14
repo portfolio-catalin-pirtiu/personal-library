@@ -32,9 +32,12 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
+  const logoAltTxt = `open white book with golden stars 
+    and a golden feather on top of it 
+    on black background`;
   return (
     <Wrapper>
-      <NavBar navbarItems={navbarItems} logo={logo} />
+      <NavBar navbarItems={navbarItems} logo={logo} logoAlt={logoAltTxt} />
       <Analytics />
       {children}
     </Wrapper>
