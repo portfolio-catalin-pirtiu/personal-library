@@ -9,19 +9,19 @@ const Wrapper = styled.div`
 
 const navbarItems = [
   {
-    href: 'authors/new',
+    href: '/authors/new',
     linkName: 'Add New Author',
   },
   {
-    href: 'books/new',
+    href: '/books/new',
     linkName: 'Add New Book',
   },
   {
-    href: 'authors',
+    href: '/authors',
     linkName: 'Authors',
   },
   {
-    href: 'books',
+    href: '/books',
     linkName: 'Books',
   },
 ];

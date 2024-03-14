@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { usePathname } from 'next/navigation';
 import LinkWrapper from './LinkWrapper';
 import { color } from '../lib/color';
@@ -16,7 +16,6 @@ const LinksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: calc(1vw + 2lh);
-  // justify-items: center;
   justify-content: flex-end;
   margin: 0;
   padding: 2vmin;
@@ -25,6 +24,13 @@ const LinksContainer = styled.div`
 `;
 
 const LogoContainer = styled.div``;
+const Link = styled.div<{ $active: boolean }>`
+  ${(props) =>
+    props.$active &&
+    css`
+      border-bottom: 1px solid white;
+    `}
+`;
 
 interface INavBarItem {
   href: string;
@@ -50,9 +56,9 @@ export default function NavBar({
 
       <LinksContainer>
         {navbarItems.map((item) => (
-          <LinkWrapper href={`/${item.href}`} key={item.href}>
-            {item.linkName}
-          </LinkWrapper>
+          <Link $active={pathname === item.href} key={item.href}>
+            <LinkWrapper href={item.href}>{item.linkName}</LinkWrapper>
+          </Link>
         ))}
       </LinksContainer>
     </Wrapper>
