@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { usePathname } from 'next/navigation';
 import LinkWrapper from './LinkWrapper';
+import { color } from '../lib/color';
 
 const Wrapper = styled.div`
-  background-color: hsl(105, 100%, 35%);
+  background-color: ${color.black};
+  color: ${color.silver};
   padding: 1vmin 1 vmin;
 `;
 
