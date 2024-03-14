@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import { Analytics } from '@vercel/analytics/react';
+import logo from '../assets/logo-personal-library-transparent-background.png';
 
 const Wrapper = styled.div`
   height: 100vh,
@@ -9,19 +10,19 @@ const Wrapper = styled.div`
 
 const navbarItems = [
   {
-    href: 'authors/new',
+    href: '/authors/new',
     linkName: 'Add New Author',
   },
   {
-    href: 'books/new',
+    href: '/books/new',
     linkName: 'Add New Book',
   },
   {
-    href: 'authors',
+    href: '/authors',
     linkName: 'Authors',
   },
   {
-    href: 'books',
+    href: '/books',
     linkName: 'Books',
   },
 ];
@@ -31,9 +32,12 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
+  const logoAltTxt = `open white book with golden stars 
+    and a golden feather on top of it 
+    on black background`;
   return (
     <Wrapper>
-      <NavBar navbarItems={navbarItems} />
+      <NavBar navbarItems={navbarItems} logo={logo} logoAlt={logoAltTxt} />
       <Analytics />
       {children}
     </Wrapper>
