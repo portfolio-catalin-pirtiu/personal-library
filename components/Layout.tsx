@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import { Analytics } from '@vercel/analytics/react';
+import logo from '../assets/logo-personal-library-transparent-background.png';
 
 const Wrapper = styled.div`
   height: 100vh,
@@ -33,7 +34,7 @@ export default function Layout({
 }): React.ReactNode {
   return (
     <Wrapper>
-      <NavBar navbarItems={navbarItems} />
+      <NavBar navbarItems={navbarItems} logo={logo} />
       <Analytics />
       {children}
     </Wrapper>

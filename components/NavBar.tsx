@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { usePathname } from 'next/navigation';
 import LinkWrapper from './LinkWrapper';
 import { color } from '../lib/color';
+import Image, { StaticImageData } from 'next/image';
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ interface INavBarItem {
 
 interface INavBar {
   navbarItems: INavBarItem[];
-  logo?: React.ReactNode | string;
+  logo?: StaticImageData | string;
 }
 
 export default function NavBar({
@@ -51,7 +52,14 @@ export default function NavBar({
   return (
     <Wrapper>
       <LogoContainer>
-        <LinkWrapper href="/">{logo}</LinkWrapper>
+        <LinkWrapper href="/">
+          <Image
+            src={logo}
+            alt="logo"
+            sizes="10vw"
+            style={{ width: '100%', height: 'auto', transform: 'scale(1.2)' }}
+          />
+        </LinkWrapper>
       </LogoContainer>
 
       <LinksContainer>
