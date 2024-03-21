@@ -1,43 +1,13 @@
 import '../../styles/authors.new.module.css';
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-  FormikValues,
-  FormikErrors,
-} from 'formik';
+import { Formik, Form, FormikValues, FormikErrors } from 'formik';
 import styled from 'styled-components';
 import Button from '../../components/shared/Button';
 import InputGroup from '../../components/shared/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-import { color } from '../../lib/color';
 
 const StyledForm = styled(Form)``;
-
-const Label = styled.label`
-  margin-bottom: 0.3em;
-`;
-
-const Input = styled(Field)`
-  margin-bottom: 0.5em;
-  border-radius: 7px;
-  border: 0.15em solid ${color.silver};
-  padding: 0.5em;
-`;
-
-const ErrorMsg = styled(ErrorMessage)`
-  color: red;
-`;
-
-// const InputGroup = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 50%;
-// `;
-
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
 export default function NewAuthor() {
