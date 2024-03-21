@@ -1,3 +1,4 @@
+import '../../styles/authors.new.module.css';
 import {
   Formik,
   Form,
@@ -10,12 +11,18 @@ import styled from 'styled-components';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
+import { color } from '../../lib/color';
 
 const StyledForm = styled(Form)``;
 
 const Label = styled.label``;
 
-const Input = styled(Field)``;
+const Input = styled(Field)`
+  margin-bottom: 0.5em;
+  border-radius: 7px;
+  border: 0.15em solid ${color.silver};
+  padding: 0.5em;
+`;
 
 const ErrorMsg = styled(ErrorMessage)`
   color: red;
