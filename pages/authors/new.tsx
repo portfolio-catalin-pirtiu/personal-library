@@ -1,3 +1,4 @@
+import '../../styles/authors.new.module.css';
 import {
   Formik,
   Form,
@@ -10,18 +11,30 @@ import styled from 'styled-components';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
+import { color } from '../../lib/color';
 
 const StyledForm = styled(Form)``;
 
-const Label = styled.label``;
+const Label = styled.label`
+  margin-bottom: 0.3em;
+`;
 
-const Input = styled(Field)``;
+const Input = styled(Field)`
+  margin-bottom: 0.5em;
+  border-radius: 7px;
+  border: 0.15em solid ${color.silver};
+  padding: 0.5em;
+`;
 
 const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputGroup = styled.div``;
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
 
 const SubmitButton = styled.button<{ disabled: boolean }>`
   cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
@@ -71,27 +84,15 @@ export default function NewAuthor() {
         {({ isSubmitting }) => (
           <StyledForm>
             <InputGroup>
-              <Label htmlFor="first_name">
-                First Name
-                <Input
-                  type="input"
-                  name="first_name"
-                  autoComplete="given-name"
-                />
-              </Label>
+              <Label htmlFor="first_name">First Name</Label>
+              <Input type="input" name="first_name" autoComplete="given-name" />
 
               <ErrorMsg name="name" component="div" />
             </InputGroup>
 
             <InputGroup>
-              <Label htmlFor="last_name">
-                Last Name
-                <Input
-                  type="input"
-                  name="last_name"
-                  autoComplete="family-name"
-                />
-              </Label>
+              <Label htmlFor="last_name">Last Name</Label>
+              <Input type="input" name="last_name" autoComplete="family-name" />
 
               <ErrorMsg name="surname" component="div" />
             </InputGroup>

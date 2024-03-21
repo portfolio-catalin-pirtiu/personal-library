@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   weight: 100vw
 `;
 
+const Body = styled.div`
+  margin: 4em;
+`;
+
 const navbarItems = [
   {
     href: '/authors/new',
@@ -39,7 +43,7 @@ export default function Layout({
     <Wrapper>
       <NavBar navbarItems={navbarItems} logo={logo} logoAlt={logoAltTxt} />
       <Analytics />
-      {children}
+      <Body>{children}</Body>
     </Wrapper>
   );
 }
