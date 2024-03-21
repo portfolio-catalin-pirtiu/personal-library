@@ -51,7 +51,7 @@ export default function NewAuthor() {
           if (!values.last_name) errors.last_name = 'Required';
           return errors;
         }}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
 
           const newAuthor = new Author(values);
@@ -67,6 +67,7 @@ export default function NewAuthor() {
 
             if (req.ok) {
               toast.success(`${newAuthor.first_name} added successfully.`);
+              resetForm();
             } else {
               throw new Error();
             }
