@@ -9,6 +9,7 @@ import {
 } from 'formik';
 import styled from 'styled-components';
 import Button from '../../components/shared/Button';
+import InputGroup from '../../components/shared/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
@@ -31,11 +32,11 @@ const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-`;
+// const InputGroup = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 50%;
+// `;
 
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
@@ -80,19 +81,18 @@ export default function NewAuthor() {
       >
         {({ isSubmitting }) => (
           <StyledForm>
-            <InputGroup>
-              <Label htmlFor="first_name">First Name</Label>
-              <Input type="input" name="first_name" autoComplete="given-name" />
+            <InputGroup
+              label="First Name"
+              name="first_name"
+              autoComplete="given-name"
+            />
 
-              <ErrorMsg name="name" component="div" />
-            </InputGroup>
+            <InputGroup
+              label="Last Name"
+              name="last_name"
+              autoComplete="family-name"
+            />
 
-            <InputGroup>
-              <Label htmlFor="last_name">Last Name</Label>
-              <Input type="input" name="last_name" autoComplete="family-name" />
-
-              <ErrorMsg name="surname" component="div" />
-            </InputGroup>
             <Button
               type="submit"
               text="Add New Author"
