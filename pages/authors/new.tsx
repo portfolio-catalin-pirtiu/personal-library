@@ -28,7 +28,11 @@ const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputGroup = styled.div``;
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
 
 const SubmitButton = styled.button<{ disabled: boolean }>`
   cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
@@ -78,27 +82,15 @@ export default function NewAuthor() {
         {({ isSubmitting }) => (
           <StyledForm>
             <InputGroup>
-              <Label htmlFor="first_name">
-                First Name
-                <Input
-                  type="input"
-                  name="first_name"
-                  autoComplete="given-name"
-                />
-              </Label>
+              <Label htmlFor="first_name">First Name</Label>
+              <Input type="input" name="first_name" autoComplete="given-name" />
 
               <ErrorMsg name="name" component="div" />
             </InputGroup>
 
             <InputGroup>
-              <Label htmlFor="last_name">
-                Last Name
-                <Input
-                  type="input"
-                  name="last_name"
-                  autoComplete="family-name"
-                />
-              </Label>
+              <Label htmlFor="last_name">Last Name</Label>
+              <Input type="input" name="last_name" autoComplete="family-name" />
 
               <ErrorMsg name="surname" component="div" />
             </InputGroup>
