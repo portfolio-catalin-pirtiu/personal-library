@@ -15,7 +15,9 @@ import { color } from '../../lib/color';
 
 const StyledForm = styled(Form)``;
 
-const Label = styled.label``;
+const Label = styled.label`
+  margin-bottom: 0.3em;
+`;
 
 const Input = styled(Field)`
   margin-bottom: 0.5em;
