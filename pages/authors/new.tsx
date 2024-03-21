@@ -8,6 +8,7 @@ import {
   FormikErrors,
 } from 'formik';
 import styled from 'styled-components';
+import Button from '../../components/shared/Button';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
@@ -34,11 +35,6 @@ const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-`;
-
-const SubmitButton = styled.button<{ disabled: boolean }>`
-  cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
-  opacity: ${({ disabled }) => disabled && '0.5'};
 `;
 
 const initialValues: IAuthor = { first_name: '', last_name: '' };
@@ -96,10 +92,12 @@ export default function NewAuthor() {
 
               <ErrorMsg name="surname" component="div" />
             </InputGroup>
-
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              Add New Author
-            </SubmitButton>
+            <Button
+              type="submit"
+              text="Add New Author"
+              onClick={() => {}}
+              disabled={isSubmitting}
+            ></Button>
           </StyledForm>
         )}
       </Formik>
