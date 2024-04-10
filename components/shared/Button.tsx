@@ -14,14 +14,11 @@ const StyledButton = styled.button<{
   border-radius: 15px;
   padding: 0.6em 1em;
   border: none;
-  font-weight: bold;
-  // color: white;
   ${(props) =>
     props.$primary &&
     css`
       background: ${props.$primaryColor};
       color: white;
-      // color: black;
     `}
 
   ${(props) =>
@@ -74,7 +71,7 @@ export default function Button({
   secondary = false,
   warning = false,
   danger = false,
-  primaryColor = '#4db8ff',
+  primaryColor = '#0d99ff',
   secondaryColor = '#4db8ff',
   warningColor = '#ffa500',
   dangerColor = '#ff0000',
