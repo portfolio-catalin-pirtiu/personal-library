@@ -11,14 +11,17 @@ const StyledButton = styled.button<{
   $warningColor?: string;
   $dangerColor?: string;
 }>`
-  border-radius: 3px;
-  padding: 0.25em 1em;
+  border-radius: 15px;
+  padding: 0.6em 1em;
   border: none;
+  font-weight: bold;
+  // color: white;
   ${(props) =>
     props.$primary &&
     css`
       background: ${props.$primaryColor};
-      color: black;
+      color: white;
+      // color: black;
     `}
 
   ${(props) =>
