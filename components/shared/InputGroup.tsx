@@ -5,7 +5,7 @@ import { color } from '../../lib/color';
 const InputAndLabel = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  min-width: 60%;
 `;
 
 const Label = styled.label`

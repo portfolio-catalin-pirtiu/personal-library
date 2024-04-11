@@ -1,4 +1,3 @@
-import '../../styles/authors.new.module.css';
 import { Formik, Form, FormikValues, FormikErrors } from 'formik';
 import styled from 'styled-components';
 import Button from '../../components/shared/Button';
@@ -7,7 +6,13 @@ import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
 
-const StyledForm = styled(Form)``;
+const StyledForm = styled(Form)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
 export default function NewAuthor() {

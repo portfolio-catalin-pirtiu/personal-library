@@ -47,7 +47,7 @@ interface INavBar {
 export default function NavBar({
   navbarItems = [],
   logo = 'Your Logo Here',
-  logoAlt = 'untitled logo description'
+  logoAlt = 'untitled logo description',
 }: INavBar) {
   const pathname = usePathname();
 
