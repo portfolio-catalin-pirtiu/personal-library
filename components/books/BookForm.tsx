@@ -51,7 +51,7 @@ interface IBookForm {
   url: string;
   method: 'POST' | 'PUT';
   handleIsEditing?: () => void;
-  handleUpdateBooks: (updatedBook: IDbBook) => void;
+  handleUpdateBooks?: (updatedBook: IDbBook) => void;
 }
 
 export default function BookForm({
