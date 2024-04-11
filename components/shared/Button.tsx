@@ -15,7 +15,7 @@ const StyledButton = styled.button<{
   padding: 0.6em 1em;
   border: none;
   &:hover {
-    box-shadow: 0 0 0.5rem hsl(204, 100%, 60%);
+    box-shadow: 0 0 0.5rem ${(props) => props.$primaryColor};
   }
   ${(props) =>
     props.$primary &&
