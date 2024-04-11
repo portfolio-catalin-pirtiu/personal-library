@@ -26,8 +26,11 @@ const Text = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem;
-  background: ${colors.lightBlue};
+  background-color: ${colors.lightBlue};
   border-radius: 15px;
+  box-shadow:
+    inset 60px 0 120px ${colors.lightBlue},
+    inset -60px -50px 120px ${colors.lightGreen};
 `;
 
 const StyledForm = styled(Form)`
