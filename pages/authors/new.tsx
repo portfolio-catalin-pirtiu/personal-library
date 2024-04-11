@@ -1,10 +1,34 @@
 import { Formik, Form, FormikValues, FormikErrors } from 'formik';
+import Image from 'next/image';
 import styled from 'styled-components';
 import Button from '../../components/shared/Button';
 import InputGroup from '../../components/shared/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
+import workingRobotImage from '../../assets/add-new-author-page-image.png';
+import { colors } from '../../lib/colors';
+
+const FormWrapper = styled.div`
+  display: flex;
+  align-items: start;
+`;
+const ImageAndText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+const StyledImage = styled(Image)`
+  border-radius: 15px;
+`;
+const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: ${colors.lightBlue};
+  border-radius: 15px;
+`;
 
 const StyledForm = styled(Form)`
   width: 100%;
@@ -13,11 +37,25 @@ const StyledForm = styled(Form)`
   justify-content: center;
   align-items: center;
 `;
+
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
 export default function NewAuthor() {
   return (
-    <>
+    <FormWrapper>
+      <ImageAndText>
+        <StyledImage
+          alt="white robot with blue googles working at a drawing desk"
+          src={workingRobotImage}
+          sizes="600vw"
+          style={{ width: '100%', height: 'auto' }}
+        />
+        <Text>
+          <p>Ready to introduce your authors? </p>
+          <p>{`Just drop in their first and last names, and we're good to go!`}</p>
+          <p>{`Let's get those brilliant minds acknowledged.`}</p>
+        </Text>
+      </ImageAndText>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -77,6 +115,6 @@ export default function NewAuthor() {
           </StyledForm>
         )}
       </Formik>
-    </>
+    </FormWrapper>
   );
 }
