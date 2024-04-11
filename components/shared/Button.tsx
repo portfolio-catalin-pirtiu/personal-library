@@ -14,6 +14,9 @@ const StyledButton = styled.button<{
   border-radius: 15px;
   padding: 0.6em 1em;
   border: none;
+  &:hover {
+    box-shadow: 0 0 0.5rem hsl(204, 100%, 60%);
+  }
   ${(props) =>
     props.$primary &&
     css`
