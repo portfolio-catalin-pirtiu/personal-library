@@ -173,7 +173,7 @@ export default function BookForm({
               </Label>
               <Select>
                 <Input name="author_id" component="select">
-                  <Option value="">--Select Author--</Option>
+                  <Option value="">Select Author</Option>
                   {authors.map((author) => (
                     <Option
                       value={author.author_id}
