@@ -1,15 +1,17 @@
-import { Formik, Form, FormikValues, FormikErrors } from 'formik';
-import Image from 'next/image';
-import styled from 'styled-components';
+import { Formik, FormikValues, FormikErrors } from 'formik';
 import Button from '../../components/shared/Button';
 import InputGroup from '../../components/shared/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
 import workingRobotImage from '../../assets/add-new-author-page-image.png';
-import { colors } from '../../lib/colors';
-
-
+import {
+  FormWrapper,
+  ImageAndText,
+  StyledImage,
+  Text,
+  StyledForm,
+} from '../../components/shared/FormComponents';
 
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
