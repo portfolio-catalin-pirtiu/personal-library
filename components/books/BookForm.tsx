@@ -22,6 +22,7 @@ import {
   StyledForm,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
+import bookRobot from '../../assets/add-new-book-page-image.png';
 
 const Label = styled.label``;
 
@@ -69,6 +70,22 @@ export default function BookForm({
   const totalStars = 5;
   return (
     <FormWrapper>
+      <ImageAndText>
+        <StyledImage
+          alt="white robot with blue googles holding books in his hands and surrounded by 2 stacks of books on each side"
+          src={bookRobot}
+          sizes="600vW"
+          style={{ width: '100%', height: 'auto' }}
+        />
+        <Text>
+          <p>Hey bookworm!</p>
+          <p>Ready to expand your literary universe?</p>
+          <p>{`It's time to showcase your favourite reads!`}</p>
+          <p>Add your books one by one and watch your library grow.</p>
+          <p>{`Let's build something extraordinary together!`}</p>
+          <p>{`See you among the shelves!`}</p>
+        </Text>
+      </ImageAndText>
       <Formik
         initialValues={initialValues}
         validate={(values) => {

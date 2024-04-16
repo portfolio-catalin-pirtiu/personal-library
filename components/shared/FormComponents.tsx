@@ -6,6 +6,7 @@ import { colors } from '../../lib/colors';
 export const FormWrapper = styled.div`
   display: flex;
   align-items: start;
+  gap: 1em;
 `;
 
 export const ImageAndText = styled.div`
