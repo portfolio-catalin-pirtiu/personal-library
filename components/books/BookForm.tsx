@@ -1,6 +1,5 @@
 import {
   Formik,
-  Form,
   Field,
   ErrorMessage,
   FormikValues,
@@ -15,13 +14,14 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
-
-const FormWrapper = styled.div`
-  display: flex;
-  align-items: start;
-`;
-
-const StyledForm = styled(Form)``;
+import {
+  FormWrapper,
+  ImageAndText,
+  StyledImage,
+  Text,
+  StyledForm,
+} from '../shared/FormComponents';
+import Button from '../shared/Button';
 
 const Label = styled.label``;
 
@@ -32,11 +32,6 @@ const ErrorMsg = styled(ErrorMessage)`
 `;
 
 const InputWrapper = styled.div``;
-
-const SubmitButton = styled.button<{ disabled: boolean }>`
-  cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
-  opacity: ${({ disabled }) => disabled && '0.5'};
-`;
 
 const defaultInitialValues: IDbBook = {
   book_id: '',
@@ -151,9 +146,12 @@ export default function BookForm({
 
             <InputGroup label="Notes" name="notes" textarea />
 
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              {method === 'PUT' ? 'Save' : 'Add New Author'}
-            </SubmitButton>
+            <Button
+              type="submit"
+              text={method === 'PUT' ? 'Save' : 'Add New Book'}
+              onClick={() => {}}
+              disabled={isSubmitting}
+            ></Button>
           </StyledForm>
         )}
       </Formik>
