@@ -49,7 +49,7 @@ export default function InputGroup({
         autoComplete={autoComplete}
         component={textarea ? 'textarea' : ''}
       />
-      <ErrorMsg name="name" component="div" />
+      <ErrorMsg name={name} component="div" />
     </InputAndLabel>
   );
 }
