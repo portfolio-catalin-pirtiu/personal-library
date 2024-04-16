@@ -36,6 +36,7 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 60%;
+  gap: 0.5rem;
 `;
 
 const defaultInitialValues: IDbBook = {
