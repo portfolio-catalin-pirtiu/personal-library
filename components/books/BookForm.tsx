@@ -39,7 +39,6 @@ const Input = styled(Field)`
   cursor: inherit;
   line-height: inherit;
   outline: none;
-  border: 2px solid green;
 `;
 
 const ErrorMsg = styled(ErrorMessage)`
@@ -49,31 +48,27 @@ const ErrorMsg = styled(ErrorMessage)`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 60%;
+  width: 100%;
   gap: 0.5rem;
 `;
 
 const Select = styled.div`
   display: grid;
-  width: 100%;
-  min-width: 10rem;
-  max-width: 20rem;
   border: 0.15em solid ${colors.gray};
   border-radius: 7px;
   padding: 0.25em 0.5em;
   cursor: pointer;
   line-height: 1.1;
-  grid-template-areas: 'a';
+  grid-template-areas: 'select';
   align-items: center;
-  border: 2px solid red;
+  text-align: center;
   &:after {
-    border: 2px solid pink;
     content: '';
     width: 0.8em;
     height: 0.5em;
     background-color: black;
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    grid-area: a;
+    grid-area: select;
     justify-self: end;
   }
 `;

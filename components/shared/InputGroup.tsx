@@ -6,7 +6,7 @@ import { colors } from '../../lib/colors';
 const InputAndLabel = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 60%;
+  width: 100%;
 `;
 
 const Label = styled.label`

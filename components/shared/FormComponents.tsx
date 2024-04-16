@@ -5,6 +5,7 @@ import { colors } from '../../lib/colors';
 
 export const FormWrapper = styled.div`
   display: flex;
+  justify-content: center;
   align-items: start;
   gap: 1em;
 `;
@@ -13,6 +14,8 @@ export const ImageAndText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  max-width: 20em;
 `;
 
 export const StyledImage = styled(Image)`
@@ -32,10 +35,11 @@ export const Text = styled.div`
 `;
 
 export const StyledForm = styled(Form)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+width: 100%;
+max-width: 20em;
 `;
