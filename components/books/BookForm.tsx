@@ -16,6 +16,11 @@ import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
 
+const FormWrapper = styled.div`
+  display: flex;
+  align-items: start;
+`;
+
 const StyledForm = styled(Form)``;
 
 const Label = styled.label``;
@@ -68,7 +73,7 @@ export default function BookForm({
   );
   const totalStars = 5;
   return (
-    <>
+    <FormWrapper>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -152,6 +157,6 @@ export default function BookForm({
           </StyledForm>
         )}
       </Formik>
-    </>
+    </FormWrapper>
   );
 }

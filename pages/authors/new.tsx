@@ -9,37 +9,7 @@ import toast from 'react-hot-toast';
 import workingRobotImage from '../../assets/add-new-author-page-image.png';
 import { colors } from '../../lib/colors';
 
-const FormWrapper = styled.div`
-  display: flex;
-  align-items: start;
-`;
-const ImageAndText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-const StyledImage = styled(Image)`
-  border-radius: 15px;
-`;
-const Text = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0.5rem;
-  background-color: ${colors.lightBlue};
-  border-radius: 15px;
-  box-shadow:
-    inset 60px 0 120px ${colors.lightBlue},
-    inset -60px -50px 120px ${colors.lightGreen};
-`;
 
-const StyledForm = styled(Form)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
