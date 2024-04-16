@@ -73,12 +73,14 @@ export default function NewAuthor() {
               label="First Name"
               name="first_name"
               autoComplete="given-name"
+              required
             />
 
             <InputGroup
               label="Last Name"
               name="last_name"
               autoComplete="family-name"
+              required
             />
 
             <Button

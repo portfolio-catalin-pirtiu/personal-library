@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
 import { color } from '../../lib/color';
 import { colors } from '../../lib/colors';
+import { RequiredField } from './FormComponents';
 
 const InputAndLabel = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ interface IInputGroup {
   name: string;
   autoComplete?: string;
   textarea?: boolean;
+  required?: boolean;
 }
 
 export default function InputGroup({
@@ -40,10 +42,14 @@ export default function InputGroup({
   name = '',
   autoComplete = '',
   textarea = false,
+  required = false,
 }: IInputGroup) {
   return (
     <InputAndLabel>
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name}>
+        {label}
+        {required ? <RequiredField> ✳︎</RequiredField> : null}
+      </Label>
       <Input
         name={name}
         autoComplete={autoComplete}

@@ -20,6 +20,7 @@ import {
   StyledImage,
   Text,
   StyledForm,
+  RequiredField,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
 import bookRobot from '../../assets/add-new-book-page-image.png';
@@ -166,7 +167,10 @@ export default function BookForm({
         {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
             <InputWrapper>
-              <Label htmlFor="author_id">Author</Label>
+              <Label htmlFor="author_id">
+                Author
+                <RequiredField> ✳︎</RequiredField>
+              </Label>
               <Select>
                 <Input name="author_id" component="select">
                   <Option value="">--Select Author--</Option>
@@ -181,7 +185,7 @@ export default function BookForm({
               <ErrorMsg name="author_id" component="div" />
             </InputWrapper>
 
-            <InputGroup label="Title" name="title" />
+            <InputGroup label="Title" name="title" required />
 
             <InputWrapper>
               <Label htmlFor="rating">

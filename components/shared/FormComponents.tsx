@@ -35,11 +35,15 @@ export const Text = styled.div`
 `;
 
 export const StyledForm = styled(Form)`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
-width: 100%;
-max-width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 20em;
+`;
+
+export const RequiredField = styled.span`
+  color: red;
 `;
