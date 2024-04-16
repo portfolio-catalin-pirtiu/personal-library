@@ -23,10 +23,24 @@ import {
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
 import bookRobot from '../../assets/add-new-book-page-image.png';
+import { colors } from '../../lib/colors';
 
 const Label = styled.label``;
 
-const Input = styled(Field)``;
+const Input = styled(Field)`
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  border: 2px solid green;
+`;
 
 const ErrorMsg = styled(ErrorMessage)`
   color: red;
@@ -38,6 +52,32 @@ const InputWrapper = styled.div`
   min-width: 60%;
   gap: 0.5rem;
 `;
+
+const Select = styled.div`
+  display: grid;
+  width: 100%;
+  min-width: 10rem;
+  max-width: 20rem;
+  border: 0.15em solid ${colors.gray};
+  border-radius: 7px;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  line-height: 1.1;
+  grid-template-areas: 'a';
+  align-items: center;
+  border: 2px solid red;
+  &:after {
+    border: 2px solid pink;
+    content: '';
+    width: 0.8em;
+    height: 0.5em;
+    background-color: black;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    grid-area: a;
+    justify-self: end;
+  }
+`;
+const Option = styled.option``;
 
 const defaultInitialValues: IDbBook = {
   book_id: '',
@@ -132,16 +172,17 @@ export default function BookForm({
           <StyledForm>
             <InputWrapper>
               <Label htmlFor="author_id">Author</Label>
-
-              <Input name="author_id" component="select">
-                <option value="">--Select Author--</option>
-                {authors.map((author) => (
-                  <option
-                    value={author.author_id}
-                    key={author.author_id}
-                  >{`${author.first_name} ${author.last_name}`}</option>
-                ))}
-              </Input>
+              <Select>
+                <Input name="author_id" component="select">
+                  <Option value="">--Select Author--</Option>
+                  {authors.map((author) => (
+                    <Option
+                      value={author.author_id}
+                      key={author.author_id}
+                    >{`${author.first_name} ${author.last_name}`}</Option>
+                  ))}
+                </Input>
+              </Select>
               <ErrorMsg name="author_id" component="div" />
             </InputWrapper>
 
