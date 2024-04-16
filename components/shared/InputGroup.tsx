@@ -31,18 +31,24 @@ const ErrorMsg = styled(ErrorMessage)`
 interface IInputGroup {
   label: string;
   name: string;
-  autoComplete: string;
+  autoComplete?: string;
+  textarea?: boolean;
 }
 
 export default function InputGroup({
   label = '',
   name = '',
   autoComplete = '',
+  textarea = false,
 }: IInputGroup) {
   return (
     <InputAndLabel>
       <Label htmlFor={name}>{label}</Label>
-      <Input type="input" name={name} autoComplete={autoComplete} />
+      <Input
+        name={name}
+        autoComplete={autoComplete}
+        component={textarea ? 'textarea' : ''}
+      />
       <ErrorMsg name="name" component="div" />
     </InputAndLabel>
   );

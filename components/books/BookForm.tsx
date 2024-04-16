@@ -8,6 +8,7 @@ import {
 } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
+import InputGroup from '../shared/InputGroup';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
@@ -25,7 +26,7 @@ const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputGroup = styled.div``;
+const InputWrapper = styled.div``;
 
 const SubmitButton = styled.button<{ disabled: boolean }>`
   cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
@@ -107,7 +108,7 @@ export default function BookForm({
       >
         {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
-            <InputGroup>
+            <InputWrapper>
               <Label htmlFor="author_id">
                 Author
                 <Input name="author_id" component="select">
@@ -122,18 +123,11 @@ export default function BookForm({
               </Label>
 
               <ErrorMsg name="author_id" component="div" />
-            </InputGroup>
+            </InputWrapper>
 
-            <InputGroup>
-              <Label htmlFor="title">
-                Title
-                <Input type="input" name="title" />
-              </Label>
+            <InputGroup label="Title" name="title" />
 
-              <ErrorMsg name="title" component="div" />
-            </InputGroup>
-
-            <InputGroup>
+            <InputWrapper>
               <Label htmlFor="rating">
                 Rating
                 <Input type="hidden" name="rating" value={stars} />
@@ -144,28 +138,13 @@ export default function BookForm({
                   onChangeRatingStars={setStars}
                 />
               </Label>
-            </InputGroup>
+            </InputWrapper>
 
-            <InputGroup>
-              <Label htmlFor="publisher">
-                Publisher
-                <Input type="input" name="publisher" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Publisher" name="publisher" />
 
-            <InputGroup>
-              <Label htmlFor="edition">
-                Edition
-                <Input type="input" name="edition" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Edition" name="edition" />
 
-            <InputGroup>
-              <Label htmlFor="notes">
-                Notes
-                <Input type="input" name="notes" component="textarea" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Notes" name="notes" textarea />
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               {method === 'PUT' ? 'Save' : 'Add New Author'}
