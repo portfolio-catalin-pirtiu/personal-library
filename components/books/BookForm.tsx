@@ -32,7 +32,11 @@ const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 60%;
+`;
 
 const defaultInitialValues: IDbBook = {
   book_id: '',
@@ -126,19 +130,17 @@ export default function BookForm({
         {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
             <InputWrapper>
-              <Label htmlFor="author_id">
-                Author
-                <Input name="author_id" component="select">
-                  <option value="">--Select Author--</option>
-                  {authors.map((author) => (
-                    <option
-                      value={author.author_id}
-                      key={author.author_id}
-                    >{`${author.first_name} ${author.last_name}`}</option>
-                  ))}
-                </Input>
-              </Label>
+              <Label htmlFor="author_id">Author</Label>
 
+              <Input name="author_id" component="select">
+                <option value="">--Select Author--</option>
+                {authors.map((author) => (
+                  <option
+                    value={author.author_id}
+                    key={author.author_id}
+                  >{`${author.first_name} ${author.last_name}`}</option>
+                ))}
+              </Input>
               <ErrorMsg name="author_id" component="div" />
             </InputWrapper>
 
