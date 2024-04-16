@@ -1,5 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import { colors } from '../lib/colors';
 
 interface IRatingStars {
   totalStars?: number;
@@ -28,7 +29,8 @@ function Star({
   return (
     <FaStar
       cursor="pointer"
-      color={selected ? 'green' : 'grey'}
+      size='19'
+      color={selected ? `${colors.blue}` : 'grey'}
       onClick={() => {
         handleChangeRatingValue('rating', index);
         handleChangeRatingStars(index);
