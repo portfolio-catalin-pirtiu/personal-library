@@ -1,38 +1,36 @@
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-  FormikValues,
-  FormikErrors,
-} from 'formik';
-import styled from 'styled-components';
+import { Formik, FormikValues, FormikErrors } from 'formik';
+import Button from '../../components/shared/Button';
+import InputGroup from '../../components/shared/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-
-const StyledForm = styled(Form)``;
-
-const Label = styled.label``;
-
-const Input = styled(Field)``;
-
-const ErrorMsg = styled(ErrorMessage)`
-  color: red;
-`;
-
-const InputGroup = styled.div``;
-
-const SubmitButton = styled.button<{ disabled: boolean }>`
-  cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
-  opacity: ${({ disabled }) => disabled && '0.5'};
-`;
+import workingRobotImage from '../../assets/add-new-author-page-image.png';
+import {
+  FormWrapper,
+  ImageAndText,
+  StyledImage,
+  Text,
+  StyledForm,
+} from '../../components/shared/FormComponents';
 
 const initialValues: IAuthor = { first_name: '', last_name: '' };
 
 export default function NewAuthor() {
   return (
-    <>
+    <FormWrapper>
+      <ImageAndText>
+        <StyledImage
+          alt="white robot with blue googles working at a drawing desk"
+          src={workingRobotImage}
+          sizes="600vw"
+          style={{ width: '100%', height: 'auto' }}
+        />
+        <Text>
+          <p>Ready to introduce your authors? </p>
+          <p>{`Just drop in their first and last names, and we're good to go!`}</p>
+          <p>{`Let's get those brilliant minds acknowledged.`}</p>
+        </Text>
+      </ImageAndText>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -42,7 +40,7 @@ export default function NewAuthor() {
           if (!values.last_name) errors.last_name = 'Required';
           return errors;
         }}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
 
           const newAuthor = new Author(values);
@@ -58,6 +56,7 @@ export default function NewAuthor() {
 
             if (req.ok) {
               toast.success(`${newAuthor.first_name} added successfully.`);
+              resetForm();
             } else {
               throw new Error();
             }
@@ -70,38 +69,29 @@ export default function NewAuthor() {
       >
         {({ isSubmitting }) => (
           <StyledForm>
-            <InputGroup>
-              <Label htmlFor="first_name">
-                First Name
-                <Input
-                  type="input"
-                  name="first_name"
-                  autoComplete="given-name"
-                />
-              </Label>
+            <InputGroup
+              label="First Name"
+              name="first_name"
+              autoComplete="given-name"
+              required
+            />
 
-              <ErrorMsg name="name" component="div" />
-            </InputGroup>
+            <InputGroup
+              label="Last Name"
+              name="last_name"
+              autoComplete="family-name"
+              required
+            />
 
-            <InputGroup>
-              <Label htmlFor="last_name">
-                Last Name
-                <Input
-                  type="input"
-                  name="last_name"
-                  autoComplete="family-name"
-                />
-              </Label>
-
-              <ErrorMsg name="surname" component="div" />
-            </InputGroup>
-
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              Add New Author
-            </SubmitButton>
+            <Button
+              type="submit"
+              text="Add New Author"
+              onClick={() => {}}
+              disabled={isSubmitting}
+            ></Button>
           </StyledForm>
         )}
       </Formik>
-    </>
+    </FormWrapper>
   );
 }

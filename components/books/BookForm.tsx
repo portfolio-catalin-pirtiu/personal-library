@@ -1,6 +1,5 @@
 import {
   Formik,
-  Form,
   Field,
   ErrorMessage,
   FormikValues,
@@ -8,29 +7,73 @@ import {
 } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
+import InputGroup from '../shared/InputGroup';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import { authorsApiUrl } from '../../lib/constants';
 import RatingStars from '../../components/RatingStars';
 import { useState } from 'react';
-
-const StyledForm = styled(Form)``;
+import {
+  FormWrapper,
+  ImageAndText,
+  StyledImage,
+  Text,
+  StyledForm,
+  RequiredField,
+} from '../shared/FormComponents';
+import Button from '../shared/Button';
+import bookRobot from '../../assets/add-new-book-page-image.png';
+import { colors } from '../../lib/colors';
 
 const Label = styled.label``;
 
-const Input = styled(Field)``;
+const Input = styled(Field)`
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+`;
 
 const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-const InputGroup = styled.div``;
-
-const SubmitButton = styled.button<{ disabled: boolean }>`
-  cursor: ${({ disabled }) => (disabled ? 'wait' : 'pointer')};
-  opacity: ${({ disabled }) => disabled && '0.5'};
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
 `;
+
+const Select = styled.div`
+  display: grid;
+  border: 0.15em solid ${colors.gray};
+  border-radius: 7px;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  line-height: 1.1;
+  grid-template-areas: 'select';
+  align-items: center;
+  text-align: center;
+  &:after {
+    content: '';
+    width: 0.8em;
+    height: 0.5em;
+    background-color: black;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    grid-area: select;
+    justify-self: end;
+  }
+`;
+const Option = styled.option``;
 
 const defaultInitialValues: IDbBook = {
   book_id: '',
@@ -51,7 +94,7 @@ interface IBookForm {
   url: string;
   method: 'POST' | 'PUT';
   handleIsEditing?: () => void;
-  handleUpdateBooks: (updatedBook: IDbBook) => void;
+  handleUpdateBooks?: (updatedBook: IDbBook) => void;
 }
 
 export default function BookForm({
@@ -67,7 +110,23 @@ export default function BookForm({
   );
   const totalStars = 5;
   return (
-    <>
+    <FormWrapper>
+      <ImageAndText>
+        <StyledImage
+          alt="white robot with blue googles holding books in his hands and surrounded by 2 stacks of books on each side"
+          src={bookRobot}
+          sizes="600vW"
+          style={{ width: '100%', height: 'auto' }}
+        />
+        <Text>
+          <p>Hey bookworm!</p>
+          <p>Ready to expand your literary universe?</p>
+          <p>{`It's time to showcase your favourite reads!`}</p>
+          <p>Add your books one by one and watch your library grow.</p>
+          <p>{`Let's build something extraordinary together!`}</p>
+          <p>{`See you among the shelves!`}</p>
+        </Text>
+      </ImageAndText>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -107,33 +166,28 @@ export default function BookForm({
       >
         {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
-            <InputGroup>
+            <InputWrapper>
               <Label htmlFor="author_id">
                 Author
+                <RequiredField> ✳︎</RequiredField>
+              </Label>
+              <Select>
                 <Input name="author_id" component="select">
-                  <option value="">--Select Author--</option>
+                  <Option value="">Select Author</Option>
                   {authors.map((author) => (
-                    <option
+                    <Option
                       value={author.author_id}
                       key={author.author_id}
-                    >{`${author.first_name} ${author.last_name}`}</option>
+                    >{`${author.first_name} ${author.last_name}`}</Option>
                   ))}
                 </Input>
-              </Label>
-
+              </Select>
               <ErrorMsg name="author_id" component="div" />
-            </InputGroup>
+            </InputWrapper>
 
-            <InputGroup>
-              <Label htmlFor="title">
-                Title
-                <Input type="input" name="title" />
-              </Label>
+            <InputGroup label="Title" name="title" required />
 
-              <ErrorMsg name="title" component="div" />
-            </InputGroup>
-
-            <InputGroup>
+            <InputWrapper>
               <Label htmlFor="rating">
                 Rating
                 <Input type="hidden" name="rating" value={stars} />
@@ -144,35 +198,23 @@ export default function BookForm({
                   onChangeRatingStars={setStars}
                 />
               </Label>
-            </InputGroup>
+            </InputWrapper>
 
-            <InputGroup>
-              <Label htmlFor="publisher">
-                Publisher
-                <Input type="input" name="publisher" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Publisher" name="publisher" />
 
-            <InputGroup>
-              <Label htmlFor="edition">
-                Edition
-                <Input type="input" name="edition" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Edition" name="edition" />
 
-            <InputGroup>
-              <Label htmlFor="notes">
-                Notes
-                <Input type="input" name="notes" component="textarea" />
-              </Label>
-            </InputGroup>
+            <InputGroup label="Notes" name="notes" textarea />
 
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              {method === 'PUT' ? 'Save' : 'Add New Author'}
-            </SubmitButton>
+            <Button
+              type="submit"
+              text={method === 'PUT' ? 'Save' : 'Add New Book'}
+              onClick={() => {}}
+              disabled={isSubmitting}
+            ></Button>
           </StyledForm>
         )}
       </Formik>
-    </>
+    </FormWrapper>
   );
 }

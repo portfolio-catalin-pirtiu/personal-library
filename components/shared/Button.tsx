@@ -11,14 +11,17 @@ const StyledButton = styled.button<{
   $warningColor?: string;
   $dangerColor?: string;
 }>`
-  border-radius: 3px;
-  padding: 0.25em 1em;
+  border-radius: 15px;
+  padding: 0.6em 1em;
   border: none;
+  &:hover {
+    box-shadow: 0 0 0.5rem ${(props) => props.$primaryColor};
+  }
   ${(props) =>
     props.$primary &&
     css`
       background: ${props.$primaryColor};
-      color: black;
+      color: white;
     `}
 
   ${(props) =>
@@ -71,7 +74,7 @@ export default function Button({
   secondary = false,
   warning = false,
   danger = false,
-  primaryColor = '#4db8ff',
+  primaryColor = '#0d99ff',
   secondaryColor = '#4db8ff',
   warningColor = '#ffa500',
   dangerColor = '#ff0000',

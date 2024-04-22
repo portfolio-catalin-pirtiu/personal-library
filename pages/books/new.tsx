@@ -3,7 +3,7 @@ import BookForm from '../../components/books/BookForm';
 import { booksApiUrl } from '../../lib/constants';
 
 const initialValues: IDbBook = {
-  id: '',
+  book_id: '',
   author_id: '',
   title: '',
   read: false,

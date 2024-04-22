@@ -60,6 +60,7 @@ export default function NavBar({
             alt={logoAlt}
             sizes="10vw"
             style={{ width: '100%', height: 'auto', transform: 'scale(1.2)' }}
+            priority
           />
         </LinkWrapper>
       </LogoContainer>
