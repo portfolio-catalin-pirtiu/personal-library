@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Form } from 'formik';
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
 import { colors } from '../../lib/colors';
 
@@ -46,4 +46,18 @@ export const StyledForm = styled(Form)`
 
 export const RequiredField = styled.span`
   color: red;
+`;
+
+export const Input = styled(Field)`
+appearance: none;
+background-color: transparent;
+border: none;
+padding: 0 1em 0 0;
+margin: 0;
+width: 100%;
+font-family: inherit;
+font-size: inherit;
+cursor: inherit;
+line-height: inherit;
+outline: none;
 `;
