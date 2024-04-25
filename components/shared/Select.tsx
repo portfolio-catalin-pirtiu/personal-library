@@ -27,7 +27,16 @@ const Wrapper = styled.div`
 
 const Option = styled.option``;
 const SelectElement = styled.ul``;
-const OptionElement = styled.li``;
+const OptionElement = styled.li`
+  &:hover {
+    background-color: green;
+  }
+`;
+const SelectionWindow = styled.div``;
+const FilterPrompt = styled.div`
+  font-weight: bold;
+`;
+const FilterContent = styled.div``;
 
 interface ISelect<T> {
   defaultOption: string;
@@ -40,6 +49,7 @@ export default function Select({
 }: ISelect<IDbAuthor[] | AuthorFilterOption[]>) {
   let content: JSX.Element;
   const [selectOptionsVisibility, setSelectOptionsVisibility] = useState(false);
+  const [selection, setSelection] = useState('');
 
   function isAuthor(
     option: IDbAuthor | AuthorFilterOption
@@ -68,7 +78,10 @@ export default function Select({
   } else {
     content = (
       <SelectElement>
-        <OptionElement value="">{defaultOption}</OptionElement>
+        <SelectionWindow>
+          <FilterPrompt>{defaultOption}</FilterPrompt>
+          <FilterContent>{selection}</FilterContent>
+        </SelectionWindow>
         {selectOptionsVisibility &&
           options.map((option) => (
             <OptionElement
