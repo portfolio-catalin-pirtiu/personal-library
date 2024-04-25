@@ -85,6 +85,7 @@ export default function Select({
         {selectOptionsVisibility &&
           options.map((option) => (
             <OptionElement
+              onClick={() => setSelection(option)}
               value={option}
               key={option}
             >{`${option}`}</OptionElement>
