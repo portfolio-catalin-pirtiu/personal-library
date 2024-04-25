@@ -32,7 +32,9 @@ const OptionElement = styled.li`
     background-color: green;
   }
 `;
-const SelectionWindow = styled.div``;
+const SelectionWindow = styled.div`
+  display: flex;
+`;
 const FilterPrompt = styled.div`
   font-weight: bold;
 `;
