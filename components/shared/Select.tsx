@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../../lib/colors';
 import { Input } from './FormComponents';
 import { IDbAuthor, AuthorFilterOption } from '../../lib/definitions';
+import { capitalize } from '../../utils/capitalize';
 
 const Wrapper = styled.div`
   display: grid;
@@ -82,7 +83,7 @@ export default function Select({
       <SelectElement>
         <SelectionWindow>
           <FilterPrompt>{defaultOption}</FilterPrompt>
-          <FilterContent>{selection}</FilterContent>
+          <FilterContent>{capitalize(selection)}</FilterContent>
         </SelectionWindow>
         {selectOptionsVisibility &&
           options.map((option) => (
@@ -90,7 +91,7 @@ export default function Select({
               onClick={() => setSelection(option)}
               value={option}
               key={option}
-            >{`${option}`}</OptionElement>
+            >{`${capitalize(option)}`}</OptionElement>
           ))}
       </SelectElement>
     );
