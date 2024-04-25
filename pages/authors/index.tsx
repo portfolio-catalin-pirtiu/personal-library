@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
+import Select from '../../components/shared/Select';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
@@ -90,6 +91,10 @@ export default function Authors() {
         setInput={setSearchAuthor}
         label="Author"
         placeholder="Search"
+      />
+      <Select
+        defaultOption="Sort by:"
+        options={['newest', 'ascending', 'descending']}
       />
       <RenderAuthors
         authors={authors}

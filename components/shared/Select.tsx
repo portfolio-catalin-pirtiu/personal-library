@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../lib/colors';
 import { Input } from './FormComponents';
@@ -25,6 +26,8 @@ const Wrapper = styled.div`
 `;
 
 const Option = styled.option``;
+const SelectElement = styled.ul``;
+const OptionElement = styled.li``;
 
 interface ISelect<T> {
   defaultOption: string;
@@ -36,6 +39,7 @@ export default function Select({
   options,
 }: ISelect<IDbAuthor[] | AuthorFilterOption[]>) {
   let content: JSX.Element;
+  const [selectOptionsVisibility, setSelectOptionsVisibility] = useState(false);
 
   function isAuthor(
     option: IDbAuthor | AuthorFilterOption
@@ -43,35 +47,38 @@ export default function Select({
     return (option as IDbAuthor).author_id !== undefined;
   }
 
+  function toggleShowOptions() {
+    setSelectOptionsVisibility(!selectOptionsVisibility);
+  }
+
   const isAuthorArray = options.every(isAuthor);
 
   if (isAuthorArray) {
     content = (
-      <>
+      <Input name="author_id" component="select">
+        <Option value="">{defaultOption}</Option>
         {options.map((option) => (
           <Option
             value={option.author_id}
             key={option.author_id}
           >{`${option.first_name} ${option.last_name}`}</Option>
         ))}
-      </>
+      </Input>
     );
   } else {
     content = (
-      <>
-        {options.map((option) => (
-          <Option value={option} key={option}>{`${option}`}</Option>
-        ))}
-      </>
+      <SelectElement>
+        <OptionElement value="">{defaultOption}</OptionElement>
+        {selectOptionsVisibility &&
+          options.map((option) => (
+            <OptionElement
+              value={option}
+              key={option}
+            >{`${option}`}</OptionElement>
+          ))}
+      </SelectElement>
     );
   }
 
-  return (
-    <Wrapper>
-      <Input name="author_id" component="select">
-        <Option value="">{defaultOption}</Option>
-        {content}
-      </Input>
-    </Wrapper>
-  );
+  return <Wrapper onClick={toggleShowOptions}>{content}</Wrapper>;
 }
