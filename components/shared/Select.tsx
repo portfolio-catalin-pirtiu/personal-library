@@ -6,6 +6,7 @@ import { IDbAuthor, AuthorFilterOption } from '../../lib/definitions';
 import { capitalize } from '../../utils/capitalize';
 
 const Wrapper = styled.div`
+  display: grid;
   border: 0.15em solid ${colors.gray};
   border-radius: 7px;
   padding: 0.25em 0.5em;
