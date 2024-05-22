@@ -2,12 +2,17 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
+import Select from '../../components/shared/Select';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 2rem;
+`;
 
 export default function Authors() {
   let apiUrl = '/api/authors/';
@@ -80,12 +85,16 @@ export default function Authors() {
 
   return (
     <Wrapper>
-      <h1>Authors Page</h1>
+      <h1>All Authors</h1>
       <Search
         input={searchAuthor}
         setInput={setSearchAuthor}
         label="Author"
         placeholder="Search"
+      />
+      <Select
+        defaultOption="Sort by:"
+        options={['newest', 'ascending', 'descending']}
       />
       <RenderAuthors
         authors={authors}

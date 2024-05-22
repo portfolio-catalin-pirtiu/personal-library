@@ -55,3 +55,5 @@ export interface ISelect {
   options: IOption[];
   handleChange: Dispatch<SetStateAction<ISelection>>;
 }
+
+export type AuthorFilterOption = 'newest' | 'ascending' | 'descending';
