@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 export default function Authors() {
   let apiUrl = '/api/authors/';
   const [searchAuthor, setSearchAuthor] = useState('');
-  const [selection, setSelection] = useState<AuthorFilterOption>('newest');
+  const [selection, setSelection] = useState<AuthorFilterOption>('ascending');
 
   if (searchAuthor !== '') {
     apiUrl = apiUrl + `?author=${searchAuthor}`;
@@ -95,7 +95,7 @@ export default function Authors() {
       />
       <Select
         defaultOption="Sort by:"
-        options={['newest', 'ascending', 'descending']}
+        options={['ascending', 'descending']}
         selection={selection}
         setSelection={setSelection}
       />
