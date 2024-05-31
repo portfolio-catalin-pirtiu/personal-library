@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../lib/colors';
 import { AuthorFilterOption } from '../../lib/definitions';
@@ -42,14 +42,20 @@ const FilterContent = styled.div``;
 interface SelectProps {
   defaultOption: string;
   options: AuthorFilterOption[];
+  selection: AuthorFilterOption;
+  setSelection: Dispatch<SetStateAction<AuthorFilterOption>>;
 }
 
-export default function Select({ defaultOption, options }: SelectProps) {
-  const [selectOptionsVisibility, setSelectOptionsVisibility] = useState(false);
-  const [selection, setSelection] = useState('');
+export default function Select({
+  defaultOption,
+  options,
+  selection,
+  setSelection,
+}: SelectProps) {
+  const [show, setShow] = useState(false);
 
   function toggleShowOptions() {
-    setSelectOptionsVisibility(!selectOptionsVisibility);
+    setShow(!show);
   }
 
   return (
@@ -59,7 +65,7 @@ export default function Select({ defaultOption, options }: SelectProps) {
           <FilterPrompt>{defaultOption}</FilterPrompt>
           <FilterContent>{capitalize(selection)}</FilterContent>
         </SelectionWindow>
-        {selectOptionsVisibility &&
+        {show &&
           options.map((option) => (
             <OptionElement
               onClick={() => setSelection(option)}

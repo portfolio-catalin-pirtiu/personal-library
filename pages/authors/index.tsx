@@ -4,7 +4,7 @@ import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import Select from '../../components/shared/Select';
 import RenderAuthors from '../../components/authors/RenderAuthors';
-import { IDbAuthor } from '../../lib/definitions';
+import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
 
@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 export default function Authors() {
   let apiUrl = '/api/authors/';
   const [searchAuthor, setSearchAuthor] = useState('');
+  const [selection, setSelection] = useState<AuthorFilterOption>('newest');
 
   if (searchAuthor !== '') {
     apiUrl = apiUrl + `?author=${searchAuthor}`;
@@ -95,6 +96,8 @@ export default function Authors() {
       <Select
         defaultOption="Sort by:"
         options={['newest', 'ascending', 'descending']}
+        selection={selection}
+        setSelection={setSelection}
       />
       <RenderAuthors
         authors={authors}
