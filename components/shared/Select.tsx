@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../lib/colors';
-import { Input } from './FormComponents';
-import { IDbAuthor, AuthorFilterOption } from '../../lib/definitions';
+import { AuthorFilterOption } from '../../lib/definitions';
 import { capitalize } from '../../utils/capitalize';
 
 const Wrapper = styled.div`
@@ -26,7 +25,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Option = styled.option``;
 const SelectElement = styled.ul``;
 const OptionElement = styled.li`
   &:hover {
@@ -41,45 +39,21 @@ const FilterPrompt = styled.div`
 `;
 const FilterContent = styled.div``;
 
-interface ISelect<T> {
+interface SelectProps {
   defaultOption: string;
-  options: T;
+  options: AuthorFilterOption[];
 }
 
-export default function Select({
-  defaultOption,
-  options,
-}: ISelect<IDbAuthor[] | AuthorFilterOption[]>) {
-  let content: JSX.Element;
+export default function Select({ defaultOption, options }: SelectProps) {
   const [selectOptionsVisibility, setSelectOptionsVisibility] = useState(false);
   const [selection, setSelection] = useState('');
-
-  function isAuthor(
-    option: IDbAuthor | AuthorFilterOption
-  ): option is IDbAuthor {
-    return (option as IDbAuthor).author_id !== undefined;
-  }
 
   function toggleShowOptions() {
     setSelectOptionsVisibility(!selectOptionsVisibility);
   }
 
-  const isAuthorArray = options.every(isAuthor);
-
-  if (isAuthorArray) {
-    content = (
-      <Input name="author_id" component="select">
-        <Option value="">{defaultOption}</Option>
-        {options.map((option) => (
-          <Option
-            value={option.author_id}
-            key={option.author_id}
-          >{`${option.first_name} ${option.last_name}`}</Option>
-        ))}
-      </Input>
-    );
-  } else {
-    content = (
+  return (
+    <Wrapper onClick={toggleShowOptions}>
       <SelectElement>
         <SelectionWindow>
           <FilterPrompt>{defaultOption}</FilterPrompt>
@@ -94,8 +68,6 @@ export default function Select({
             >{`${capitalize(option)}`}</OptionElement>
           ))}
       </SelectElement>
-    );
-  }
-
-  return <Wrapper onClick={toggleShowOptions}>{content}</Wrapper>;
+    </Wrapper>
+  );
 }
