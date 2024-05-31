@@ -1,9 +1,4 @@
-import {
-  Formik,
-  ErrorMessage,
-  FormikValues,
-  FormikErrors,
-} from 'formik';
+import { Formik, ErrorMessage, FormikValues, FormikErrors } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
 import InputGroup from '../shared/InputGroup';
@@ -23,7 +18,7 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import Select from '../shared/Select';
+import Select from '../authors/Select';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 
 const Label = styled.label``;
