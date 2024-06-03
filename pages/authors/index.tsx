@@ -7,7 +7,7 @@ import RenderAuthors from '../../components/authors/RenderAuthors';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-import { sortAuthors } from '../../lib/filterAuthors';
+import { sortAuthors } from '../../lib/AuthorsSort/AuthorsSort';
 
 const Wrapper = styled.div`
   border: 2px solid black;
