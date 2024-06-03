@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
-import Select from '../../components/shared/Select';
+import Select from '../../components/authors/Select';
 import RenderAuthors from '../../components/authors/RenderAuthors';
-import { IDbAuthor } from '../../lib/definitions';
+import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
+import { sortAuthors } from '../../lib/filterAuthors';
 
 const Wrapper = styled.div`
   border: 2px solid black;
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
 export default function Authors() {
   let apiUrl = '/api/authors/';
   const [searchAuthor, setSearchAuthor] = useState('');
+  const [selection, setSelection] = useState<AuthorFilterOption>('ascending');
 
   if (searchAuthor !== '') {
     apiUrl = apiUrl + `?author=${searchAuthor}`;
@@ -83,6 +85,8 @@ export default function Authors() {
     }
   }
 
+  authors.sort(sortAuthors[selection]);
+
   return (
     <Wrapper>
       <h1>All Authors</h1>
@@ -94,7 +98,9 @@ export default function Authors() {
       />
       <Select
         defaultOption="Sort by:"
-        options={['newest', 'ascending', 'descending']}
+        options={['ascending', 'descending']}
+        selection={selection}
+        setSelection={setSelection}
       />
       <RenderAuthors
         authors={authors}

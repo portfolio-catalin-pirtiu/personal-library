@@ -56,4 +56,4 @@ export interface ISelect {
   handleChange: Dispatch<SetStateAction<ISelection>>;
 }
 
-export type AuthorFilterOption = 'newest' | 'ascending' | 'descending';
+export type AuthorFilterOption = 'ascending' | 'descending';

@@ -14,7 +14,7 @@ import {
 } from '../../lib/definitions';
 import Select from '../../components/books/Select';
 import Search from '../../components/shared/Search';
-import { filter, options } from '../../lib/filter';
+import { filter, options } from '../../lib/filterBooks';
 
 const Wrapper = styled.div`
   display: flex;
