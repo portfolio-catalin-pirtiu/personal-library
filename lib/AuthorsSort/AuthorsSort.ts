@@ -1,12 +1,6 @@
 import { IDbAuthor } from '../definitions';
 
 export class AuthorsSorter {
-  #authors: IDbAuthor[] = [];
-
-  constructor(authors: IDbAuthor[]) {
-    this.#authors = authors;
-  }
-
   ascending = (currAuthor: IDbAuthor, nextAuth: IDbAuthor) => {
     if (
       this.toLowerCase(currAuthor.first_name) <=

@@ -8,7 +8,7 @@ const authors: IDbAuthor[] = [
 ];
 
 test('if the authors are sorted ascending on first name', () => {
-  const authorsSorter = new AuthorsSorter(authors);
+  const authorsSorter = new AuthorsSorter();
   authors.sort(authorsSorter.ascending);
 
   expect(authors).toStrictEqual([
@@ -19,7 +19,7 @@ test('if the authors are sorted ascending on first name', () => {
 });
 
 test('if the authors are sorted ascending on first name', () => {
-  const authorsSorter = new AuthorsSorter(authors);
+  const authorsSorter = new AuthorsSorter();
   authors.sort(authorsSorter.descending);
 
   expect(authors).toStrictEqual([

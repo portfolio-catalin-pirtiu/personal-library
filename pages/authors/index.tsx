@@ -84,7 +84,7 @@ export default function Authors() {
       if (error instanceof Error) toast.error(error.message);
     }
   }
-  const sortAuthors = new AuthorsSorter(authors);
+  const sortAuthors = new AuthorsSorter();
   authors.sort(sortAuthors[selection]);
   return (
     <Wrapper>
