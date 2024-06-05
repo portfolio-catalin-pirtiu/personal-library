@@ -7,7 +7,7 @@ import RenderAuthors from '../../components/authors/RenderAuthors';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-import { sortAuthors } from '../../lib/AuthorsSort/AuthorsSort';
+import {AuthorsSorter} from '../../lib/AuthorsSort/AuthorsSort';
 
 const Wrapper = styled.div`
   border: 2px solid black;
@@ -84,9 +84,8 @@ export default function Authors() {
       if (error instanceof Error) toast.error(error.message);
     }
   }
-
+  const sortAuthors = new AuthorsSorter(authors);
   authors.sort(sortAuthors[selection]);
-
   return (
     <Wrapper>
       <h1>All Authors</h1>
