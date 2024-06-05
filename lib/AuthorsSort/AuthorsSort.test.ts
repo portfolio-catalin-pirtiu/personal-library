@@ -11,6 +11,7 @@ test('if current author is not before the next', () => {
   const currAuthor = 'Black';
   const nextAuthor = 'Alpha';
   const authorsSorter = new AuthorsSorter();
+
   expect(
     authorsSorter.isCurrentAuthorBeforeTheNext(currAuthor, nextAuthor)
   ).toBe(false);
@@ -20,6 +21,7 @@ test('if current author is before the next', () => {
   const currAuthor = 'Alpha';
   const nextAuthor = 'Black';
   const authorsSorter = new AuthorsSorter();
+  
   expect(
     authorsSorter.isCurrentAuthorBeforeTheNext(currAuthor, nextAuthor)
   ).toBe(true);
