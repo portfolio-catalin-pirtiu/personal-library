@@ -1,23 +1,32 @@
 import { IDbAuthor } from '../definitions';
 
 export class AuthorsSorter {
-  ascending = (currAuthor: IDbAuthor, nextAuth: IDbAuthor) => {
+  ascending = (currAuthor: IDbAuthor, nextAuthor: IDbAuthor) => {
     if (
-      this.toLowerCase(currAuthor.first_name) <=
-      this.toLowerCase(nextAuth.first_name)
+      this.isCurrentAuthorBeforeTheNext(
+        currAuthor.first_name,
+        nextAuthor.first_name
+      )
     ) {
       return -1;
     } else return 1;
-  }
+  };
 
   descending = (currAuthor: IDbAuthor, nextAuthor: IDbAuthor) => {
-    if (this.toLowerCase(currAuthor.first_name) <= this.toLowerCase(nextAuthor.first_name)) {
+    if (
+      this.isCurrentAuthorBeforeTheNext(
+        currAuthor.first_name,
+        nextAuthor.first_name
+      )
+    ) {
       return 1;
     } else return -1;
-  }
+  };
 
-  toLowerCase = (text: string) => {
-    return text.toLowerCase();
-  }
-
+  isCurrentAuthorBeforeTheNext = (
+    currAuthorFirstName: string,
+    nextAuthorFirstName: string
+  ): boolean => {
+    return currAuthorFirstName <= nextAuthorFirstName;
+  };
 }
