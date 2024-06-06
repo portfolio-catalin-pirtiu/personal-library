@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { colors } from "../../../lib/colors";
+import styled from 'styled-components';
+import { colors } from '../../../lib/colors';
 
 export const Wrapper = styled.div`
   display: grid;
@@ -21,9 +21,12 @@ export const Wrapper = styled.div`
     justify-self: end;
   }
 `;
-export const Window = styled.div``;
+export const Window = styled.div`
+  display: flex;
+`;
 export const Select = styled.ul``;
 export const Option = styled.li`
+  list-style-type: none;
   &:hover {
     background-color: green;
   }
