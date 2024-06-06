@@ -1,10 +1,7 @@
-import styled from 'styled-components';
 import { useState } from 'react';
 import { IDbAuthor } from '../../lib/definitions';
+import { Wrapper, Select, Option, Window } from '../shared/SelectElements/SelectElements';
 
-const Wrapper = styled.div``;
-const Select = styled.ul``;
-const Option = styled.li``;
 
 export interface SelectAuthorProps {
   authors: IDbAuthor[];
@@ -25,7 +22,7 @@ export default function AuthorSelector({
   return (
     <Wrapper onClick={toggleShow}>
       <Select>
-        <Option>{option}</Option>
+        <Window>{option}</Window>
         {show &&
           authors.map((author) => (
             <Option
