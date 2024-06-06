@@ -2,17 +2,22 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
-import Select from '../../components/authors/Select';
+import AuthorsSortSelector from '../../components/authors/AuthorsSortSelector';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-import { sortAuthors } from '../../lib/filterAuthors';
+import { AuthorsSorter } from '../../lib/AuthorsSorter/AuthorsSorter';
 
 const Wrapper = styled.div`
   border: 2px solid black;
   border-radius: 15px;
   padding: 2rem;
+`;
+
+const SearchAndAuthorsSortSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default function Authors() {
@@ -84,24 +89,25 @@ export default function Authors() {
       if (error instanceof Error) toast.error(error.message);
     }
   }
-
+  const sortAuthors = new AuthorsSorter();
   authors.sort(sortAuthors[selection]);
-
   return (
     <Wrapper>
       <h1>All Authors</h1>
-      <Search
-        input={searchAuthor}
-        setInput={setSearchAuthor}
-        label="Author"
-        placeholder="Search"
-      />
-      <Select
-        defaultOption="Sort by:"
-        options={['ascending', 'descending']}
-        selection={selection}
-        setSelection={setSelection}
-      />
+      <SearchAndAuthorsSortSelector>
+        <Search
+          input={searchAuthor}
+          setInput={setSearchAuthor}
+          label="Author"
+          placeholder="Search"
+        />
+        <AuthorsSortSelector
+          defaultOption="Sort by:"
+          options={['ascending', 'descending']}
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </SearchAndAuthorsSortSelector>
       <RenderAuthors
         authors={authors}
         onEditAuthor={handleEditAuthor}

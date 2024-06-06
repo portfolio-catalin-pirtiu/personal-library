@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import { booksFilterSelection } from './constants';
 
 export interface IUser {
@@ -43,17 +42,6 @@ export interface IUpdateBookReadingStatusDatabase {
   timestamp: string;
 }
 
-export interface IOption {
-  name: string;
-  value: ISelection;
-}
-
 export type ISelection = (typeof booksFilterSelection)[number];
-
-export interface ISelect {
-  type?: 'dropdown' | 'bar';
-  options: IOption[];
-  handleChange: Dispatch<SetStateAction<ISelection>>;
-}
 
 export type AuthorFilterOption = 'ascending' | 'descending';
