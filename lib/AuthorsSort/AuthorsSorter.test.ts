@@ -1,4 +1,4 @@
-import { AuthorsSorter } from './AuthorsSort';
+import { AuthorsSorter } from './AuthorsSorter';
 import { IDbAuthor } from '../definitions';
 
 const authors: IDbAuthor[] = [
@@ -21,7 +21,7 @@ test('if current author is before the next', () => {
   const currAuthor = 'Alpha';
   const nextAuthor = 'Black';
   const authorsSorter = new AuthorsSorter();
-  
+
   expect(
     authorsSorter.isCurrentAuthorBeforeTheNext(currAuthor, nextAuthor)
   ).toBe(true);
