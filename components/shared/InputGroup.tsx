@@ -35,6 +35,8 @@ interface IInputGroup {
   autoComplete?: string;
   textarea?: boolean;
   required?: boolean;
+  hidden?: boolean
+  value?: string
 }
 
 export default function InputGroup({
@@ -43,6 +45,8 @@ export default function InputGroup({
   autoComplete = '',
   textarea = false,
   required = false,
+  hidden = false,
+  value = ''
 }: IInputGroup) {
   return (
     <InputAndLabel>
@@ -54,6 +58,9 @@ export default function InputGroup({
         name={name}
         autoComplete={autoComplete}
         component={textarea ? 'textarea' : ''}
+        required= {required}
+        hidden={hidden}
+        value={value}
       />
       <ErrorMsg name={name} component="div" />
     </InputAndLabel>

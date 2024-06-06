@@ -46,7 +46,7 @@ interface SelectProps {
   setSelection: Dispatch<SetStateAction<AuthorFilterOption>>;
 }
 
-export default function AuthorsSorterComponent({
+export default function AuthorsSortSelector({
   defaultOption,
   options,
   selection,

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
-import AuthorsSorterComponent from '../../components/authors/AuthorsSorter';
+import AuthorsSortSelector from '../../components/authors/AuthorsSortSelector';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
@@ -95,7 +95,7 @@ export default function Authors() {
         label="Author"
         placeholder="Search"
       />
-      <AuthorsSorterComponent
+      <AuthorsSortSelector
         defaultOption="Sort by:"
         options={['ascending', 'descending']}
         selection={selection}

@@ -14,11 +14,10 @@ import {
   StyledImage,
   Text,
   StyledForm,
-  RequiredField,
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import Select from './Select';
+import SelectAuthor from './SelectAuthor';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 
 const Label = styled.label``;
@@ -67,7 +66,9 @@ export default function BookForm({
   const [stars, setStars] = useState(
     initialValues.rating ? initialValues.rating : 0
   );
+  const [selectedAuthor, setSelectedAuthor] = useState(initialValues.author_id);
   const totalStars = 5;
+
   return (
     <FormWrapper>
       <ImageAndText>
@@ -126,11 +127,19 @@ export default function BookForm({
         {({ isSubmitting, setFieldValue }) => (
           <StyledForm>
             <InputWrapper>
-              <Label htmlFor="author_id">
-                Author
-                <RequiredField> ✳︎</RequiredField>
-              </Label>
-              <Select  options={authors} />
+              <InputGroup
+                label="Author"
+                name="author_id"
+                required
+                hidden
+                value={selectedAuthor}
+              />
+              <SelectAuthor
+                authors={authors}
+                handleSelectedAuthor={(authorID: string) =>
+                  setSelectedAuthor(authorID)
+                }
+              />
               <ErrorMsg name="author_id" component="div" />
             </InputWrapper>
 
