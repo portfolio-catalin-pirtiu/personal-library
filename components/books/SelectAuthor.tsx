@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { IDbAuthor } from '../../lib/definitions';
-import { Wrapper, Select, Option, Window } from '../shared/SelectElements/SelectElements';
-
+import {
+  Wrapper,
+  Select,
+  Option,
+  Options,
+  Window,
+} from '../shared/SelectElements/SelectElements';
 
 export interface SelectAuthorProps {
   authors: IDbAuthor[];
@@ -23,16 +28,18 @@ export default function AuthorSelector({
     <Wrapper onClick={toggleShow}>
       <Select>
         <Window>{option}</Window>
-        {show &&
-          authors.map((author) => (
-            <Option
-              key={author.author_id}
-              onClick={() => {
-                handleSelectedAuthor(author.author_id);
-                setOption(`${author.first_name} ${author.last_name}`);
-              }}
-            >{`${author.first_name} ${author.last_name}`}</Option>
-          ))}
+        <Options>
+          {show &&
+            authors.map((author) => (
+              <Option
+                key={author.author_id}
+                onClick={() => {
+                  handleSelectedAuthor(author.author_id);
+                  setOption(`${author.first_name} ${author.last_name}`);
+                }}
+              >{`${author.first_name} ${author.last_name}`}</Option>
+            ))}
+        </Options>
       </Select>
     </Wrapper>
   );

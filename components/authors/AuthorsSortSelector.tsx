@@ -6,7 +6,8 @@ import {
   Wrapper,
   Select,
   Option,
-  Window
+  Options,
+  Window,
 } from '../shared/SelectElements/SelectElements';
 
 const SelectionWindow = styled.div`
@@ -41,14 +42,16 @@ export default function AuthorsSortSelector({
           <FilterPrompt>{defaultOption}</FilterPrompt>
           <Window>{capitalize(selection)}</Window>
         </SelectionWindow>
-        {show &&
-          options.map((option) => (
-            <Option
-              onClick={() => setSelection(option)}
-              value={option}
-              key={option}
-            >{`${capitalize(option)}`}</Option>
-          ))}
+        <Options>
+          {show &&
+            options.map((option) => (
+              <Option
+                onClick={() => setSelection(option)}
+                value={option}
+                key={option}
+              >{`${capitalize(option)}`}</Option>
+            ))}
+        </Options>
       </Select>
     </Wrapper>
   );

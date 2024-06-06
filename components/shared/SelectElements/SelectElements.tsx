@@ -31,3 +31,6 @@ export const Option = styled.li`
     background-color: green;
   }
 `;
+export const Options = styled.div`
+  background-color: ${colors.gray};
+`;

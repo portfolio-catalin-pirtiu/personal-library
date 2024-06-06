@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   padding: 2rem;
 `;
 
+const SearchAndAuthorsSortSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export default function Authors() {
   let apiUrl = '/api/authors/';
   const [searchAuthor, setSearchAuthor] = useState('');
@@ -89,18 +94,20 @@ export default function Authors() {
   return (
     <Wrapper>
       <h1>All Authors</h1>
-      <Search
-        input={searchAuthor}
-        setInput={setSearchAuthor}
-        label="Author"
-        placeholder="Search"
-      />
-      <AuthorsSortSelector
-        defaultOption="Sort by:"
-        options={['ascending', 'descending']}
-        selection={selection}
-        setSelection={setSelection}
-      />
+      <SearchAndAuthorsSortSelector>
+        <Search
+          input={searchAuthor}
+          setInput={setSearchAuthor}
+          label="Author"
+          placeholder="Search"
+        />
+        <AuthorsSortSelector
+          defaultOption="Sort by:"
+          options={['ascending', 'descending']}
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </SearchAndAuthorsSortSelector>
       <RenderAuthors
         authors={authors}
         onEditAuthor={handleEditAuthor}
