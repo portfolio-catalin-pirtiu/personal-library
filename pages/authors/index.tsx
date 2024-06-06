@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
-import Select from '../../components/authors/Select';
+import AuthorsSorterComponent from '../../components/authors/AuthorsSorter';
 import RenderAuthors from '../../components/authors/RenderAuthors';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
-import { AuthorsSorter } from '../../lib/AuthorsSort/AuthorsSorter';
+import { AuthorsSorter } from '../../lib/AuthorsSorter/AuthorsSorter';
 
 const Wrapper = styled.div`
   border: 2px solid black;
@@ -95,7 +95,7 @@ export default function Authors() {
         label="Author"
         placeholder="Search"
       />
-      <Select
+      <AuthorsSorterComponent
         defaultOption="Sort by:"
         options={['ascending', 'descending']}
         selection={selection}

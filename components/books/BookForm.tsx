@@ -18,7 +18,7 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import Select from '../authors/Select';
+import Select from './Select';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 
 const Label = styled.label``;
@@ -130,7 +130,7 @@ export default function BookForm({
                 Author
                 <RequiredField> ✳︎</RequiredField>
               </Label>
-              <Select defaultOption="Select Author" options={authors} />
+              <Select  options={authors} />
               <ErrorMsg name="author_id" component="div" />
             </InputWrapper>
 
