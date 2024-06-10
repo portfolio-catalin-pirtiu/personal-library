@@ -17,7 +17,10 @@ const Wrapper = styled.div`
 
 const SearchAndAuthorsSortSelector = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10vw;
+  margin-top: 5rem;
 `;
 
 export default function Authors() {
@@ -98,8 +101,8 @@ export default function Authors() {
         <Search
           input={searchAuthor}
           setInput={setSearchAuthor}
-          label="Author"
-          placeholder="Search"
+          label=""
+          placeholder="🔎 Search"
         />
         <AuthorsSortSelector
           defaultOption="Sort by:"

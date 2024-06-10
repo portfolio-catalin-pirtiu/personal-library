@@ -8,3 +8,9 @@ export const booksFilterSelection = [
   'thisYear',
   'lastYear',
 ] as const;
+
+export const styleConstants = {
+  inputPadding: '0.4rem',
+  inputBorderRadius: '7px'
+
+}

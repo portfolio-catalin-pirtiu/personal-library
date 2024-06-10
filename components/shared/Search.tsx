@@ -1,8 +1,15 @@
 import { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../lib/colors';
+import { styleConstants } from '../../lib/constants';
 
 const Wrapper = styled.div``;
-const Input = styled.input``;
+const Input = styled.input`
+  background-color: ${colors.gray};
+  padding: ${styleConstants.inputPadding};
+  border-radius: ${styleConstants.inputBorderRadius};
+  border-color: transparent;
+`;
 const Label = styled.label``;
 
 interface ISearch {
