@@ -4,6 +4,7 @@ import { AuthorFilterOption } from '../../lib/definitions';
 import { capitalize } from '../../utils/capitalize';
 import {
   Wrapper,
+  DropDownTriangle,
   Select,
   Option,
   Options,
@@ -53,6 +54,7 @@ export default function AuthorsSortSelector({
             ))}
         </Options>
       </Select>
+      <DropDownTriangle/>
     </Wrapper>
   );
 }
