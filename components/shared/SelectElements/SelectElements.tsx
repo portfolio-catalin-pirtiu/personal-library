@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { colors } from '../../../lib/colors';
+import { styleConstants } from '../../../lib/constants';
 
 export const Wrapper = styled.div`
   display: flex;
   gap: 0.5rem;
   border: 0.15em solid ${colors.gray};
-  border-radius: 7px;
-  padding: 0.25em 0.5em;
+  border-radius: ${styleConstants.inputBorderRadius};
+  padding: ${styleConstants.inputPadding};
   cursor: pointer;
   line-height: 1.1;
   align-items: center;
   text-align: center;
+  background-color: ${colors.gray};
 `;
 
 export const DropDownTriangle = styled.div`
@@ -22,6 +24,7 @@ export const DropDownTriangle = styled.div`
 
 export const Window = styled.div`
   display: flex;
+  font-weight: bold;
 `;
 
 export const Select = styled.ul``;

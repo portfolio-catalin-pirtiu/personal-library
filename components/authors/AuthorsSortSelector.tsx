@@ -10,13 +10,15 @@ import {
   Options,
   Window,
 } from '../shared/SelectElements/SelectElements';
+import { styleConstants } from '../../lib/constants';
 
 const SelectionWindow = styled.div`
   display: flex;
+  gap: ${styleConstants.lowGap};
 `;
-const FilterPrompt = styled.div`
-  font-weight: bold;
-`;
+
+const FilterPrompt = styled.div``;
+
 interface SelectProps {
   defaultOption: string;
   options: AuthorFilterOption[];
@@ -54,7 +56,7 @@ export default function AuthorsSortSelector({
             ))}
         </Options>
       </Select>
-      <DropDownTriangle/>
+      <DropDownTriangle />
     </Wrapper>
   );
 }
