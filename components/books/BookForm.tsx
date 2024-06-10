@@ -17,7 +17,7 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import SelectAuthor from './SelectAuthor';
+import SelectAuthor from './AuthorSelector';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 
 const Label = styled.label``;

@@ -12,7 +12,7 @@ import {
   ISelection,
   IDbBook,
 } from '../../lib/definitions';
-import Select from '../../components/books/SelectAuthor';
+import Select from '../../components/books/AuthorSelector';
 import Search from '../../components/shared/Search';
 import { filter, options } from '../../lib/filterBooks';
 
