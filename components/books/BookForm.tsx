@@ -19,6 +19,7 @@ import {
 import Button from '../shared/Button';
 import SelectAuthor from './AuthorSelector';
 import bookRobot from '../../assets/add-new-book-page-image.png';
+import { styleConstants } from '../../lib/constants';
 
 const Label = styled.label``;
 
@@ -30,7 +31,7 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
 `;
 
 const defaultInitialValues: IDbBook = {

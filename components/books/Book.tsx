@@ -8,6 +8,7 @@ import BookForm from './BookForm';
 import { booksApiUrl } from '../../lib/constants';
 import RatingStars from '../RatingStars';
 import Bubble from '../shared/Bubble';
+import { styleConstants } from '../../lib/constants';
 
 const Wrapper = styled.div`
   border: 0.1rem solid ${colors.gray};
@@ -48,12 +49,12 @@ const EditAndDeleteButtons = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
 `;
 
 const Bubbles = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
 `;
 
 interface IBookProps extends IBookWithAuthor {

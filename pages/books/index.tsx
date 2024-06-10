@@ -12,16 +12,17 @@ import {
   ISelection,
   IDbBook,
 } from '../../lib/definitions';
-import Select from '../../components/books/AuthorSelector';
+import AuthorSelector from '../../components/books/AuthorSelector';
 import Search from '../../components/shared/Search';
 import { filter, options } from '../../lib/filterBooks';
+import { styleConstants } from '../../lib/constants';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
 `;
 
 const BooksContainer = styled.div`
@@ -187,7 +188,7 @@ export default function Books() {
         label="Search Books"
         placeholder="Search"
       />
-      <Select type={selectType} options={options} handleChange={setSelect} />
+      <AuthorSelector type={selectType} options={options} handleChange={setSelect} />
       <BooksContainer>
         {filteredBooks.map((book) => (
           <Book

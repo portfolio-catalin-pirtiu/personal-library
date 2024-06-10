@@ -4,7 +4,7 @@ import { styleConstants } from '../../../lib/constants';
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
   border: 0.15em solid ${colors.gray};
   border-radius: ${styleConstants.inputBorderRadius};
   padding: ${styleConstants.inputPadding};
