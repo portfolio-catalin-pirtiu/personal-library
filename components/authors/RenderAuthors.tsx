@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import Author from './Author';
 import { IDbAuthor } from '../../lib/definitions';
+import AuthorsTableHeader from './AuthorsTableHeader';
 
-const Wrapper = styled.ul``;
+const Wrapper = styled.div`
+  margin-top: 5rem;
+`;
 
 interface IRenderAuthors {
   authors: IDbAuthor[];
@@ -21,15 +24,20 @@ export default function RenderAuthors({
 }: IRenderAuthors) {
   return (
     <Wrapper>
+      <AuthorsTableHeader />
+      <hr />
       {authors.map((author) => (
-        <Author
-          key={author.author_id}
-          author={author}
-          handleEditAuthor={onEditAuthor}
-          handleDeleteAuthor={onDeleteAuthor}
-          handleEditAuthorDatabaseUpdate={onEditAuthorDatabaseUpdate}
-          handleDeleteAuthorDatabaseUpdate={onDeleteAuthorDatabaseUpdate}
-        />
+        <>
+          <Author
+            key={author.author_id}
+            author={author}
+            handleEditAuthor={onEditAuthor}
+            handleDeleteAuthor={onDeleteAuthor}
+            handleEditAuthorDatabaseUpdate={onEditAuthorDatabaseUpdate}
+            handleDeleteAuthorDatabaseUpdate={onDeleteAuthorDatabaseUpdate}
+          />
+          <hr />
+        </>
       ))}
     </Wrapper>
   );

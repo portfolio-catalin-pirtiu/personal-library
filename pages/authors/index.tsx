@@ -20,7 +20,7 @@ const SearchAndAuthorsSortSelector = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 10vw;
-  margin-top: 5rem;
+  margin-top: 2rem;
 `;
 
 export default function Authors() {
