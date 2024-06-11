@@ -1,4 +1,4 @@
-import { IDbBook } from './definitions';
+import { IDbBook, BookFilterOption } from './definitions';
 
 export const bookFilters = {
   all: () => true,
@@ -23,11 +23,6 @@ export const bookFilters = {
     }
   },
 };
-
-interface BookFilterOption {
-  name: string;
-  value: string;
-}
 
 export const bookFiltersNameAndValue: BookFilterOption[] = [
   { name: 'All Books', value: 'all' },

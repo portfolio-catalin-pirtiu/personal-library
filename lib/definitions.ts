@@ -45,3 +45,8 @@ export interface IUpdateBookReadingStatusDatabase {
 export type ISelection = (typeof booksFilterValues)[number];
 
 export type AuthorFilterOption = 'ascending' | 'descending';
+
+export interface BookFilterOption {
+  name: string;
+  value: string;
+}
