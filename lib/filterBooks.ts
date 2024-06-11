@@ -1,6 +1,6 @@
 import { IDbBook } from './definitions';
 
-export const filter = {
+export const bookFilters = {
   all: () => true,
   read: (book: IDbBook) => book.read,
   notRead: (book: IDbBook) => !book.read,
@@ -29,7 +29,7 @@ interface BookFilterOption {
   value: string;
 }
 
-export const options: BookFilterOption[] = [
+export const bookFiltersNameAndValue: BookFilterOption[] = [
   { name: 'All Books', value: 'all' },
   { name: 'Read', value: 'read' },
   { name: 'Not Read', value: 'notRead' },

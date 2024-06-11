@@ -13,7 +13,7 @@ import {
   IDbBook,
 } from '../../lib/definitions';
 import Search from '../../components/shared/Search';
-import { filter, options } from '../../lib/filterBooks';
+import { bookFilters, bookFiltersNameAndValue } from '../../lib/filterBooks';
 import { styleConstants } from '../../lib/constants';
 
 const Wrapper = styled.div`
@@ -176,7 +176,7 @@ export default function Books() {
         toast.error('Something went wrong when updating book rating.');
     }
   }
-  const filteredBooks = books.filter(filter[select]);
+  const filteredBooks = books.filter(bookFilters[select]);
 
   return (
     <Wrapper>
