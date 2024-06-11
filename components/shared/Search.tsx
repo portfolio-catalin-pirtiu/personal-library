@@ -1,14 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
-import { colors } from '../../lib/colors';
-import { styleConstants } from '../../lib/constants';
+import { inputStyle } from '../../lib/cssStrings';
 
 const Wrapper = styled.div``;
 const Input = styled.input`
-  background-color: ${colors.gray};
-  padding: ${styleConstants.inputPadding};
-  border-radius: ${styleConstants.inputBorderRadius};
-  border-color: transparent;
+  ${inputStyle}
 `;
 const Label = styled.label``;
 
@@ -24,6 +20,7 @@ export default function Search({
   label = '',
   placeholder = '',
 }: ISearch) {
+  const [place, setPlace] = useState(placeholder);
   return (
     <Wrapper>
       <Label>
@@ -31,7 +28,9 @@ export default function Search({
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={placeholder}
+          onFocus={() => setPlace('')}
+          onBlur={() => setPlace(placeholder)}
+          placeholder={place}
         />
       </Label>
     </Wrapper>
