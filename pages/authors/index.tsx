@@ -12,7 +12,6 @@ import { AuthorsSorter } from '../../lib/AuthorsSorter/AuthorsSorter';
 const Wrapper = styled.div`
   border: 2px solid black;
   border-radius: 15px;
-  padding: 2rem;
 `;
 
 const SearchAndAuthorsSortSelector = styled.div`
