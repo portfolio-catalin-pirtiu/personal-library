@@ -31,8 +31,11 @@ export const Select = styled.ul``;
 
 export const Option = styled.li`
   list-style-type: none;
+  padding: 0.2rem;
+  border-radius: ${styleConstants.inputBorderRadius};
   &:hover {
-    background-color: green;
+    background-color: black;
+    color: white;
   }
 `;
 
