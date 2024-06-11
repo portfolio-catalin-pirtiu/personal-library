@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Author from './Author';
 import { IDbAuthor } from '../../../lib/definitions';
 import { TableData, TableRow } from './shared/tableComponents';
+import { colors } from '../../../lib/colors';
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -9,7 +10,9 @@ const Table = styled.table`
   margin: auto;
   margin-top: 5rem;
 `;
-const TableHead = styled.thead``;
+const TableHead = styled.thead`
+  color: ${colors.darkGray};
+`;
 const TableBody = styled.tbody``;
 
 interface IRenderAuthors {
