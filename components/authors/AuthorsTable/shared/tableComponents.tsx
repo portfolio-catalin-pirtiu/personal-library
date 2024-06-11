@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const TableData = styled.td`
-border: 1px solid black;
+export const TableData = styled.td``;
+export const TableRow = styled.tr`
+  border-bottom: 1px solid black;
 `;

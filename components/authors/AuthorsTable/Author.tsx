@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import Button from '../../shared/Button';
 import { IDbAuthor } from '../../../lib/definitions';
 import { useState } from 'react';
-import { TableData } from './shared/tableComponents';
+import { TableData, TableRow } from './shared/tableComponents';
 
-const TableRow = styled.tr``;
 const FirstAndLastName = styled.div`
   display: flex;
   flex-wrap: wrap;
