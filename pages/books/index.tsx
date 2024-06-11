@@ -12,7 +12,6 @@ import {
   ISelection,
   IDbBook,
 } from '../../lib/definitions';
-import AuthorSelector from '../../components/books/AuthorSelector';
 import Search from '../../components/shared/Search';
 import { filter, options } from '../../lib/filterBooks';
 import { styleConstants } from '../../lib/constants';
@@ -178,7 +177,6 @@ export default function Books() {
     }
   }
   const filteredBooks = books.filter(filter[select]);
-  const selectType = 'bar';
 
   return (
     <Wrapper>
@@ -188,7 +186,6 @@ export default function Books() {
         label="Search Books"
         placeholder="Search"
       />
-      <AuthorSelector type={selectType} options={options} handleChange={setSelect} />
       <BooksContainer>
         {filteredBooks.map((book) => (
           <Book

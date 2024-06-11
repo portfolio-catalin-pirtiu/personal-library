@@ -17,7 +17,7 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import AuthorSelector from './AuthorSelector';
+import AuthorSelector from '../authors/AuthorSelector';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 import { styleConstants } from '../../lib/constants';
 
