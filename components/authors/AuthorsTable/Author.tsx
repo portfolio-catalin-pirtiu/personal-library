@@ -45,8 +45,9 @@ export default function Author({
     <EditAndDelete>
       <Button
         type="button"
-        secondary={isEditing ? false : true}
-        text={isEditing ? 'Save' : 'Edit'}
+        secondary={isEditing ? true : false}
+        plain
+        text={isEditing ? 'Save' : '✏️'}
         onClick={() => {
           databaseUpdateLogic();
           setIsEditing(!isEditing);
@@ -55,8 +56,8 @@ export default function Author({
 
       <Button
         type="button"
-        danger
-        text="Delete"
+        plain
+        text="🗑️"
         onClick={() => {
           handleDeleteAuthor(author.author_id);
           handleDeleteAuthorDatabaseUpdate(author.author_id);
