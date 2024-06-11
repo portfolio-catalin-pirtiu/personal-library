@@ -1,6 +1,6 @@
 import { Formik, FormikValues, FormikErrors } from 'formik';
 import Button from '../../components/shared/Button';
-import InputGroup from '../../components/shared/InputGroup';
+import InputGroup from '../../components/shared/InputGroup/InputGroup';
 import { IAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';

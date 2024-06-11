@@ -4,6 +4,7 @@ export const colors = {
   red: 'hsl(10, 100%, 93%)',
   yellow: 'hsl(60, 100%, 89%)',
   gray: 'hsl(0, 0%, 95%)',
+  darkGray: 'hsl(0, 0%, 45%)',
   lightBlue: 'hsl(204, 100%, 90%)',
   lightGreen: 'hsl(168, 100%, 70%)'
 };

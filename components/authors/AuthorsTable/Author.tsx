@@ -1,26 +1,17 @@
 import styled from 'styled-components';
-import { Heading1 } from '../../lib/text';
-import Button from '../shared/Button';
-import { IDbAuthor } from '../../lib/definitions';
+import Button from '../../shared/Button';
+import { IDbAuthor } from '../../../lib/definitions';
 import { useState } from 'react';
-
-const Wrapper = styled.div``;
-
-const FirstAndLastName = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4vmin;
-`;
+import { TableData, TableRow } from './shared/tableComponents';
+import { inputStyle } from '../../../lib/cssStrings';
 
 const EditAndDelete = styled.div``;
-
-const FirstName = styled(Heading1)``;
-
-const LastName = styled(Heading1)``;
-
-const EditFirstName = styled.input``;
-
-const EditLastName = styled.input``;
+const EditFirstName = styled.input`
+  ${inputStyle}
+`;
+const EditLastName = styled.input`
+  ${inputStyle}
+`;
 
 let counter = 0;
 
@@ -50,12 +41,13 @@ export default function Author({
     }
   }
 
-  const editAndDeleteContent = (
+  const editAndDeleteButtons = (
     <EditAndDelete>
       <Button
         type="button"
-        secondary={isEditing ? false : true}
-        text={isEditing ? 'Save' : 'Edit'}
+        secondary={isEditing ? true : false}
+        plain
+        text={isEditing ? 'Save' : '✏️'}
         onClick={() => {
           databaseUpdateLogic();
           setIsEditing(!isEditing);
@@ -64,8 +56,8 @@ export default function Author({
 
       <Button
         type="button"
-        danger
-        text="Delete"
+        plain
+        text="🗑️"
         onClick={() => {
           handleDeleteAuthor(author.author_id);
           handleDeleteAuthorDatabaseUpdate(author.author_id);
@@ -75,8 +67,8 @@ export default function Author({
   );
 
   return isEditing ? (
-    <Wrapper>
-      <FirstAndLastName>
+    <TableRow>
+      <TableData>
         <EditFirstName
           name="first_name"
           value={author.first_name}
@@ -84,6 +76,8 @@ export default function Author({
             handleEditAuthor({ ...author, first_name: e.target.value })
           }
         />
+      </TableData>
+      <TableData>
         <EditLastName
           name="last_name"
           value={author.last_name}
@@ -91,18 +85,14 @@ export default function Author({
             handleEditAuthor({ ...author, last_name: e.target.value })
           }
         />
-      </FirstAndLastName>
-
-      {editAndDeleteContent}
-    </Wrapper>
+      </TableData>
+      <TableData>{editAndDeleteButtons}</TableData>
+    </TableRow>
   ) : (
-    <Wrapper>
-      <FirstAndLastName>
-        <FirstName>{author.first_name}</FirstName>
-        <LastName>{author.last_name}</LastName>
-      </FirstAndLastName>
-
-      {editAndDeleteContent}
-    </Wrapper>
+    <TableRow>
+      <TableData>{author.first_name}</TableData>
+      <TableData>{author.last_name}</TableData>
+      <TableData>{editAndDeleteButtons}</TableData>
+    </TableRow>
   );
 }

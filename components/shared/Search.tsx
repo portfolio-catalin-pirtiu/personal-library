@@ -1,8 +1,11 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
+import { inputStyle } from '../../lib/cssStrings';
 
 const Wrapper = styled.div``;
-const Input = styled.input``;
+const Input = styled.input`
+  ${inputStyle}
+`;
 const Label = styled.label``;
 
 interface ISearch {
@@ -17,6 +20,7 @@ export default function Search({
   label = '',
   placeholder = '',
 }: ISearch) {
+  const [place, setPlace] = useState(placeholder);
   return (
     <Wrapper>
       <Label>
@@ -24,7 +28,9 @@ export default function Search({
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={placeholder}
+          onFocus={() => setPlace('')}
+          onBlur={() => setPlace(placeholder)}
+          placeholder={place}
         />
       </Label>
     </Wrapper>

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
-import { color } from '../../lib/color';
-import { colors } from '../../lib/colors';
-import { RequiredField } from './FormComponents';
+import { RequiredField } from '../FormComponents';
+import { inputStyle } from '../../../lib/cssStrings';
 
 const InputAndLabel = styled.div`
   display: flex;
@@ -15,14 +14,7 @@ const Label = styled.label`
 `;
 
 const Input = styled(Field)`
-  margin-bottom: 0.5em;
-  border-radius: 7px;
-  border: 0.15em solid ${color.silver};
-  padding: 0.5em;
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 3px ${colors.blue};
-  }
+  ${inputStyle}
 `;
 
 const ErrorMsg = styled(ErrorMessage)`
@@ -30,23 +22,23 @@ const ErrorMsg = styled(ErrorMessage)`
 `;
 
 interface IInputGroup {
-  label: string;
   name: string;
+  label: string;
   autoComplete?: string;
   textarea?: boolean;
   required?: boolean;
-  hidden?: boolean
-  value?: string
+  hidden?: boolean;
+  value?: string;
 }
 
 export default function InputGroup({
-  label = '',
   name = '',
+  label = '',
   autoComplete = '',
   textarea = false,
   required = false,
   hidden = false,
-  value = ''
+  value = '',
 }: IInputGroup) {
   return (
     <InputAndLabel>
@@ -58,7 +50,7 @@ export default function InputGroup({
         name={name}
         autoComplete={autoComplete}
         component={textarea ? 'textarea' : ''}
-        required= {required}
+        required={required}
         hidden={hidden}
         value={value}
       />

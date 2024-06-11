@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IDbAuthor } from '../../lib/definitions';
 import {
   Wrapper,
+  DropDownTriangle,
   Select,
   Option,
   Options,
@@ -41,6 +42,7 @@ export default function AuthorSelector({
             ))}
         </Options>
       </Select>
+      <DropDownTriangle />
     </Wrapper>
   );
 }

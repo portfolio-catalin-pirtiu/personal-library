@@ -6,6 +6,7 @@ const StyledButton = styled.button<{
   $secondary?: boolean;
   $warning?: boolean;
   $danger?: boolean;
+  $plain?: boolean;
   $primaryColor?: string;
   $secondaryColor?: string;
   $warningColor?: string;
@@ -48,6 +49,13 @@ const StyledButton = styled.button<{
       cursor: not-allowed;
       opacity: 0.5;
     `}
+
+    ${(props) =>
+    props.$plain &&
+    css`
+      background: white;
+      color: black;
+    `}
 `;
 
 interface IButton {
@@ -59,6 +67,7 @@ interface IButton {
   secondary?: boolean;
   warning?: boolean;
   danger?: boolean;
+  plain?: boolean;
   primaryColor?: string;
   secondaryColor?: string;
   warningColor?: string;
@@ -74,6 +83,7 @@ export default function Button({
   secondary = false,
   warning = false,
   danger = false,
+  plain = false,
   primaryColor = '#0d99ff',
   secondaryColor = '#4db8ff',
   warningColor = '#ffa500',
@@ -84,6 +94,7 @@ export default function Button({
   if (secondary) {
     warning = false;
     danger = false;
+    plain = false;
   }
 
   if (warning) {
@@ -96,6 +107,12 @@ export default function Button({
     warning = false;
   }
 
+  if (plain) {
+    secondary = false;
+    warning = false;
+    danger = false;
+  }
+
   return (
     <StyledButton
       aria-disabled={disabled}
@@ -106,6 +123,7 @@ export default function Button({
       $secondary={secondary}
       $warning={warning}
       $danger={danger}
+      $plain={plain}
       $primaryColor={primaryColor}
       $secondaryColor={secondaryColor}
       $warningColor={warningColor}

@@ -4,18 +4,21 @@ import { AuthorFilterOption } from '../../lib/definitions';
 import { capitalize } from '../../utils/capitalize';
 import {
   Wrapper,
+  DropDownTriangle,
   Select,
   Option,
   Options,
   Window,
 } from '../shared/SelectElements/SelectElements';
+import { styleConstants } from '../../lib/constants';
 
 const SelectionWindow = styled.div`
   display: flex;
+  gap: ${styleConstants.lowGap};
 `;
-const FilterPrompt = styled.div`
-  font-weight: bold;
-`;
+
+const FilterPrompt = styled.div``;
+
 interface SelectProps {
   defaultOption: string;
   options: AuthorFilterOption[];
@@ -53,6 +56,7 @@ export default function AuthorsSortSelector({
             ))}
         </Options>
       </Select>
+      <DropDownTriangle />
     </Wrapper>
   );
 }

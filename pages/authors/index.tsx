@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import AuthorsSortSelector from '../../components/authors/AuthorsSortSelector';
-import RenderAuthors from '../../components/authors/RenderAuthors';
+import AuthorsTable from '../../components/authors/AuthorsTable/AuthorsTable';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
@@ -12,12 +12,14 @@ import { AuthorsSorter } from '../../lib/AuthorsSorter/AuthorsSorter';
 const Wrapper = styled.div`
   border: 2px solid black;
   border-radius: 15px;
-  padding: 2rem;
 `;
 
 const SearchAndAuthorsSortSelector = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10vw;
+  margin-top: 2rem;
 `;
 
 export default function Authors() {
@@ -98,8 +100,8 @@ export default function Authors() {
         <Search
           input={searchAuthor}
           setInput={setSearchAuthor}
-          label="Author"
-          placeholder="Search"
+          label=""
+          placeholder="🔎 Search"
         />
         <AuthorsSortSelector
           defaultOption="Sort by:"
@@ -108,7 +110,7 @@ export default function Authors() {
           setSelection={setSelection}
         />
       </SearchAndAuthorsSortSelector>
-      <RenderAuthors
+      <AuthorsTable
         authors={authors}
         onEditAuthor={handleEditAuthor}
         onDeleteAuthor={handleDeleteAuthor}

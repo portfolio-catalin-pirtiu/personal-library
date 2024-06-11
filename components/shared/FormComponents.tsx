@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Form, Field } from 'formik';
 import styled from 'styled-components';
 import { colors } from '../../lib/colors';
+import { styleConstants } from '../../lib/constants';
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
   width: 100%;
   max-width: 20em;
 `;
@@ -49,15 +50,15 @@ export const RequiredField = styled.span`
 `;
 
 export const Input = styled(Field)`
-appearance: none;
-background-color: transparent;
-border: none;
-padding: 0 1em 0 0;
-margin: 0;
-width: 100%;
-font-family: inherit;
-font-size: inherit;
-cursor: inherit;
-line-height: inherit;
-outline: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
 `;

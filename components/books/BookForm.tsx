@@ -1,7 +1,7 @@
 import { Formik, ErrorMessage, FormikValues, FormikErrors } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import InputGroup from '../shared/InputGroup';
+import InputGroup from '../shared/InputGroup/InputGroup';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
@@ -17,8 +17,9 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import SelectAuthor from './SelectAuthor';
+import SelectAuthor from './AuthorSelector';
 import bookRobot from '../../assets/add-new-book-page-image.png';
+import { styleConstants } from '../../lib/constants';
 
 const Label = styled.label``;
 
@@ -30,7 +31,7 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.5rem;
+  gap: ${styleConstants.lowGap};
 `;
 
 const defaultInitialValues: IDbBook = {
