@@ -17,7 +17,7 @@ import {
   Input,
 } from '../shared/FormComponents';
 import Button from '../shared/Button';
-import SelectAuthor from './AuthorSelector';
+import AuthorSelector from './AuthorSelector';
 import bookRobot from '../../assets/add-new-book-page-image.png';
 import { styleConstants } from '../../lib/constants';
 
@@ -135,7 +135,7 @@ export default function BookForm({
                 hidden
                 value={selectedAuthor}
               />
-              <SelectAuthor
+              <AuthorSelector
                 authors={authors}
                 handleSelectedAuthor={(authorID: string) =>
                   setSelectedAuthor(authorID)
