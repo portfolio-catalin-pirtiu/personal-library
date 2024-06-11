@@ -1,26 +1,20 @@
 import styled from 'styled-components';
-import { Heading1 } from '../../lib/text';
 import Button from '../shared/Button';
 import { IDbAuthor } from '../../lib/definitions';
 import { useState } from 'react';
 
-const Wrapper = styled.div``;
-
+const TableRow = styled.tr``;
 const FirstAndLastName = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 4vmin;
 `;
-
 const EditAndDelete = styled.div``;
-
-const FirstName = styled(Heading1)``;
-
-const LastName = styled(Heading1)``;
-
 const EditFirstName = styled.input``;
-
 const EditLastName = styled.input``;
+const TableData = styled.td`
+  border: 1px solid black;
+`;
 
 let counter = 0;
 
@@ -50,7 +44,7 @@ export default function Author({
     }
   }
 
-  const editAndDeleteContent = (
+  const editAndDeleteButtons = (
     <EditAndDelete>
       <Button
         type="button"
@@ -75,7 +69,7 @@ export default function Author({
   );
 
   return isEditing ? (
-    <Wrapper>
+    <TableRow>
       <FirstAndLastName>
         <EditFirstName
           name="first_name"
@@ -93,16 +87,13 @@ export default function Author({
         />
       </FirstAndLastName>
 
-      {editAndDeleteContent}
-    </Wrapper>
+      {editAndDeleteButtons}
+    </TableRow>
   ) : (
-    <Wrapper>
-      <FirstAndLastName>
-        <FirstName>{author.first_name}</FirstName>
-        <LastName>{author.last_name}</LastName>
-      </FirstAndLastName>
-
-      {editAndDeleteContent}
-    </Wrapper>
+    <TableRow>
+      <TableData>{author.first_name}</TableData>
+      <TableData>{author.last_name}</TableData>
+      <TableData>{editAndDeleteButtons}</TableData>
+    </TableRow>
   );
 }

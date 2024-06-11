@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 import Author from './Author';
 import { IDbAuthor } from '../../lib/definitions';
-import AuthorsTableHeader from './AuthorsTableHeader';
 
-const Wrapper = styled.div`
+const Table = styled.table`
+  border-collapse: collapse;
+  margin: auto;
   margin-top: 5rem;
+`;
+const TableHead = styled.thead``;
+const TableBody = styled.tbody``;
+const TableRow = styled.tr`
+  border-bottom: 1px solid black;
+`;
+const TableData = styled.td`
 `;
 
 interface IRenderAuthors {
@@ -15,7 +23,7 @@ interface IRenderAuthors {
   onDeleteAuthorDatabaseUpdate: (id: string) => void;
 }
 
-export default function RenderAuthors({
+export default function AuthorsTable({
   authors,
   onEditAuthor,
   onDeleteAuthor,
@@ -23,11 +31,17 @@ export default function RenderAuthors({
   onDeleteAuthorDatabaseUpdate,
 }: IRenderAuthors) {
   return (
-    <Wrapper>
-      <AuthorsTableHeader />
-      <hr />
-      {authors.map((author) => (
-        <>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableData>First Name</TableData>
+          <TableData>Last Name</TableData>
+          <TableData>Actions</TableData>
+        </TableRow>
+      </TableHead>
+
+      <TableBody>
+        {authors.map((author) => (
           <Author
             key={author.author_id}
             author={author}
@@ -36,9 +50,8 @@ export default function RenderAuthors({
             handleEditAuthorDatabaseUpdate={onEditAuthorDatabaseUpdate}
             handleDeleteAuthorDatabaseUpdate={onDeleteAuthorDatabaseUpdate}
           />
-          <hr />
-        </>
-      ))}
-    </Wrapper>
+        ))}
+      </TableBody>
+    </Table>
   );
 }

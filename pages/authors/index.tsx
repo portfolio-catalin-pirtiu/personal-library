@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import AuthorsSortSelector from '../../components/authors/AuthorsSortSelector';
-import RenderAuthors from '../../components/authors/RenderAuthors';
+import AuthorsTable from '../../components/authors/AuthorsTable';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';
@@ -111,7 +111,7 @@ export default function Authors() {
           setSelection={setSelection}
         />
       </SearchAndAuthorsSortSelector>
-      <RenderAuthors
+      <AuthorsTable
         authors={authors}
         onEditAuthor={handleEditAuthor}
         onDeleteAuthor={handleDeleteAuthor}
