@@ -1,4 +1,4 @@
-import { IDbBook, IOption } from './definitions';
+import { IDbBook } from './definitions';
 
 export const filter = {
   all: () => true,
@@ -24,7 +24,12 @@ export const filter = {
   },
 };
 
-export const options: IOption[] = [
+interface BookFilterOption {
+  name: string;
+  value: string;
+}
+
+export const options: BookFilterOption[] = [
   { name: 'All Books', value: 'all' },
   { name: 'Read', value: 'read' },
   { name: 'Not Read', value: 'notRead' },
