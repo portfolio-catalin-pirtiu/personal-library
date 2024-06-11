@@ -3,15 +3,15 @@ import Button from '../../shared/Button';
 import { IDbAuthor } from '../../../lib/definitions';
 import { useState } from 'react';
 import { TableData, TableRow } from './shared/tableComponents';
+import { inputStyle } from '../../../lib/cssStrings';
 
-const FirstAndLastName = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4vmin;
-`;
 const EditAndDelete = styled.div``;
-const EditFirstName = styled.input``;
-const EditLastName = styled.input``;
+const EditFirstName = styled.input`
+  ${inputStyle}
+`;
+const EditLastName = styled.input`
+  ${inputStyle}
+`;
 
 let counter = 0;
 
@@ -68,7 +68,7 @@ export default function Author({
 
   return isEditing ? (
     <TableRow>
-      <FirstAndLastName>
+      <TableData>
         <EditFirstName
           name="first_name"
           value={author.first_name}
@@ -76,6 +76,8 @@ export default function Author({
             handleEditAuthor({ ...author, first_name: e.target.value })
           }
         />
+      </TableData>
+      <TableData>
         <EditLastName
           name="last_name"
           value={author.last_name}
@@ -83,9 +85,8 @@ export default function Author({
             handleEditAuthor({ ...author, last_name: e.target.value })
           }
         />
-      </FirstAndLastName>
-
-      {editAndDeleteButtons}
+      </TableData>
+      <TableData>{editAndDeleteButtons}</TableData>
     </TableRow>
   ) : (
     <TableRow>

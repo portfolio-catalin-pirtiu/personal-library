@@ -1,7 +1,7 @@
 import { Formik, ErrorMessage, FormikValues, FormikErrors } from 'formik';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import InputGroup from '../shared/InputGroup';
+import InputGroup from '../shared/InputGroup/InputGroup';
 import { IDbBook } from '../../lib/definitions';
 import { Book } from '../../lib/classes';
 import useFetchAuthors from '../../lib/useFetchAuthors';
