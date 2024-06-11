@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Author from './Author';
-import { IDbAuthor } from '../../lib/definitions';
+import { IDbAuthor } from '../../../lib/definitions';
+import { TableData } from './shared/tableComponents';
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -11,8 +12,6 @@ const TableHead = styled.thead``;
 const TableBody = styled.tbody``;
 const TableRow = styled.tr`
   border-bottom: 1px solid black;
-`;
-const TableData = styled.td`
 `;
 
 interface IRenderAuthors {

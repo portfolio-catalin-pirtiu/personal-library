@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useFetchAuthors from '../../lib/useFetchAuthors';
 import Search from '../../components/shared/Search';
 import AuthorsSortSelector from '../../components/authors/AuthorsSortSelector';
-import AuthorsTable from '../../components/authors/AuthorsTable';
+import AuthorsTable from '../../components/authors/AuthorsTable/AuthorsTable';
 import { AuthorFilterOption, IDbAuthor } from '../../lib/definitions';
 import { Author } from '../../lib/classes';
 import toast from 'react-hot-toast';

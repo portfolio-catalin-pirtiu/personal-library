@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import Button from '../shared/Button';
-import { IDbAuthor } from '../../lib/definitions';
+import Button from '../../shared/Button';
+import { IDbAuthor } from '../../../lib/definitions';
 import { useState } from 'react';
+import { TableData } from './shared/tableComponents';
 
 const TableRow = styled.tr``;
 const FirstAndLastName = styled.div`
@@ -12,9 +13,6 @@ const FirstAndLastName = styled.div`
 const EditAndDelete = styled.div``;
 const EditFirstName = styled.input``;
 const EditLastName = styled.input``;
-const TableData = styled.td`
-  border: 1px solid black;
-`;
 
 let counter = 0;
 
