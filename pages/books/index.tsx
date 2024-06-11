@@ -32,7 +32,7 @@ const BooksContainer = styled.div`
 export default function Books() {
   let url = booksApiUrl;
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const [select, setSelect] = useState<ISelection>('all');
+  const [filter, setFilter] = useState<ISelection>('all');
   const [search, setSearch] = useState('');
   if (search !== '') {
     url = url + `?book-or-author=${search}`;
@@ -176,7 +176,7 @@ export default function Books() {
         toast.error('Something went wrong when updating book rating.');
     }
   }
-  const filteredBooks = books.filter(bookFilters[select]);
+  const filteredBooks = books.filter(bookFilters[filter]);
 
   return (
     <Wrapper>
