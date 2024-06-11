@@ -1,8 +1,18 @@
 import { screen, render } from '@testing-library/react';
 import BooksFilter from '../BooksFilter';
+import { bookFiltersNameAndValue } from '../../../../lib/filterBooks';
+import { useState } from 'react';
+import { ISelection } from '../../../../lib/definitions';
 
 test('if the buttons in the BooksFilter component are on the page', () => {
-  render(<BooksFilter />);
+  const [filter, setFilter] = useState<ISelection>('all');
+  render(
+    <BooksFilter
+      bookFiltersNameAndValue={bookFiltersNameAndValue}
+      filter={filter}
+      setFilter={setFilter}
+    />
+  );
   const booksFilterValues = [
     'all',
     'read',

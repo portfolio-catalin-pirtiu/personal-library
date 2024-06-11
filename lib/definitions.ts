@@ -48,5 +48,5 @@ export type AuthorFilterOption = 'ascending' | 'descending';
 
 export interface BookFilterOption {
   name: string;
-  value: string;
+  value: ISelection;
 }

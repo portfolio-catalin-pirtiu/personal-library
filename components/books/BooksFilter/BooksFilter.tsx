@@ -11,6 +11,21 @@ interface BooksFilterProps {
   setFilter: Dispatch<SetStateAction<ISelection>>;
 }
 
-export default function BooksFilter({}) {
-  return <Wrapper></Wrapper>;
+export default function BooksFilter({
+  bookFiltersNameAndValue,
+  filter = 'all',
+  setFilter = () => {},
+}: BooksFilterProps) {
+  return (
+    <Wrapper>
+      {bookFiltersNameAndValue.map((filter, i) => (
+        <Button
+          key={i}
+          type="button"
+          text={filter.name}
+          onClick={() => setFilter(filter.value)}
+        />
+      ))}
+    </Wrapper>
+  );
 }
