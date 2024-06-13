@@ -1,4 +1,4 @@
-import { booksFilterSelection } from './constants';
+import { booksFilterValues } from './constants';
 
 export interface IUser {
   id: string;
@@ -42,6 +42,11 @@ export interface IUpdateBookReadingStatusDatabase {
   timestamp: string;
 }
 
-export type ISelection = (typeof booksFilterSelection)[number];
+export type ISelection = (typeof booksFilterValues)[number];
 
 export type AuthorFilterOption = 'ascending' | 'descending';
+
+export interface BookFilterOption {
+  name: string;
+  value: ISelection;
+}

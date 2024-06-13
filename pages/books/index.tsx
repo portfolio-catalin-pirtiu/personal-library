@@ -12,9 +12,8 @@ import {
   ISelection,
   IDbBook,
 } from '../../lib/definitions';
-import AuthorSelector from '../../components/books/AuthorSelector';
 import Search from '../../components/shared/Search';
-import { filter, options } from '../../lib/filterBooks';
+import { bookFilters, bookFiltersNameAndValue } from '../../lib/filterBooks';
 import { styleConstants } from '../../lib/constants';
 
 const Wrapper = styled.div`
@@ -33,7 +32,7 @@ const BooksContainer = styled.div`
 export default function Books() {
   let url = booksApiUrl;
   const { authors } = useFetchAuthors(authorsApiUrl);
-  const [select, setSelect] = useState<ISelection>('all');
+  const [filter, setFilter] = useState<ISelection>('all');
   const [search, setSearch] = useState('');
   if (search !== '') {
     url = url + `?book-or-author=${search}`;
@@ -177,8 +176,7 @@ export default function Books() {
         toast.error('Something went wrong when updating book rating.');
     }
   }
-  const filteredBooks = books.filter(filter[select]);
-  const selectType = 'bar';
+  const filteredBooks = books.filter(bookFilters[filter]);
 
   return (
     <Wrapper>
@@ -188,7 +186,6 @@ export default function Books() {
         label="Search Books"
         placeholder="Search"
       />
-      <AuthorSelector type={selectType} options={options} handleChange={setSelect} />
       <BooksContainer>
         {filteredBooks.map((book) => (
           <Book
